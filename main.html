@@ -6,10 +6,248 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <script src="https://cdn.jsdelivr.net/npm/p5@0.10.2/lib/p5.js"></script>
     <script src="main.js"></script>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons"rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="main.css"/>
+    <link rel="stylesheet" type="text/css" href="leftSide.css"/>
+    <link rel="stylesheet" type="text/css" href="rightSide.css"/>
+    <link rel="stylesheet" type="text/css" href="middleSide.css"/>
     <title>Audio Synth</title>
 </head>
 <body>
-    <div>hello there !</div>
+    <div class ="wrapper">
+        <div class="left-side">
+            <div class="search">
+                <i class="material-icons">search</i>
+                <input type="text" placeholder="Search"/>
+            </div>
+
+            <div class="instruments">
+                <h3>
+                    INSTRUMENTS 
+                    <i class="material-icons">keyboard_arrow_down</i>
+                </h3>
+                <div class="keyboard">
+                    <i class="material-icons">
+                        control_point
+                    </i>
+                    <span>Keyboards</span>
+                </div>
+                <div class="drums">
+                    <i class="material-icons">
+                        control_point
+                    </i>
+                    <span>Drums</span>
+                </div>
+                <div class="guitar">
+                    <i class="material-icons">
+                        control_point
+                    </i>
+                    <span>Guitars</span>
+                </div>
+                <div class="bass">
+                    <i class="material-icons">
+                        control_point
+                    </i>
+                    <span>Bass</span>
+                </div>
+                <div class="electronic">
+                    <i class="material-icons">
+                        control_point
+                    </i>
+                    <span>Electronic</span>
+                </div>
+                <div class="orchestral">
+                    <i class="material-icons">
+                        control_point
+                    </i>
+                    <span>Orchestral</span>
+                </div>
+
+                <div class="experimental">
+                    <i class="material-icons">
+                        control_point
+                    </i>
+                    <span>Experimental</span>
+                </div>
+
+            </div>
+
+            <div class="effect">
+                <h3>
+                    EFFECTS
+                    <i class="material-icons">keyboard_arrow_down</i>
+                </h3>
+                <div class="audio">
+                    <i class="material-icons">
+                        format_indent_increase
+                    </i>
+                    <span>Audio</span>
+                </div>
+                <div class="midi">
+                    <i class="material-icons">
+                        format_indent_increase
+                    </i>
+                    <span>MIDI</span>
+                </div>
+            </div>
+
+            <div class="resources">
+                <h3>
+                    RESOURCES
+                    <i class="material-icons">keyboard_arrow_down</i>
+                </h3>
+                <div class="import">
+                    <i class="material-icons">
+                        get_app
+                    </i>
+                    <span>Import audio</span>
+                </div>
+                <div class="library">
+                    <i class="material-icons">
+                        view_module
+                    </i>
+                    <span>My library</span>
+                </div>
+            </div>
+
+            <div class="account">
+                <h3>
+                    ACCOUNT
+                    <i class="material-icons">keyboard_arrow_down</i>
+                </h3>
+                <div class="help">
+                    <i class="material-icons">
+                        view_list
+                    </i>
+                    <span>Help</span>
+                </div>
+                <div class="settings">
+                        <i class="material-icons">
+                            settings_applications
+                        </i>
+                    <span>Settings</span>
+                </div>
+            </div>
+        </div>
+        <div class="middle">
+            <div class="piano-wrap">
+               <div class="piano-tiles">
+                   
+                   <div class="tile1">
+                       <span>A</span>
+                   </div>
+                   <div class="tile2">
+                        <span>S</span>
+                   </div>
+                   <div class="tile3">
+                        <span>D</span>
+                   </div>
+                   <div class="tile4">
+                        <span>F</span>
+                   </div>
+                   <div class="tile5">
+                        <span>G</span>
+                   </div>
+                   <div class="tile6">
+                        <span>H</span>
+                   </div>
+                   <div class="tile7">
+                        <span>J</span>
+                   </div>
+
+                   
+                   
+                   <div class="tile8">
+                        <span>K</span>
+                   </div>
+                   <div class="tile9">
+                        <span>L</span>
+                   </div>
+                   <div class="tile10">
+                        <span>;</span>
+                   </div>
+                   <div class="tile11">
+                        <span>'</span>
+                   </div>
+                   <div class="tile12">
+                       <span>Z</span>
+                   </div>
+                   <div class="tile13">
+                        <span>X</span>
+                   </div>
+                   <div class="tile14">
+                        <span>C</span>
+                   </div>
+
+                   
+                   
+                   <div class="tile15">
+                        <span>V</span>
+                   </div>
+                   <div class="tile16">
+                        <span>B</span>
+                   </div>
+                   <div class="tile17">
+                        <span>N</span>
+                   </div>
+                   <div class="tile18">
+                        <span>M</span>
+                   </div>
+                   <div class="tile19">
+                        <span>,</span>
+                   </div>
+                   <div class="tile20">
+                        <span>.</span>
+                   </div>
+                   <div class="tile21">
+                        <span>/</span>
+                   </div>
+               </div>
+
+            </div>
+
+            <div class="windowView">
+                <button class="add-btn"></button>
+                <div class="window">
+
+                </div>
+            </div>
+
+            <ul class="track-list">
+                <li class="track1">
+                    <div class="wrapper">
+                        <div class="header-p">
+                            <span class="circle1"></span>
+                            <span class="circle2"></span>
+                            <span class="circle3"></span>
+                            <span>TRACK 01 / KEYBOARD / SYNTH 808 CX</span>
+                            <span class="infinite-icon"></span>
+                            <span class="options-icon"></span>
+                        </div>
+                        <div class="flex-container">
+                            <div class="adjust">
+                                <div class="adjust1">
+
+
+                                </div>
+
+                                <div class="adjust2">
+
+
+                                </div>
+                            </div>
+                            <div class="visuals">
+                                
+                            </div>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </div>
+        <div class="right-side">
+            maria are cirese
+        </div>
+    </div>
     
 </body>
 </html>

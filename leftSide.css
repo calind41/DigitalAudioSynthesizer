@@ -1,0 +1,184 @@
+
+.left-side {
+    background-color: rgb(82, 73, 73);
+    width: 15%;
+    height: 100vh;
+}
+
+.left-side .search i {
+    color: rgb(122, 113, 113);
+    position: relative;
+    top: 23px;
+    left: 20px;
+}
+.left-side .search input {
+    position: relative;
+    background-color: rgb(82, 73, 73);
+    border: none;
+    height: 30px;
+    top: 14px;
+    left: 20px;
+    color: white;
+}
+.left-side .search input::placeholder {
+    color: rgb(230, 220, 220);
+}
+.left-side .search input:focus {
+    outline: none;
+}
+.left-side .instruments h3,
+.left-side .instruments .keyboard i,
+.left-side .instruments .drums i,
+.left-side .instruments .guitar i,
+.left-side .instruments .bass i,
+.left-side .instruments .electronic i,
+.left-side .instruments .orchestral i,
+.left-side .instruments .experimental i,
+.left-side .effect h3,
+.left-side .effect .audio i,
+.left-side .effect .midi i,
+.left-side .resources h3,
+.left-side .resources .import i,
+.left-side .resources .library i,
+.left-side .account h3,
+.left-side .account .help i,
+.left-side .account .settings i {
+    color: rgb(122, 113, 113);
+    cursor: pointer;
+}
+
+/* ------------------------------------------------------------------- */
+.left-side .instruments h3 {
+    margin: 20px;
+    margin-top: 30px;
+    margin-bottom: 5px;
+    border-top: 2px solid rgb(122, 113, 113);
+}
+.left-side .instruments h3 i {
+    position:relative;
+    top: 9px;
+    left: 23px;
+    font-size: 30px;
+}
+
+.left-side .instruments .keyboard,
+.left-side .instruments .drums,
+.left-side .instruments .guitar,
+.left-side .instruments .bass,
+.left-side .instruments .electronic,
+.left-side .instruments .orchestral,
+.left-side .instruments .experimental,
+.left-side .effect h3,
+.left-side .effect .audio,
+.left-side .effect .midi,
+.left-side .resources h3,
+.left-side .resources .import,
+.left-side .resources .library,
+.left-side .account h3,
+.left-side .account .help,
+.left-side .account .settings {
+    margin-left: 20px;
+    margin-top: 5px;
+}
+
+
+.left-side .instruments .keyboard i,
+.left-side .instruments .drums i,
+.left-side .instruments .guitar i,
+.left-side .instruments .bass i,
+.left-side .instruments .electronic i,
+.left-side .instruments .orchestral i,
+.left-side .instruments .experimental i,
+.left-side .effect .audio i,
+.left-side .effect .midi i,
+.left-side .resources .import i,
+.left-side .resources .library i,
+.left-side .account .help i,
+.left-side .account .settings i {
+    font-size: 23px;
+    position:relative;
+    top: 5px;
+}
+
+/* ------------------------------------------------------------------- */
+
+
+.left-side .effect h3 {
+    margin: 20px;
+    margin-bottom: 5px;
+    border-top: 2px solid rgb(122, 113, 113);;
+}
+.left-side .effect h3 i {
+    position:relative;
+    top: 9px;
+    left: 75px;
+    font-size: 30px;
+}
+.left-side .effect .audio i,
+.left-side .effect .midi i{
+    font-size: 23px;
+}
+
+
+/* ------------------------------------------------------------------- */
+
+.left-side .resources h3 {
+    margin: 20px;
+    margin-bottom: 5px;
+    border-top: 2px solid rgb(122, 113, 113);
+}
+.left-side .resources h3 i {
+    position:relative;
+    left: 46px;
+    top: 9px;
+    font-size: 30px;
+}
+
+.left-side .resources .import i,
+.left-side .resources .library i {
+    font-size: 23px;
+}
+
+
+/* ------------------------------------------------------------------- */
+
+.left-side .account h3 {
+    margin: 20px;
+    margin-bottom: 5px;
+    border-top: 2px solid rgb(122, 113, 113);
+}
+
+.left-side .account h3 i {
+    position: relative;
+    left: 46px;
+    top: 9px;
+    left: 65px;
+    font-size: 30px;
+}
+
+
+.left-side .account .help i{
+    font-size: 23px;
+}
+.left-side .account .settings i {
+    font-size: 23px;
+}
+
+/* ---------------------------------------------------------------- */
+
+.left-side .instruments .keyboard span,
+.left-side .instruments .drums span,
+.left-side .instruments .guitar span,
+.left-side .instruments .bass span,
+.left-side .instruments .electronic span,
+.left-side .instruments .orchestral span,
+.left-side .instruments .experimental span,
+.left-side .effect .audio span,
+.left-side .effect .midi span,
+.left-side .resources .import span,
+.left-side .resources .library span,
+.left-side .account .help span,
+.left-side .account .settings span {
+    color: rgb(230, 220, 220);
+    cursor: pointer;
+}
