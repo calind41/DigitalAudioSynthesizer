@@ -1,5 +1,175 @@
 .right-side {
-    background-color: blue;
+    background-color: rgb(82, 73, 73);
     width:20%;
     height: 100vh;
+}
+
+.right-side .record-time {
+    height: 70px;
+    display: flex;
+    justify-content: space-between;
+}
+.right-side .record-time .timer {
+    font-size: 41px;
+    color: rgb(122, 113, 113);
+    position: relative;
+    top: 8px;
+    left: 14px;
+}
+.right-side .record-time .clock-icon {
+    color: rgb(122, 113, 113);
+    position: relative;
+    top: 23px;
+    left: 24px;
+    cursor: pointer;
+}
+.right-side .record-time .clock-icon i {
+    font-size: 20px;
+}
+.right-side .record-time .options-i {
+    color: rgb(122, 113, 113);
+    position: relative;
+    top: 20px;
+    right: 18px;
+    cursor: pointer;
+}
+
+/* ---------------------------------------------------------------------------------- */
+
+.right-side .record-controls {
+    border-top: 1px solid rgb(122, 113, 113);
+    height: 10%;
+    width: 88%;
+    position: relative;
+    left: 20px;
+    display: flex;
+    justify-content: space-between;
+}
+.right-side .record-controls .play {
+    color:  white;
+    cursor: pointer;
+    position: relative;
+    top: 14px;
+    left: -5px;
+}
+
+.right-side .record-controls .stop {
+    color: white;
+    cursor: pointer;
+    position: relative;
+    top: 14px;
+    right: 7px;
+}
+
+.right-side .record-controls .rec-state {
+    color: rgb(150, 46, 46);
+    position: relative;
+    top: 14px;
+    right: 7px;
+}
+
+.right-side .record-controls .rec-state .r-lbl {
+    position: relative;
+    bottom: 7px;
+    font-weight: bold;
+}
+
+.right-side .record-controls .tempo {
+    position: relative;
+    top: 14px;
+    color: rgb(122, 113, 113);
+}
+.right-side .record-controls .tempo .t-nr {
+    color: white;
+    position: relative;
+    left: 10px;
+}
+.right-side .record-controls .tempo .change-tempo i:first-child {
+    position: relative;
+    left: 10px;
+    bottom: 3px;
+    color: white;
+    font-size: 17px;
+
+
+}
+.right-side .record-controls .tempo .change-tempo i:nth-child(2) {
+    position: relative;
+    color: white;
+    top: 12px;
+    right: 11px;
+    font-size: 17px;
+}
+
+/* ---------------------------------------------------------------------------------- */
+
+.right-side .channels {
+    color: rgb(122, 113, 113);
+    display: flex;
+    flex-direction: column;
+    height: 26%;
+}
+
+.right-side .channels h3 {
+  
+    border-top: 1px solid rgb(122, 113, 113);
+    width: 88%;
+    position: relative;
+    left: 20px;
+    padding-top: 15px;
+    
+}
+.right-side .channels h3 i {
+    position: relative;
+    top:5px;
+    left: 50%;
+    font-size: 20px;
+    font-weight: bold;
+    
+}
+.right-side .channels .ch1 {
+    position: relative;
+    top: 10px;
+    left: 20px;
+    width: 90%;
+    display: flex;
+    justify-content: space-between;
+}
+.right-side .channels .ch1 i {
+    font-size: 30px;
+}
+.right-side .channels .ch1 .ch-name {
+    position: relative;
+    right: 45px;
+    top: 5px;
+    color: white;
+}
+.right-side .channels .ch1 .opts-i {
+    position: relative;
+    right: 10px;
+}
+.right-side .channels .ch1 .opts-i i {
+    font-size: 20px;
+    position: relative;
+    right: 2px;
+}
+
+.right-side .effects-visualizer {
+    width: 88%;
+    height: 38%;
+}
+
+.right-side .effects-visualizer h3 {
+    border-top: 1px solid rgb(122, 113, 113);
+    position: relative;
+    left: 20px;
+    padding-top: 14px;
+    color: rgb(122, 113, 113);
+}
+.right-side .effects-visualizer h3 i {
+    position: relative;
+    top: 5px;
+    left: 12%;
+    font-size: 20px;
+    font-weight: bold;
 }
