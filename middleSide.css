@@ -13,7 +13,6 @@
 
 .middle .windowView {
     background-color: rgb(48, 47, 46);
-    border: 2px solid white;
     width: 100%;
     height:14%;
     display: flex;
@@ -160,14 +159,18 @@
     top: 48%;
     left: 2.5%;
     cursor: pointer;
+
 }
 .middle .piano-wrap .piano-tiles div.white-tile {
+    position: relative;
     margin-left: 7px;
     background-color: white;
     width: 55px;
     text-align: center;
     border-radius: 3px;
+    
 }
+
 .middle .piano-wrap .piano-tiles div.white-tile:hover {
     background-color: rgb(224, 159, 17);
 }
@@ -202,6 +205,37 @@
     box-shadow: 0px 9px 12px 0px rgba(71,71,71,0.63);
 
 }
+.middle .piano-wrap .btile-wrapper div span {
+    color: white;
+    position: relative;
+    top: 80%;
+    left: 4px;
+}
+.middle .piano-wrap .btile-wrapper div:nth-child(3) span,
+.middle .piano-wrap .btile-wrapper div:nth-child(7) span,
+.middle .piano-wrap .btile-wrapper div:nth-child(13) span,
+.middle .piano-wrap .btile-wrapper div:nth-child(15) span {
+    position: relative;
+    left: 5px;
+}
+.middle .piano-wrap .btile-wrapper div:nth-child(6) span {
+    position: relative;
+    left: 6px;
+}
+.middle .piano-wrap .btile-wrapper div:nth-child(4) span,
+.middle .piano-wrap .btile-wrapper div:nth-child(5) span,
+.middle .piano-wrap .btile-wrapper div:nth-child(8) span,
+.middle .piano-wrap .btile-wrapper div:nth-child(9) span,
+.middle .piano-wrap .btile-wrapper div:nth-child(10) span,
+.middle .piano-wrap .btile-wrapper div:nth-child(11) span,
+.middle .piano-wrap .btile-wrapper div:nth-child(12) span,
+.middle .piano-wrap .btile-wrapper div:nth-child(14) span{
+    position: relative;
+    left: 7px;
+}
+
+
+
 .middle .piano-wrap .btile-wrapper div:hover {
     background-color: rgb(224, 159, 17);
 }

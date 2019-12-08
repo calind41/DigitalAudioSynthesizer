@@ -5,8 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <script src="https://cdn.jsdelivr.net/npm/p5@0.10.2/lib/p5.js"></script>
-    <script src="main.js"></script>
+    <!-- <script src="https://github.com/processing/p5.js-sound/blob/master/lib/p5.sound.js"></script> -->
+    <!-- <script src="p5.sound.js"></script> -->
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons"rel="stylesheet">
+    <script src="https://unpkg.com/tone"></script>
     <link rel="stylesheet" type="text/css" href="main.css"/>
     <link rel="stylesheet" type="text/css" href="leftSide.css"/>
     <link rel="stylesheet" type="text/css" href="rightSide.css"/>
@@ -130,76 +132,91 @@
             </div>
         </div>
         <div class="middle">
+            <div class="controls">
+                <div class="envelope">
+                    <input type="range" min="0.01" step="0.01" max="2.00" value="0.05" id="attack">
+                    <input type="range" min="0.01" step="0.01" max="2.00" value="0.30" id="decay">
+                    <input type="range" min="0" step="0.01" max="1.00" value="0.40" id="sustain">
+                    <input type="range" min="0.01" step="0.01" max="4.00" value="0.80" id="release">
+                    <br>
+                    <select id="synth-type">
+                        <option value="0">Select Synth Type</option>
+                        <option value="1">Basic Synth</option>
+                        <option value="2">Mono Synth</option>
+                        <option value="3">AM Synth</option>
+                    </select>
+                </div>
+            </div>
             <div class="piano-wrap">
                <div class="piano-tiles">
                    
-                   <div class="white-tile">
+                   <div id="wt1" class="white-tile">
                        <span>A</span>
                    </div>
-                   <div class="white-tile">
+                   <div id="wt2"class="white-tile">
                         <span>S</span>
                    </div>
-                   <div class="white-tile">
+                   <div id="wt3"class="white-tile">
                         <span>D</span>
                    </div>
-                   <div class="white-tile">
+                   <div id="wt4" class="white-tile">
                         <span>F</span>
                    </div>
-                   <div class="white-tile">
+                   <div id="wt5" class="white-tile">
                         <span>G</span>
                    </div>
-                   <div class="white-tile">
+                   <div id="wt6" class="white-tile">
                         <span>H</span>
                    </div>
-                   <div class="white-tile">
+                   <div id="wt7" class="white-tile">
                         <span>J</span>
                    </div>
 
                    
                    
-                   <div class="white-tile">
+                   <div id="wt8" class="white-tile">
                         <span>K</span>
                    </div>
-                   <div class="white-tile">
+                   <div id="wt9" class="white-tile">
                         <span>L</span>
                    </div>
-                   <div class="white-tile">
+                   <div id="wt10" class="white-tile">
                         <span>;</span>
                    </div>
-                   <div class="white-tile">
+                   <div id="wt11" class="white-tile">
                         <span>'</span>
                    </div>
-                   <div class="white-tile">
+                   <div id="wt12" class="white-tile">
                        <span>Z</span>
                    </div>
-                   <div class="white-tile">
+                   <div id="wt13" class="white-tile">
                         <span>X</span>
                    </div>
-                   <div class="white-tile">
+                   <div id="wt14"  class="white-tile">
                         <span>C</span>
                    </div>
 
                    
                    
-                   <div class="white-tile">
+                   <div id="wt15" class="white-tile">
                         <span>V</span>
                    </div>
-                   <div class="white-tile">
+                   <div id="wt16" class="white-tile">
                         <span>B</span>
                    </div>
-                   <div class="white-tile">
+                   <div id="wt17" class="white-tile">
                         <span>N</span>
                    </div>
-                   <div class="white-tile">
+                   <div id="wt18" class="white-tile">
                         <span>M</span>
                    </div>
-                   <div class="white-tile">
+                   <div id="wt19" class="white-tile">
                         <span>,</span>
                    </div>
-                   <div class="white-tile">
+                   <div id="wt20" class="white-tile">
                         <span>.</span>
                    </div>
-                   <div class="white-tile">
+                   <div id="wt21" class="white-tile">
                         <span>/</span>
                    </div>
 
@@ -207,63 +224,63 @@
 
                    <!-- black tiles -->
                    <div class="btile-wrapper">
-                       <div class="black-tile1">
-                           
+                       <div id='bt1' class="black-tile1">
+                           <span>q</span>
                        </div>
-                       <div class="black-tile2">
-                           
+                       <div id='bt2' class="black-tile2">
+                            <span>w</span>
                         </div>
 
 
-                        <div class="black-tile3">
-                            
+                        <div id='bt3' class="black-tile3">
+                            <span>e</span>
                         </div>
-                        <div class="black-tile4">
-                            
+                        <div id='bt4' class="black-tile4">
+                            <span>r</span>
                         </div>
-                        <div class="black-tile5">
-                            
-                        </div>
-
-
-
-                        <div class="black-tile6">
-                            
-                        </div>
-                        <div class="black-tile7">
-                            
-                        </div>
-
-
-                        <div class="black-tile8">
-                            
-                        </div>
-                        <div class="black-tile9">
-                            
-                        </div>
-                        <div class="black-tile10">
-                            
+                        <div id='bt5' class="black-tile5">
+                            <span>t</span>
                         </div>
 
 
 
-                        <div class="black-tile11">
-                            
+                        <div id='bt6' class="black-tile6">
+                            <span>y</span>
                         </div>
-                        <div class="black-tile12">
-                            
+                        <div id='bt7' class="black-tile7">
+                            <span>u</span> 
+                        </div>
+
+
+                        <div id='bt8' class="black-tile8">
+                            <span>i</span>
+                        </div>
+                        <div id='bt9' class="black-tile9">
+                            <span>o</span>
+                        </div>
+                        <div id='bt10' class="black-tile10">
+                            <span>p</span>
                         </div>
 
 
 
-                        <div class="black-tile13">
-                            
+                        <div id='bt11' class="black-tile11">
+                            <span>[</span>
                         </div>
-                        <div class="black-tile14">
-                            
+                        <div id='bt12' class="black-tile12">
+                            <span>]</span>
                         </div>
-                        <div class="black-tile15">
-                            
+
+
+
+                        <div id='bt13' class="black-tile13">
+                            <span>0</span>
+                        </div>
+                        <div id='bt14' class="black-tile14">
+                            <span>-</span>
+                        </div>
+                        <div id='bt15' class="black-tile15">
+                            <span>=</span>
                         </div>
                    </div>
                </div>
@@ -271,7 +288,7 @@
             </div>
 
             <div class="windowView">
-                <button class="add-btn"> <i class="material-icons">
+                <button id="addd" class="add-btn"> <i class="material-icons">
                     control_point
                 </i></button>
                 <div class="window">
@@ -448,13 +465,30 @@
                     EXPORT
                     <i class="material-icons">keyboard_arrow_down</i>
                 </h3>
-                <div class="save-path"></div>
-                <div class="format"></div>
+                <div class="save-path">
+                    <i class="material-icons">
+                        folder_open
+                        </i>
+                    <span class="txt">Save to:</span>
+                </div>
+                <div class="format">
+                    <i class="material-icons">
+                        insert_drive_file
+                    </i>
+                    <span class="txt">
+                        Format:
+                    </span>
+                    <i class="material-icons">
+                        expand_more
+                    </i>
+                </div>
 
                 <button class="save-export">SAVE & EXPORT</button>
             </div>
         </div>
     </div>
-    
+    <div id="container"></div>
+    <script src="main.js"></script>
+    <script src="audio.js"></script>
 </body>
 </html>
