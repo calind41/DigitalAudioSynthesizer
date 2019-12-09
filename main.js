@@ -54,9 +54,12 @@ let release = undefined;
 let sel = document.getElementById('synth-type');
 
 envelope[0].children[0].onchange = () => {
+    console.log('waaaaaaaadaaaaaaaaat');
     attack = envelope[0].children[0].value;
     let idx = Number( document.getElementById('synth-type').value);
+    console.log('in attack , idx is ' + idx);
     if (idx-1 === 0) {
+        
         synths[idx-1] = new Tone.DuoSynth({
             "envelope": {
                 "attack": Number(attack)

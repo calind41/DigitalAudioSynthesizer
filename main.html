@@ -8,6 +8,7 @@
     <!-- <script src="https://github.com/processing/p5.js-sound/blob/master/lib/p5.sound.js"></script> -->
     <!-- <script src="p5.sound.js"></script> -->
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons"rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
     <script src="https://unpkg.com/tone"></script>
     <link rel="stylesheet" type="text/css" href="main.css"/>
     <link rel="stylesheet" type="text/css" href="leftSide.css"/>
@@ -134,6 +135,7 @@
         <div class="middle">
             <div class="controls">
                 <div class="envelope">
+
                     <input type="range" min="0.01" step="0.01" max="2.00" value="0.05" id="attack">
                     <input type="range" min="0.01" step="0.01" max="2.00" value="0.30" id="decay">
                     <input type="range" min="0" step="0.01" max="1.00" value="0.40" id="sustain">
@@ -145,6 +147,11 @@
                         <option value="2">Mono Synth</option>
                         <option value="3">AM Synth</option>
                     </select>
+                    <label name="attack">Attack</label>
+                    <label name="decay">Decay</label>
+                    <label name="sustain">Sustain</label>
+                    <label name="release">Release</label>
+
                 </div>
             </div>
             <div class="piano-wrap">

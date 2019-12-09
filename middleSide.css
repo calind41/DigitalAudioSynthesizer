@@ -300,4 +300,95 @@
     left: -32px;
  }
 
+ .wrapper .controls {
+     position: absolute;
+ }
+ #synth-type {
+     position: absolute;
+     top:50px;
+     left: 50px;
+     border-radius: 50px;
+     font-size: 12px;
+ }
+
+ .wrapper .controls .envelope #attack{
+    -webkit-appearance: none;
+     position: absolute;
+     left: 50px;
+     top: 110px;
+    
+ }
+ .wrapper .controls .envelope #decay{
+    -webkit-appearance: none;
+     position: absolute;
+     left: 200px;
+     top: 110px;
+    
+ }
+ .wrapper .controls .envelope #sustain{
+    -webkit-appearance: none;
+     position: absolute;
+     left: 350px;
+     top: 110px;
+    
+ }
+ .wrapper .controls .envelope #release{
+    -webkit-appearance: none;
+     position: absolute;
+     left: 500px;
+     top: 110px;
+    
+ }
+ .wrapper .controls .envelope #attack::-webkit-slider-runnable-track,
+ .wrapper .controls .envelope #decay::-webkit-slider-runnable-track,
+ .wrapper .controls .envelope #sustain::-webkit-slider-runnable-track,
+ .wrapper .controls .envelope #release::-webkit-slider-runnable-track {
+    width: 320px;
+    height: 7px;
+    background: #ddd;
+    border: none;
+    border-radius: 3px;
+ }
+ .wrapper .controls .envelope #attack::-webkit-slider-thumb,
+ .wrapper .controls .envelope #decay::-webkit-slider-thumb,
+ .wrapper .controls .envelope #sustain::-webkit-slider-thumb,
+ .wrapper .controls .envelope #release::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    border: none;
+    height: 16px;
+    width: 16px;
+    border-radius: 50%;
+    background: goldenrod;
+    margin-top: -4px;
+ }
+
+label[name="attack"] {
+    position: absolute;
+    top: 81px;
+    left: 49px;
+    color: white;
+    font-family: 'Roboto', sans-serif;
+}
+label[name="decay"] {
+    position: absolute;
+    top: 81px;
+    left: 200px;
+    color: white;
+    font-family: 'Roboto', sans-serif;
+}
+label[name="sustain"] {
+    position: absolute;
+    top: 81px;
+    left: 351px;
+    color: white;
+    font-family: 'Roboto', sans-serif;
+}
+label[name="release"] {
+    position: absolute;
+    top: 81px;
+    left: 500px;
+    color: white;
+    font-family: 'Roboto', sans-serif;
+}
+
 
