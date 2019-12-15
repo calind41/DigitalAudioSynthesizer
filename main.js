@@ -36,15 +36,16 @@ for (let i = 0; i < 21; i++ ) {
 
 // ---------------------------------------------------------------------------------------------------------------------------------------------
 let synths = [];
-let synth = new Tone.DuoSynth().toMaster();
+let duoSynth = new Tone.DuoSynth().toMaster();
 let monoS = new Tone.MonoSynth().toMaster();
 let amSynth = new Tone.AMSynth().toMaster();
-synths[0] = synth;
+synths[0] = duoSynth;
 synths[1] = monoS;
 synths[2] = amSynth;
 
 // div containing 4 input ranges 
-let envelope = document.querySelectorAll('.envelope');
+let synthValues = document.querySelectorAll('.duo-synth')[0];
+
 
 let attack = undefined;
 let decay = undefined;
@@ -53,130 +54,443 @@ let release = undefined;
 
 let sel = document.getElementById('synth-type');
 
-envelope[0].children[0].onchange = () => {
-    console.log('waaaaaaaadaaaaaaaaat');
-    attack = envelope[0].children[0].value;
-    let idx = Number( document.getElementById('synth-type').value);
-    console.log('in attack , idx is ' + idx);
+synthValues.children[0].children[1].onchange = () => {
+    let vibratoAmount = synthValues.children[0].children[1].value;
+    let idx = Number(document.getElementById('synth-type').value);
     if (idx-1 === 0) {
-        
         synths[idx-1] = new Tone.DuoSynth({
-            "envelope": {
-                "attack": Number(attack)
-            }
+            "vibratoAmount" : Number(vibratoAmount)
         }).toMaster();
     }
-    if (idx-1 === 1) {
-        synths[idx-1] = new Tone.MonoSynth({
-            "envelope": {
-                "attack": Number(attack)
-            }
-        }).toMaster();
-    }
-    if (idx-1 === 2) {
-        synths[idx-1] = new Tone.AMSynth({
-            "envelope": {
-                "attack": Number(attack)
-            }
-        }).toMaster();
-    }
-    
-    
 }
-envelope[0].children[1].onchange = () => {
-    decay = envelope[0].children[1].value;
-    let idx = Number( document.getElementById('synth-type').value);
-    if (idx-1 === 0) {
-        synths[idx-1] = new Tone.DuoSynth({
-            "envelope": {
-                "decay": Number(decay)
-            }
-        }).toMaster();
-    }
-    if (idx-1 === 1) {
-        synths[idx-1] = new Tone.MonoSynth({
-            "envelope": {
-                "decay": Number(decay)
-            }
-        }).toMaster();
-    }
-    if (idx-1 === 2) {
-        synths[idx-1] = new Tone.AMSynth({
-            "envelope": {
-                "decay": Number(decay)
-            }
-        }).toMaster();
-    }
-    
-    
-}
-envelope[0].children[2].onchange = () => {
-    sustain = envelope[0].children[2].value;
-    let idx = Number( document.getElementById('synth-type').value);
-    if (idx-1 === 0) {
-        synths[idx-1] = new Tone.DuoSynth({
-            "envelope": {
-                "sustain": Number(sustain)
-            }
-        }).toMaster();
-    }
-    if (idx-1 === 1) {
-        synths[idx-1] = new Tone.MonoSynth({
-            "envelope": {
-                "sustain": Number(sustain)
-            }
-        }).toMaster();
-    }
-    if (idx-1 === 2) {
-        synths[idx-1] = new Tone.AMSynth({
-            "envelope": {
-                "sustain": Number(sustain)
-            }
-        }).toMaster();
-    }
-    
-}
-envelope[0].children[3].onchange = () => {
-    release = envelope[0].children[3].value;
-    let idx = Number( document.getElementById('synth-type').value);
-    console.log('release VLAUE IS '+ release);
-    if (idx-1 === 0) {
-        synths[idx-1] = new Tone.DuoSynth({
-            "envelope": {
-                "release": Number(release)
-            }
-        }).toMaster();
-    }
-    if (idx-1 === 1) {
-        synths[idx-1] = new Tone.MonoSynth({
-            "envelope": {
-                "release": Number(release)
-            }
-        }).toMaster();
-    }
-    if (idx-1 === 2) {
-        synths[idx-1] = new Tone.AMSynth({
-            "envelope": {
-                "release": Number(release)
-            }
-        }).toMaster();
-    }
-    
 
+synthValues.children[1].children[1].onchange = () => {
+    let vibratoRate = synthValues.children[1].children[1].value;
+    let idx = Number(document.getElementById('synth-type').value);
+    if (idx-1 === 0) {
+        synths[idx-1] = new Tone.DuoSynth({
+            "vibratoRate" : Number(vibratoRate)
+        }).toMaster();
+    }
 }
+
+synthValues.children[2].children[1].onchange = () => {
+    let harmonicity = synthValues.children[2].children[1].value;
+    let idx = Number(document.getElementById('synth-type').value);
+    if (idx-1 === 0) {
+        synths[idx-1] = new Tone.DuoSynth({
+            "harmonicity" : Number(harmonicity)
+        }).toMaster();
+    }
+}
+
+// ----------------------------------------------------------------------- duo synth voice 0 ------------------------------------------------------
+// freq env voice0
+synthValues.children[3].children[3].children[0].children[1].onchange = () => {
+    let attack = synthValues.children[3].children[3].children[0].children[1].value;
+    let idx = Number(document.getElementById('synth-type').value);
+    if (idx-1 === 0) {
+        synths[idx-1] = new Tone.DuoSynth({
+            "voice0" : {
+                "filterEnvelope" : {
+                    "attack": Number(attack)
+                }
+            }
+        }).toMaster();
+    }
+}
+synthValues.children[3].children[3].children[1].children[1].onchange = () => {
+    let decay = synthValues.children[3].children[3].children[1].children[1].value;
+    let idx = Number(document.getElementById('synth-type').value);
+    if (idx-1 === 0) {
+        synths[idx-1] = new Tone.DuoSynth({
+            "voice0" : {
+                "filterEnvelope" : {
+                    "decay": Number(decay)
+                }
+            }
+        }).toMaster();
+    }
+}
+synthValues.children[3].children[3].children[2].children[1].onchange = () => {
+    let sustain = synthValues.children[3].children[3].children[2].children[1].value;
+    let idx = Number(document.getElementById('synth-type').value);
+    if (idx-1 === 0) {
+        synths[idx-1] = new Tone.DuoSynth({
+            "voice0" : {
+                "filterEnvelope" : {
+                    "sustain": Number(sustain)
+                }
+            }
+        }).toMaster();
+    }
+}
+synthValues.children[3].children[3].children[3].children[1].onchange = () => {
+    let release = synthValues.children[3].children[3].children[3].children[1].value;
+    let idx = Number(document.getElementById('synth-type').value);
+    if (idx-1 === 0) {
+        synths[idx-1] = new Tone.DuoSynth({
+            "voice0" : {
+                "filterEnvelope" : {
+                    "release": Number(release)
+                }
+            }
+        }).toMaster();
+    }
+}
+//  end freq env voice0
+
+// amp env voice0 
+synthValues.children[3].children[5].children[0].children[1].onchange = () => {
+    let attack = synthValues.children[3].children[5].children[0].children[1].value;
+    let idx = Number(document.getElementById('synth-type').value);
+    if (idx-1 === 0) {
+        synths[idx-1] = new Tone.DuoSynth({
+            "voice0" : {
+                "envelope" : {
+                    "attack": Number(attack)
+                }
+            }
+        }).toMaster();
+    }
+}
+synthValues.children[3].children[5].children[1].children[1].onchange = () => {
+    let decay = synthValues.children[3].children[5].children[1].children[1].value;
+    let idx = Number(document.getElementById('synth-type').value);
+    if (idx-1 === 0) {
+        synths[idx-1] = new Tone.DuoSynth({
+            "voice0" : {
+                "envelope" : {
+                    "decay": Number(decay)
+                }
+            }
+        }).toMaster();
+    }
+}
+synthValues.children[3].children[5].children[2].children[1].onchange = () => {
+    let sustain = synthValues.children[3].children[5].children[2].children[1].value;
+    let idx = Number(document.getElementById('synth-type').value);
+    if (idx-1 === 0) {
+        synths[idx-1] = new Tone.DuoSynth({
+            "voice0" : {
+                "envelope" : {
+                    "sustain": Number(sustain)
+                }
+            }
+        }).toMaster();
+    }
+}
+
+synthValues.children[3].children[5].children[3].children[1].onchange = () => {
+    let release = synthValues.children[3].children[5].children[3].children[1].value;
+    let idx = Number(document.getElementById('synth-type').value);
+    if (idx-1 === 0) {
+        synths[idx-1] = new Tone.DuoSynth({
+            "voice0" : {
+                "envelope" : {
+                    "release": Number(release)
+                }
+            }
+        }).toMaster();
+    }
+}
+// end amp env voice0 
+
+// voice0 volume
+synthValues.children[3].children[6].children[1].onchange = () => {
+    let volume = synthValues.children[3].children[6].children[1].value;
+    let idx = Number(document.getElementById('synth-type').value);
+    if (idx-1 === 0) {
+        synths[idx-1] = new Tone.DuoSynth({
+            "voice0" : {
+                "volume": Number(volume)
+            }
+        }).toMaster();
+    }
+}
+// voice0 portamento 
+synthValues.children[3].children[7].children[1].onchange = () => {
+    let portamento = synthValues.children[3].children[7].children[1].value;
+    let idx = Number(document.getElementById('synth-type').value);
+    if (idx-1 === 0) {
+        synths[idx-1] = new Tone.DuoSynth({
+            "voice0": {
+                "portamento": Number(portamento)
+            }
+        }).toMaster();
+    }
+}
+
+// voice0 oscillator type 
+synthValues.children[3].children[9].onchange = (evt) => {
+  let oscTypeValue = evt.currentTarget.value;
+  let idx = Number(document.getElementById('synth-type').value);
+  if (idx-1 === 0) {
+      synths[idx-1] = new Tone.DuoSynth({
+          "voice0": {
+              "oscillator" : {
+                  "type" : oscTypeValue
+              }
+          }
+      }).toMaster();
+  }  
+}
+
+// ----------------------------------------------------------------------- duo synth voice 1 ------------------------------------------------------
+// freq-env1 
+synthValues.children[4].children[3].children[0].children[1].onchange = () => {
+    let attack = synthValues.children[4].children[3].children[0].children[1].value;
+    let idx = Number(document.getElementById('synth-type').value);
+    if (idx-1 === 0) {
+        synths[idx-1] = new Tone.DuoSynth({
+            "voice1" : {
+                "filterEnvelope" : {
+                    "attack": Number(attack)
+                }
+            }
+        }).toMaster();
+    }
+}
+
+synthValues.children[4].children[3].children[1].children[1].onchange = () => {
+    let decay = synthValues.children[4].children[3].children[1].children[1].value;
+    let idx = Number(document.getElementById('synth-type').value);
+    if (idx-1 === 0) {
+        synths[idx-1] = new Tone.DuoSynth({
+            "voice1" : {
+                "filterEnvelope" : {
+                    "decay": Number(decay)
+                }
+            }
+        }).toMaster();
+    }
+}
+synthValues.children[4].children[3].children[2].children[1].onchange = () => {
+    let sustain = synthValues.children[4].children[3].children[2].children[1].value;
+    let idx = Number(document.getElementById('synth-type').value);
+    if (idx-1 === 0) {
+        synths[idx-1] = new Tone.DuoSynth({
+            "voice1" : {
+                "filterEnvelope" : {
+                    "sustain": Number(sustain)
+                }
+            }
+        }).toMaster();
+    }
+}
+synthValues.children[4].children[3].children[3].children[1].onchange = () => {
+    let release = synthValues.children[4].children[3].children[3].children[1].value;
+    let idx = Number(document.getElementById('synth-type').value);
+    if (idx-1 === 0) {
+        synths[idx-1] = new Tone.DuoSynth({
+            "voice1" : {
+                "filterEnvelope" : {
+                    "release": Number(release)
+                }
+            }
+        }).toMaster();
+    }
+}
+// end freq env voice1
+
+// amp env voice1
+synthValues.children[4].children[5].children[0].children[1].onchange = () => {
+    let attack = synthValues.children[4].children[5].children[0].children[1].value;
+    let idx = Number(document.getElementById('synth-type').value);
+    if (idx-1 === 0) {
+        synths[idx-1] = new Tone.DuoSynth({
+            "voice1" : {
+                "envelope" : {
+                    "attack": Number(attack)
+                }
+            }
+        }).toMaster();
+    }
+}
+synthValues.children[4].children[5].children[1].children[1].onchange = () => {
+    let decay = synthValues.children[4].children[5].children[1].children[1].value;
+    let idx = Number(document.getElementById('synth-type').value);
+    if (idx-1 === 0) {
+        synths[idx-1] = new Tone.DuoSynth({
+            "voice1" : {
+                "envelope" : {
+                    "decay": Number(decay)
+                }
+            }
+        }).toMaster();
+    }
+}
+synthValues.children[4].children[5].children[2].children[1].onchange = () => {
+    let sustain = synthValues.children[4].children[5].children[2].children[1].value;
+    let idx = Number(document.getElementById('synth-type').value);
+    if (idx-1 === 0) {
+        synths[idx-1] = new Tone.DuoSynth({
+            "voice1" : {
+                "envelope" : {
+                    "sustain": Number(sustain)
+                }
+            }
+        }).toMaster();
+    }
+}
+synthValues.children[4].children[5].children[3].children[1].onchange = () => {
+    let release = synthValues.children[4].children[5].children[3].children[1].value;
+    let idx = Number(document.getElementById('synth-type').value);
+    if (idx-1 === 0) {
+        synths[idx-1] = new Tone.DuoSynth({
+            "voice1" : {
+                "envelope" : {
+                    "release": Number(release)
+                }
+            }
+        }).toMaster();
+    }
+}
+// end envelope voice1
+
+
+synthValues.children[4].children[6].children[1].onchange = () => {
+    let volume = synthValues.children[4].children[6].children[1].value;
+    let idx = Number(document.getElementById('synth-type').value);
+    if (idx-1 === 0) {
+        synths[idx-1] = new Tone.DuoSynth({
+            "voice1" : {
+                "volume": Number(volume)
+            }
+        }).toMaster();
+    }
+}
+
+synthValues.children[4].children[7].children[1].onchange = () => {
+    let portamento = synthValues.children[4].children[7].children[1].value;
+    let idx = Number(document.getElementById('synth-type').value);
+    if (idx-1 === 0) {
+        synths[idx-1] = new Tone.DuoSynth({
+            "voice1": {
+                "portamento": Number(portamento)
+            }
+        }).toMaster();
+    }
+}
+
+synthValues.children[4].children[9].onchange = (evt) => {
+    let oscTypeValue = evt.currentTarget.value;
+    let idx = Number(document.getElementById('synth-type').value);
+    if (idx-1 === 0) {
+        synths[idx-1] = new Tone.DuoSynth({
+            "voice1": {
+                "oscillator" : {
+                    "type" : oscTypeValue
+                }
+            }
+        }).toMaster();
+    }  
+}
+
 
 window.onkeydown = (evt) => {
+    sel.blur();
     let code = evt.keyCode;
+    let vibratoAmount = synthValues.children[0].children[1].value;
+    let vibratoRate = synthValues.children[1].children[1].value;
+    let harmonicity = synthValues.children[2].children[1].value;
 
+    let v0Volume = synthValues.children[3].children[6].children[1].value;
+    let v0Portamento = synthValues.children[3].children[7].children[1].value;
+    let v0OscType = synthValues.children[3].children[9].options[synthValues.children[3].children[9].selectedIndex].value;
+
+    let v0FreqEnvAttack = synthValues.children[3].children[3].children[0].children[1].value;
+    let v0FreqEnvDecay = synthValues.children[3].children[3].children[1].children[1].value;
+    let v0FreqEnvSustain = synthValues.children[3].children[3].children[2].children[1].value;
+    let v0FreqEnvRelease = synthValues.children[3].children[3].children[3].children[1].value;
+
+    let v0AmpEnvAttack = synthValues.children[3].children[5].children[0].children[1].value;
+    let v0AmpEnvDecay = synthValues.children[3].children[5].children[1].children[1].value;
+    let v0AmpEnvSustain = synthValues.children[3].children[5].children[2].children[1].value;
+    let v0AmpEnvRelease = synthValues.children[3].children[5].children[3].children[1].value;
+
+    let v1Volume = synthValues.children[3].children[6].children[1].value;
+    let v1Portamento = synthValues.children[3].children[7].children[1].value;
+    let v1OscType = synthValues.children[3].children[9].options[synthValues.children[3].children[9].selectedIndex].value;
+
+    let v1FreqEnvAttack = synthValues.children[4].children[3].children[0].children[1].value;
+    let v1FreqEnvDecay = synthValues.children[4].children[3].children[1].children[1].value;
+    let v1FreqEnvSustain = synthValues.children[4].children[3].children[2].children[1].value;
+    let v1FreqEnvRelease = synthValues.children[4].children[3].children[3].children[1].value;
+
+    let v1AmpEnvAttack = synthValues.children[3].children[5].children[0].children[1].value;
+    let v1AmpEnvDecay = synthValues.children[3].children[5].children[1].children[1].value;
+    let v1AmpEnvSustain = synthValues.children[3].children[5].children[2].children[1].value;
+    let v1AmpEnvRelease = synthValues.children[3].children[5].children[3].children[1].value;
+
+
+
+ 
+
+
+
+    let idx = Number(document.getElementById('synth-type').value);
+    if (idx-1 === 0) {
+    
+        synths[idx-1] = new Tone.DuoSynth({
+            "voice0": {
+                "filterEnvelope": {
+                    "attack": Number(v0FreqEnvAttack),
+                    "decay": Number(v0FreqEnvDecay),
+                    "sustain": Number(v0FreqEnvSustain),
+                    "release": Number(v0FreqEnvRelease)
+                },
+                "envelope": {
+                    "attack": Number(v0AmpEnvAttack),
+                    "decay": Number(v0AmpEnvDecay),
+                    "sustain": Number(v0AmpEnvSustain),
+                    "release": Number(v0AmpEnvRelease)
+                }
+            },
+            "voice1": {
+                "filterEnvelope": {
+                    "attack": Number(v1FreqEnvAttack),
+                    "decay": Number(v1FreqEnvDecay),
+                    "sustain": Number(v1FreqEnvSustain),
+                    "release": Number(v1FreqEnvRelease)
+                },
+                "envelope": {
+                    "attack": Number(v1AmpEnvAttack),
+                    "decay": Number(v1AmpEnvDecay),
+                    "sustain": Number(v1AmpEnvSustain),
+                    "release": Number(v1AmpEnvRelease)
+                }
+            }
+        }).toMaster();
+    }
+    if (idx-1 === 1) {
+        synths[idx-1] = new Tone.MonoSynth({
+            "envelope": {
+                "attack": Number(attack),
+                "decay": Number(decay),
+                "sustain": Number(sustain),
+                "release": Number(release)
+            }
+        }).toMaster();
+    }
+    if (idx-1 === 2) {
+        synths[idx-1] = new Tone.AMSynth({
+            "envelope": {
+                "attack": Number(attack),
+                "decay": Number(decay),
+                "sustain": Number(sustain),
+                "release": Number(release)
+            }
+        }).toMaster();
+    }
+  
     switch (code) {
         case 97:
         case 65: {
             whiteTiles[0].style.top='2%';
-            // synth.triggerAttackRelease("C3", "5");
-           
-            // console.log(monoS.envelope.attack);
-            // monoS.triggerAttackRelease('c3','4');
-            let idx = Number(sel.value);
+            whiteTiles[0].style.backgroundColor = 'red';
+            let idx = Number(document.getElementById('synth-type').value);
+            console.log('idx is ' + idx);
             synths[idx-1].triggerAttackRelease('c3','7n');
         
             
@@ -187,8 +501,8 @@ window.onkeydown = (evt) => {
         case 83: {
             console.log('pressed s or S');
             whiteTiles[1].style.top='2%';
-            // synth.triggerAttackRelease("d3", "7n");  
-            let idx = Number(sel.value);
+            whiteTiles[1].style.backgroundColor = 'red';
+            let idx = Number(document.getElementById('synth-type').value);
             synths[idx-1].triggerAttackRelease('d3','7n');
             break;
         }
@@ -196,8 +510,8 @@ window.onkeydown = (evt) => {
         case 68: {
             console.log('pressed d or D');
             whiteTiles[2].style.top='2%';
-            // synth.triggerAttackRelease("e3", "7n");  
-            let idx = Number(sel.value);
+            whiteTiles[2].style.backgroundColor = 'red';
+            let idx = Number(document.getElementById('synth-type').value);
             synths[idx-1].triggerAttackRelease('e3','7n');
             break;
         }
@@ -205,8 +519,8 @@ window.onkeydown = (evt) => {
         case 70: {
             console.log('pressed f or F');
             whiteTiles[3].style.top='2%';
-            // synth.triggerAttackRelease("f3", "7n");
-            let idx = Number(sel.value);
+            whiteTiles[3].style.backgroundColor = 'red';
+            let idx = Number(document.getElementById('synth-type').value);
             synths[idx-1].triggerAttackRelease('f3','7n');
             break;
         }
@@ -214,7 +528,7 @@ window.onkeydown = (evt) => {
         case 71: {
             console.log('pressed g or G');
             whiteTiles[4].style.top='2%';
-            // synth.triggerAttackRelease("g3", "7n");
+            whiteTiles[4].style.backgroundColor = 'red';
             let idx = Number(sel.value);
             synths[idx-1].triggerAttackRelease('g3','7n');
             break;
@@ -223,7 +537,7 @@ window.onkeydown = (evt) => {
         case 72: {
             console.log('pressed h or H');
             whiteTiles[5].style.top='2%';
-            // synth.triggerAttackRelease("a3", "7n");
+            whiteTiles[5].style.backgroundColor = 'red';
             let idx = Number(sel.value);
             synths[idx-1].triggerAttackRelease('a3','7n');
             break;
@@ -232,7 +546,7 @@ window.onkeydown = (evt) => {
         case 74: {
             console.log('pressed j or J');
             whiteTiles[6].style.top='2%';
-            // synth.triggerAttackRelease("b3", "7n");
+            whiteTiles[6].style.backgroundColor = 'red';
             let idx = Number(sel.value);
             synths[idx-1].triggerAttackRelease('b3','7n');
             break;
@@ -241,7 +555,7 @@ window.onkeydown = (evt) => {
         case 75: {
             console.log('pressed k or K');
             whiteTiles[7].style.top='2%';
-            // synth.triggerAttackRelease("c4", "7n");
+            whiteTiles[7].style.backgroundColor = 'red';
             let idx = Number(sel.value);
             synths[idx-1].triggerAttackRelease('c4','7n');
             break;
@@ -250,7 +564,7 @@ window.onkeydown = (evt) => {
         case 76: {
             console.log('pressed l or L');
             whiteTiles[8].style.top='2%';
-            // synth.triggerAttackRelease("d4", "7n");
+            whiteTiles[8].style.backgroundColor = 'red';
             let idx = Number(sel.value);
             synths[idx-1].triggerAttackRelease('d4','7n');
             break;
@@ -258,7 +572,7 @@ window.onkeydown = (evt) => {
         case 186: {
             console.log('pressed ;');
             whiteTiles[9].style.top='2%';
-            // synth.triggerAttackRelease("e4", "7n");
+            whiteTiles[9].style.backgroundColor = 'red';
             let idx = Number(sel.value);
             synths[idx-1].triggerAttackRelease('e4','7n');
             break;
@@ -266,7 +580,7 @@ window.onkeydown = (evt) => {
         case 222: {
             console.log('pressed \'');
             whiteTiles[10].style.top='2%';
-            // synth.triggerAttackRelease("f4", "7n");
+            whiteTiles[10].style.backgroundColor = 'red';
             let idx = Number(sel.value);
             synths[idx-1].triggerAttackRelease('f4','7n');
             break;
@@ -275,7 +589,7 @@ window.onkeydown = (evt) => {
         case 90: {
             console.log('pressed z or Z');
             whiteTiles[11].style.top='2%';
-            // synth.triggerAttackRelease("g4", "7n");
+            whiteTiles[11].style.backgroundColor = 'red';
             let idx = Number(sel.value);
             synths[idx-1].triggerAttackRelease('g4','7n');
             break;
@@ -284,7 +598,7 @@ window.onkeydown = (evt) => {
         case 88: {
             console.log('pressed x or X');
             whiteTiles[12].style.top='2%';
-            // synth.triggerAttackRelease("a4", "7n");
+            whiteTiles[12].style.backgroundColor = 'red';
             let idx = Number(sel.value);
             synths[idx-1].triggerAttackRelease('a4','7n');
             break;
@@ -293,7 +607,7 @@ window.onkeydown = (evt) => {
         case 67: {
             console.log('pressed c or C');
             whiteTiles[13].style.top='2%';
-            // synth.triggerAttackRelease("b4", "7n");
+            whiteTiles[13].style.backgroundColor = 'red';
             let idx = Number(sel.value);
             synths[idx-1].triggerAttackRelease('b4','7n');
             break;
@@ -302,7 +616,7 @@ window.onkeydown = (evt) => {
         case 86: {
             console.log('pressed v or V');
             whiteTiles[14].style.top='2%';
-            // synth.triggerAttackRelease("c5", "7n");
+            whiteTiles[14].style.backgroundColor = 'red';
             let idx = Number(sel.value);
             synths[idx-1].triggerAttackRelease('c5','7n');
             break;
@@ -311,7 +625,7 @@ window.onkeydown = (evt) => {
         case 66: {
             console.log('pressed b or B');
             whiteTiles[15].style.top='2%';
-            // synth.triggerAttackRelease("d5", "7n");
+            whiteTiles[15].style.backgroundColor = 'red';
             let idx = Number(sel.value);
             synths[idx-1].triggerAttackRelease('d5','7n');
             break;
@@ -320,7 +634,7 @@ window.onkeydown = (evt) => {
         case 78: {
             console.log('pressed n or N');
             whiteTiles[16].style.top='2%';
-            // synth.triggerAttackRelease("e5", "7n");
+            whiteTiles[16].style.backgroundColor = 'red';
             let idx = Number(sel.value);
             synths[idx-1].triggerAttackRelease('e5','7n');
             break;
@@ -329,7 +643,7 @@ window.onkeydown = (evt) => {
         case 77: {
             console.log('pressed m or M');
             whiteTiles[17].style.top='2%';
-            // synth.triggerAttackRelease("f5", "7n");
+            whiteTiles[17].style.backgroundColor = 'red';
             let idx = Number(sel.value);
             synths[idx-1].triggerAttackRelease('f5','7n');
             break;
@@ -337,7 +651,7 @@ window.onkeydown = (evt) => {
         case 188: {
             console.log('pressed , ');
             whiteTiles[18].style.top='2%';
-            // synth.triggerAttackRelease("g5", "7n");
+            whiteTiles[18].style.backgroundColor = 'red';
             let idx = Number(sel.value);
             synths[idx-1].triggerAttackRelease('g5','7n');
             break;
@@ -345,7 +659,7 @@ window.onkeydown = (evt) => {
         case 190: {
             console.log('pressed . ');
             whiteTiles[19].style.top='2%';
-            // synth.triggerAttackRelease("a5", "7n");
+            whiteTiles[19].style.backgroundColor = 'red';
             let idx = Number(sel.value);
             synths[idx-1].triggerAttackRelease('a5','7n');
             break;
@@ -353,7 +667,7 @@ window.onkeydown = (evt) => {
         case 191: {
             console.log('pressed  / ');
             whiteTiles[20].style.top='2%';
-            // synth.triggerAttackRelease("b5", "7n");
+            whiteTiles[20].style.backgroundColor = 'red';
             let idx = Number(sel.value);
             synths[idx-1].triggerAttackRelease('b5','7n');
             break;
@@ -362,7 +676,7 @@ window.onkeydown = (evt) => {
         case 81: {
             console.log('pressed q');
             blackTiles[0].style.top = '2%';
-            // synth.triggerAttackRelease("C#3", "7n");
+            blackTiles[0].style.backgroundColor = 'red';
             let idx = Number(sel.value);
             synths[idx-1].triggerAttackRelease('C#3','7n');
             break;
@@ -370,7 +684,7 @@ window.onkeydown = (evt) => {
         case 87: {
             console.log('pressed w');
             blackTiles[1].style.top = '2%';
-            // synth.triggerAttackRelease("D#3", "7n"); 
+            blackTiles[1].style.backgroundColor = 'red';
             let idx = Number(sel.value);
             synths[idx-1].triggerAttackRelease('d#3','7n');
             break;
@@ -378,7 +692,7 @@ window.onkeydown = (evt) => {
         case 69: {
             console.log('pressed e');
             blackTiles[2].style.top = '2%';
-            // synth.triggerAttackRelease("f#3", "7n");
+            blackTiles[2].style.backgroundColor = 'red';
             let idx = Number(sel.value);
             synths[idx-1].triggerAttackRelease('f#3','7n');
             break;
@@ -386,7 +700,7 @@ window.onkeydown = (evt) => {
         case 82: {
             console.log('pressed r');
             blackTiles[3].style.top = '2%';
-            // synth.triggerAttackRelease("g#3", "7n");
+            blackTiles[3].style.backgroundColor = 'red';
             let idx = Number(sel.value);
             synths[idx-1].triggerAttackRelease('g#3','7n');
             break;
@@ -394,7 +708,7 @@ window.onkeydown = (evt) => {
         case 84: {
             console.log('pressed t');
             blackTiles[4].style.top = '2%';
-            // synth.triggerAttackRelease("a#3", "7n");
+            blackTiles[4].style.backgroundColor = 'red';
             let idx = Number(sel.value);
             synths[idx-1].triggerAttackRelease('a#3','7n');
             break;
@@ -402,7 +716,7 @@ window.onkeydown = (evt) => {
         case 89: {
             console.log('pressed y');
             blackTiles[5].style.top = '2%';
-            // synth.triggerAttackRelease("c#4", "7n");
+            blackTiles[5].style.backgroundColor = 'red';
             let idx = Number(sel.value);
             synths[idx-1].triggerAttackRelease('C#4','7n');
             break;
@@ -410,7 +724,7 @@ window.onkeydown = (evt) => {
         case 85: {
             console.log('pressed u');
             blackTiles[6].style.top = '2%';
-            // synth.triggerAttackRelease("d#4", "7n");
+            blackTiles[6].style.backgroundColor = 'red';
             let idx = Number(sel.value);
             synths[idx-1].triggerAttackRelease('d#4','7n');
             break;
@@ -418,7 +732,7 @@ window.onkeydown = (evt) => {
         case 73: {
             console.log('pressed i');
             blackTiles[7].style.top = '2%';
-            // synth.triggerAttackRelease("f#4", "7n");
+            blackTiles[7].style.backgroundColor = 'red';
             let idx = Number(sel.value);
             synths[idx-1].triggerAttackRelease('f#4','7n');
             break;
@@ -426,7 +740,7 @@ window.onkeydown = (evt) => {
         case 79: {
             console.log('pressed o');
             blackTiles[8].style.top = '2%';
-            // synth.triggerAttackRelease("g#4", "7n");
+            blackTiles[8].style.backgroundColor = 'red';
             let idx = Number(sel.value);
             synths[idx-1].triggerAttackRelease('g#4','7n');
             break;
@@ -434,7 +748,7 @@ window.onkeydown = (evt) => {
         case 80: {
             console.log('pressed p');
             blackTiles[9].style.top = '2%';
-            // synth.triggerAttackRelease("a#4", "7n");
+            blackTiles[9].style.backgroundColor = 'red';
             let idx = Number(sel.value);
             synths[idx-1].triggerAttackRelease('a#4','7n');
             break;
@@ -442,7 +756,7 @@ window.onkeydown = (evt) => {
         case 219: {
             console.log('pressed [');
             blackTiles[10].style.top = '2%';
-            // synth.triggerAttackRelease("c#5", "7n");
+            blackTiles[10].style.backgroundColor = 'red';
             let idx = Number(sel.value);
             synths[idx-1].triggerAttackRelease('c#5','7n');
             break;
@@ -450,7 +764,7 @@ window.onkeydown = (evt) => {
         case 221: {
             console.log('pressed ]');
             blackTiles[11].style.top = '2%';
-            // synth.triggerAttackRelease("d#5", "7n");
+            blackTiles[11].style.backgroundColor = 'red';
             let idx = Number(sel.value);
             synths[idx-1].triggerAttackRelease('d#5','7n');
             break;
@@ -458,7 +772,7 @@ window.onkeydown = (evt) => {
         case 48: {
             console.log('pressed 0');
             blackTiles[12].style.top = '2%';
-            // synth.triggerAttackRelease("f#5", "7n");
+            blackTiles[12].style.backgroundColor = 'red';
             let idx = Number(sel.value);
             synths[idx-1].triggerAttackRelease('f#5','7n');
             break;
@@ -466,7 +780,7 @@ window.onkeydown = (evt) => {
         case 189: {
             console.log('pressed -');
             blackTiles[13].style.top = '2%';
-            // synth.triggerAttackRelease("g#5", "7n");
+            blackTiles[13].style.backgroundColor = 'red';
             let idx = Number(sel.value);
             synths[idx-1].triggerAttackRelease('g#5','7n');
             break;
@@ -474,7 +788,7 @@ window.onkeydown = (evt) => {
         case 187: {
             console.log('pressed =');
             blackTiles[14].style.top = '2%';
-            // synth.triggerAttackRelease("a#5", "7n");
+            blackTiles[14].style.backgroundColor = 'red';
             let idx = Number(sel.value);
             synths[idx-1].triggerAttackRelease('a#5','7n');
             break;
@@ -489,6 +803,8 @@ window.onkeydown = (evt) => {
 // on key up
 window.onkeyup = (evt) => {
     let code = evt.keyCode;
+    sel.blur();
+    
 
     console.log('outside switch' + code);
     switch (code) {
@@ -496,6 +812,7 @@ window.onkeyup = (evt) => {
         case 65: {
             console.log('pressed a or A');
             whiteTiles[0].style.top='0%';
+            whiteTiles[0].style.backgroundColor = 'white';
            
             break;
         }
@@ -503,191 +820,226 @@ window.onkeyup = (evt) => {
         case 83: {
             console.log('pressed s or S');
             whiteTiles[1].style.top='0%';
+            whiteTiles[1].style.backgroundColor = 'white';
             break;
         }
         case 100:
         case 68: {
             console.log('pressed d or D');
             whiteTiles[2].style.top='0%';
+            whiteTiles[2].style.backgroundColor = 'white';
             break;
         }
         case 102:
         case 70: {
             console.log('pressed f or F');
             whiteTiles[3].style.top='0%';
+            whiteTiles[3].style.backgroundColor = 'white';
             break;
         }
         case 103:
         case 71: {
             console.log('pressed g or G');
             whiteTiles[4].style.top='0%';
+            whiteTiles[4].style.backgroundColor = 'white';
             break;
         }
         case 104:
         case 72: {
             console.log('pressed h or H');
             whiteTiles[5].style.top='0%';
+            whiteTiles[5].style.backgroundColor = 'white';
             break;
         }
         case 106:
         case 74: {
             console.log('pressed j or J');
             whiteTiles[6].style.top='0%';
+            whiteTiles[6].style.backgroundColor = 'white';
             break;
         }
         case 107:
         case 75: {
             console.log('pressed k or K');
             whiteTiles[7].style.top='0%';
+            whiteTiles[7].style.backgroundColor = 'white';
             break;
         }
         case 108: 
         case 76: {
             console.log('pressed l or L');
             whiteTiles[8].style.top='0%';
+            whiteTiles[8].style.backgroundColor = 'white';
             break;
         }
         case 186: {
             console.log('pressed ;');
             whiteTiles[9].style.top='0%';
+            whiteTiles[9].style.backgroundColor = 'white';
             break;
         }
         case 222: {
             console.log('pressed \'');
             whiteTiles[10].style.top='0%';
+            whiteTiles[10].style.backgroundColor = 'white';
             break;
         }
         case 122:
         case 90: {
             console.log('pressed z or Z');
             whiteTiles[11].style.top='0%';
+            whiteTiles[11].style.backgroundColor = 'white';
             break;
         }
         case 120:
         case 88: {
             console.log('pressed x or X');
             whiteTiles[12].style.top='0%';
+            whiteTiles[12].style.backgroundColor = 'white';
             break;
         }
         case 99: 
         case 67: {
             console.log('pressed c or C');
             whiteTiles[13].style.top='0%';
+            whiteTiles[13].style.backgroundColor = 'white';
             break;
         }
         case 118: 
         case 86: {
             console.log('pressed v or V');
             whiteTiles[14].style.top='0%';
+            whiteTiles[14].style.backgroundColor = 'white';
             break;
         }
         case 98: 
         case 66: {
             console.log('pressed b or B');
             whiteTiles[15].style.top='0%';
+            whiteTiles[15].style.backgroundColor = 'white';
             break;
         }
         case 110: 
         case 78: {
             console.log('pressed n or N');
             whiteTiles[16].style.top='0%';
+            whiteTiles[16].style.backgroundColor = 'white';
             break;
         }
         case 109:
         case 77: {
             console.log('pressed m or M');
             whiteTiles[17].style.top='0%';
+            whiteTiles[17].style.backgroundColor = 'white';
             break;
         }
         case 188: {
             console.log('pressed , ');
             whiteTiles[18].style.top='0%';
+            whiteTiles[18].style.backgroundColor = 'white';
             break;
         }
         case 190: {
             console.log('pressed . ');
             whiteTiles[19].style.top='0%';
+            whiteTiles[19].style.backgroundColor = 'white';
             break;
         }
         case 191: {
             console.log('pressed  / ');
             whiteTiles[20].style.top='0%';
+            whiteTiles[20].style.backgroundColor = 'white';
             break;
         }
         // black tile keycodes
         case 81: {
             console.log('pressed q');
             blackTiles[0].style.top = '0%';
+            blackTiles[0].style.backgroundColor = 'black';
             break;
         }
         case 87: {
             console.log('pressed w');
             blackTiles[1].style.top = '0%';
+            blackTiles[1].style.backgroundColor = 'black';
             break;
         }
         case 69: {
             console.log('pressed e');
             blackTiles[2].style.top = '0%';
+            blackTiles[2].style.backgroundColor = 'black';
             break;
         }
         case 82: {
             console.log('pressed r');
             blackTiles[3].style.top = '0%';
+            blackTiles[3].style.backgroundColor = 'black';
             break;
         }
         case 84: {
             console.log('pressed t');
             blackTiles[4].style.top = '0%';
+            blackTiles[4].style.backgroundColor = 'black';
             break;
         }
         case 89: {
             console.log('pressed y');
             blackTiles[5].style.top = '0%';
+            blackTiles[5].style.backgroundColor = 'black';
             break;
         }
         case 85: {
             console.log('pressed u');
             blackTiles[6].style.top = '0%';
+            blackTiles[6].style.backgroundColor = 'black';
             break;
         }
         case 73: {
             console.log('pressed i');
             blackTiles[7].style.top = '0%';
+            blackTiles[7].style.backgroundColor = 'black';
             break;
         }
         case 79: {
             console.log('pressed o');
             blackTiles[8].style.top = '0%';
+            blackTiles[8].style.backgroundColor = 'black';
             break;
         }
         case 80: {
             console.log('pressed p');
             blackTiles[9].style.top = '0%';
+            blackTiles[9].style.backgroundColor = 'black';
             break;
         }
         case 219: {
             console.log('pressed [');
             blackTiles[10].style.top = '0%';
+            blackTiles[10].style.backgroundColor = 'black';
             break;
         }
         case 221: {
             console.log('pressed ]');
             blackTiles[11].style.top = '0%';
+            blackTiles[11].style.backgroundColor = 'black';
             break;
         }
         case 48: {
             console.log('pressed 0');
             blackTiles[12].style.top = '0%';
+            blackTiles[12].style.backgroundColor = 'black';
             break;
         }
         case 189: {
             console.log('pressed -');
             blackTiles[13].style.top = '0%';
+            blackTiles[13].style.backgroundColor = 'black';
             break;
         }
         case 187: {
             console.log('pressed =');
             blackTiles[14].style.top = '0%';
+            blackTiles[14].style.backgroundColor = 'black';
             break;
         }
 

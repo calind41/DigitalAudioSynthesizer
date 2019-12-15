@@ -1,0 +1,198 @@
+
+.duo-synth {
+    display: none;
+    position: relative;
+    width: 100%;
+    height: 50%;
+    overflow-y: scroll;
+
+}
+
+/* -- */
+.duo-synth .vibrato-amount {
+    color: rgb(143, 133, 133);
+}
+.duo-synth .vibrato-amount span {
+    position: relative;
+    font-weight: bold;
+}
+
+.duo-synth .voices .voice0-lbl,
+.duo-synth .voice1 .voice1-lbl {
+    color: red;
+    font-weight: bold;
+    font-size: 14px;
+}
+.duo-synth .voices .osc-type-v0,
+.duo-synth .voice1 .osc-type-v1 {
+    color: red;
+    font-size: 14px;
+}
+
+.duo-synth .voices .volume,
+.duo-synth .voice1 .volume1,
+.duo-synth .voices .portamento,
+.duo-synth .voice1 .portamento1 {
+    color: rgb(143, 133, 133);
+}
+
+
+.duo-synth .vibrato-amount input,
+.duo-synth .vibrato-rate input,
+.duo-synth .harmonicity input,
+.duo-synth .voices .freq-env .attack input,
+.duo-synth .voices .freq-env .decay input,
+.duo-synth .voices .freq-env .sustain input,
+.duo-synth .voices .freq-env .release input,
+.duo-synth .voices .amp-env .attack input,
+.duo-synth .voices .amp-env .decay input,
+.duo-synth .voices .amp-env .sustain input,
+.duo-synth .voices .amp-env .release input,
+.duo-synth .voice1 .freq-env1 .attack input,
+.duo-synth .voice1 .freq-env1 .decay input,
+.duo-synth .voice1 .freq-env1 .sustain input,
+.duo-synth .voice1 .freq-env1 .release input,
+.duo-synth .voice1 .amp-env1 .attack input,
+.duo-synth .voice1 .amp-env1 .decay input,
+.duo-synth .voice1 .amp-env1 .sustain input,
+.duo-synth .voice1 .amp-env1 .release input,
+.duo-synth .voice1 .volume1 input,
+.duo-synth .voice1 .portamento1 input,
+.duo-synth .voices .volume input,
+.duo-synth .voices .portamento input{
+    position: relative;
+    -webkit-appearance: none;
+    top: -1px;
+    left: 14px;
+}
+.duo-synth .vibrato-amount input::-webkit-slider-runnable-track,
+.duo-synth .vibrato-rate input::-webkit-slider-runnable-track,
+.duo-synth .harmonicity input::-webkit-slider-runnable-track,
+.duo-synth .voices .freq-env .attack input::-webkit-slider-runnable-track,
+.duo-synth .voices .freq-env .decay input::-webkit-slider-runnable-track,
+.duo-synth .voices .freq-env .sustain input::-webkit-slider-runnable-track,
+.duo-synth .voices .freq-env .release input::-webkit-slider-runnable-track,
+.duo-synth .voices .amp-env .attack input::-webkit-slider-runnable-track,
+.duo-synth .voices .amp-env .decay input::-webkit-slider-runnable-track,
+.duo-synth .voices .amp-env .sustain input::-webkit-slider-runnable-track,
+.duo-synth .voices .amp-env .release input::-webkit-slider-runnable-track,
+.duo-synth .voice1 .freq-env1 .attack input::-webkit-slider-runnable-track,
+.duo-synth .voice1 .freq-env1 .decay input::-webkit-slider-runnable-track,
+.duo-synth .voice1 .freq-env1 .sustain input::-webkit-slider-runnable-track,
+.duo-synth .voice1 .freq-env1 .release input::-webkit-slider-runnable-track,
+.duo-synth .voice1 .amp-env1 .attack input::-webkit-slider-runnable-track,
+.duo-synth .voice1 .amp-env1 .decay input::-webkit-slider-runnable-track,
+.duo-synth .voice1 .amp-env1 .sustain input::-webkit-slider-runnable-track,
+.duo-synth .voice1 .amp-env1 .release input::-webkit-slider-runnable-track,
+.duo-synth .voice1 .volume1 input::-webkit-slider-runnable-track,
+.duo-synth .voice1 .portamento1 input::-webkit-slider-runnable-track,
+.duo-synth .voices .volume input::-webkit-slider-runnable-track,
+.duo-synth .voices .portamento input::-webkit-slider-runnable-track
+
+{
+    width: 320px;
+    height: 7px;
+    background: #ddd;
+    border: none;
+    border-radius: 3px;
+}
+
+.duo-synth .vibrato-amount input::-webkit-slider-thumb,
+.duo-synth .vibrato-rate input::-webkit-slider-thumb,
+.duo-synth .harmonicity input::-webkit-slider-thumb,
+.duo-synth .voices .freq-env .attack input::-webkit-slider-thumb,
+.duo-synth .voices .freq-env .decay input::-webkit-slider-thumb,
+.duo-synth .voices .freq-env .sustain input::-webkit-slider-thumb,
+.duo-synth .voices .freq-env .release input::-webkit-slider-thumb,
+.duo-synth .voices .amp-env .attack input::-webkit-slider-thumb,
+.duo-synth .voices .amp-env .decay input::-webkit-slider-thumb,
+.duo-synth .voices .amp-env .sustain input::-webkit-slider-thumb,
+.duo-synth .voices .amp-env .release input::-webkit-slider-thumb,
+.duo-synth .voice1 .freq-env1 .attack input::-webkit-slider-thumb,
+.duo-synth .voice1 .freq-env1 .decay input::-webkit-slider-thumb,
+.duo-synth .voice1 .freq-env1 .sustain input::-webkit-slider-thumb,
+.duo-synth .voice1 .freq-env1 .release input::-webkit-slider-thumb,
+.duo-synth .voice1 .amp-env1 .attack input::-webkit-slider-thumb,
+.duo-synth .voice1 .amp-env1 .decay input::-webkit-slider-thumb,
+.duo-synth .voice1 .amp-env1 .sustain input::-webkit-slider-thumb,
+.duo-synth .voice1 .amp-env1 .release input::-webkit-slider-thumb,
+.duo-synth .voice1 .volume1 input::-webkit-slider-thumb,
+.duo-synth .voice1 .portamento1 input::-webkit-slider-thumb,
+.duo-synth .voices .volume input::-webkit-slider-thumb,
+.duo-synth .voices .portamento input::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    border: none;
+    height: 16px;
+    width: 16px;
+    border-radius: 50%;
+    background: goldenrod;
+    margin-top: -4px;
+}
+/* --- */
+
+
+/* -- */
+.duo-synth .vibrato-rate {
+    color: rgb(143, 133, 133);
+}
+.duo-synth .vibrato-rate span {
+    position: relative;
+    font-weight: bold;
+}
+
+/* --- */
+
+/* -- */
+.duo-synth .harmonicity {
+    color: rgb(143, 133, 133);
+}
+.duo-synth .harmonicity span {
+    position: relative;
+    font-weight: bold;
+}
+
+/* --- */
+
+.duo-synth .voices {
+    height: 50%;
+}
+
+.duo-synth .voices .freq-env-title,
+.duo-synth .voice1 .freq-env-title1 {
+    color: rgb(143, 133, 133);
+    cursor: pointer;
+    transition: 0.4s;
+}
+.duo-synth .voices .amp-env-title,
+.duo-synth .voice1 .amp-env-title1 {
+    color: rgb(143, 133, 133);
+    cursor: pointer;
+    transition: 0.4s;
+}
+
+.duo-synth .voices .freq-env,
+.duo-synth .voice1 .freq-env1 {
+   
+    position:relative;
+    max-height: 0;
+    box-sizing: border-box;
+    /* padding: 5px; */
+    transition: max-height 0.2s ease-out;
+    overflow: hidden;
+}
+.duo-synth .voices .amp-env,
+.duo-synth .voice1 .amp-env1 {
+    position: relative;
+    box-sizing: border-box;
+    max-height: 0;
+    transition: max-height 0.2s ease-out;
+    overflow: hidden;
+}
+
+
+
+.duo-synth .voice1  {
+    position: relative;
+    left: 50%;
+    bottom: 170px;
+}

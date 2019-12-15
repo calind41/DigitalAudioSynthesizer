@@ -9,11 +9,13 @@
     <!-- <script src="p5.sound.js"></script> -->
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons"rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script src="https://unpkg.com/tone"></script>
     <link rel="stylesheet" type="text/css" href="main.css"/>
     <link rel="stylesheet" type="text/css" href="leftSide.css"/>
     <link rel="stylesheet" type="text/css" href="rightSide.css"/>
     <link rel="stylesheet" type="text/css" href="middleSide.css"/>
+    <link rel="stylesheet" type="text/css" href="accordion.css"/>
     <title>Audio Synth</title>
 </head>
 <body>
@@ -134,25 +136,12 @@
         </div>
         <div class="middle">
             <div class="controls">
-                <div class="envelope">
-
-                    <input type="range" min="0.01" step="0.01" max="2.00" value="0.05" id="attack">
-                    <input type="range" min="0.01" step="0.01" max="2.00" value="0.30" id="decay">
-                    <input type="range" min="0" step="0.01" max="1.00" value="0.40" id="sustain">
-                    <input type="range" min="0.01" step="0.01" max="4.00" value="0.80" id="release">
-                    <br>
-                    <select id="synth-type">
-                        <option value="0">Select Synth Type</option>
-                        <option value="1">Basic Synth</option>
-                        <option value="2">Mono Synth</option>
-                        <option value="3">AM Synth</option>
-                    </select>
-                    <label name="attack">Attack</label>
-                    <label name="decay">Decay</label>
-                    <label name="sustain">Sustain</label>
-                    <label name="release">Release</label>
-
-                </div>
+                <select id="synth-type">
+                    <option value="0">Select Synth Type</option>
+                    <option value="1">Duo Synth</option>
+                    <option value="2">Mono Synth</option>
+                    <option value="3">AM Synth</option>
+                </select>
             </div>
             <div class="piano-wrap">
                <div class="piano-tiles">
@@ -293,54 +282,259 @@
                </div>
 
             </div>
-
-            <div class="windowView">
-                <button id="addd" class="add-btn"> <i class="material-icons">
-                    control_point
-                </i></button>
-                <div class="window">
-
+            <div class="duo-synth">
+                <div class="vibrato-amount">
+                    <span>Vibrato Amount</span>
+                    <input type="range" step="0.01" min="0.5" max="4.0">
                 </div>
-            </div>
+                <div class="vibrato-rate">
+                    <span>Vibrato Rate</span>
+                    <input type="range" step="0.01" min="0.5" max="4.0">
+                </div>
+                <div class="harmonicity">
+                    <span>Harmonicity</span>
+                    <input type="range" step="0.01" min="0.5" max="4.0">
+                </div>
 
-            <ul class="track-list">
-                <li class="track1">
-                    <div class="wrapper">
-                        <div class="header-p">
-                            <span class="circle1"></span>
-                            <span class="circle2"></span>
-                            <span class="circle3"></span>
-                            <span>TRACK 01 / KEYBOARD / SYNTH 808 CX</span>
-                            <span class="replay-icon">
-                                <i class="material-icons">
-                                    refresh
-                                </i>
-                            </span>
-                            <span class="options-icon">
-                                <i class="material-icons">
-                                    more_horiz
-                                </i>
-                            </span>
+                <div class="voices">
+                    <!-- for voice 0 -->
+                    <span class="voice0-lbl">Voice 0</span>
+                    <br>
+                    <span class="freq-env-title">Frequency Envelope</span>
+                    <div class="freq-env">
+                        <div class="attack">
+                            <span>Attack</span>
+                            <input type="range" step="0.01" min="0.01" max="2.00">
                         </div>
-                        <div class="flex-container">
-                            <div class="adjust">
-                                <div class="adjust1">
-
-
-                                </div>
-
-                                <div class="adjust2">
-
-
-                                </div>
-                            </div>
-                            <div class="visuals">
-                                
-                            </div>
+                        <div class="decay">
+                            <span>Decay</span>
+                            <input type="range" step="0.01" min="0.01" max="2.00">
+                        </div>
+                        <div class="sustain">
+                            <span>Sustain</span>
+                            <input type="range" step="0.01" min="0" max="1">
+                        </div>
+                        <div class="release">
+                            <span>Release</span>
+                            <input type="range" step="0.01" min="0.01" max="4.00">
                         </div>
                     </div>
-                </li>
-            </ul>
+                    <span class="amp-env-title">Amplitude Envelope</span>
+                    <div class="amp-env">
+                        <div class="attack">
+                            <span>Attack</span>
+                            <input type="range" step="0.01" min="0.01" max="2.00">
+                        </div>
+                        <div class="decay">
+                            <span>Decay</span>
+                            <input type="range" step="0.01" min="0.01" max="2.00">
+                        </div>
+                        <div class="sustain">
+                            <span>Sustain</span>
+                            <input type="range" step="0.01" min="0.00" max="1.0">
+                        </div>
+                        <div class="release">
+                            <span>Release</span>
+                            <input type="range" step="0.01" min="0.01" max="4.00">
+                        </div>
+                    </div>
+                    <div class="volume">
+                        <span class="volume-title">Volume</span>
+                        <input type="range" step="1" min="-60" max="0">
+                    </div>
+                    <div class="portamento">
+                        <span class="porta-title">Portamento</span>
+                        <input type="range" step="0.01" min="0.00" max="0.10">
+                    </div>
+                    <span class="osc-type-v0">Oscillator Type</span>
+                    <select class="osc-type">
+                        <option value="sine">sine</option>
+                        <option value="square">square</option>
+                        <option value="sawtooth">sawtooth</option>
+                    </select>
+                    <br>
+                    <!-- for voice1 -->
+                   
+                    
+                </div>
+                <div class="voice1">
+                    <span class="voice1-lbl">Voice 1</span>
+                    <br>
+                    <span class="freq-env-title1">Frequency Envelope</span>
+                    <div class="freq-env1">  <!-- 14 -->
+                        <div class="attack">
+                            <span>Attack</span>
+                            <input type="range" step="0.01" min="0.01" max="2.00">
+                        </div>
+                        <div class="decay">
+                            <span>Decay</span>
+                            <input type="range" step="0.01" min="0.01" max="2.00">
+                        </div>
+                        <div class="sustain">
+                            <span>Sustain</span>
+                            <input type="range" step="0.01" min="0.00" max="1.00">
+                        </div>
+                        <div class="release">
+                            <span>Release</span>
+                            <input type="range" step="0.01" min="0.01" max="4.00">
+                        </div>
+                    </div>
+                    <span class="amp-env-title1">Amplitude Envelope</span>
+                    <div class="amp-env1">
+                        <div class="attack">
+                            <span>Attack</span>
+                            <input type="range" step="0.01" min="0.01" max="2.00">
+                        </div>
+                        <div class="decay">
+                            <span>Decay</span>
+                            <input type="range" step="0.01" min="0.01" max="2.00">
+                        </div>
+                        <div class="sustain">
+                            <span>Sustain</span>
+                            <input type="range" step="0.01" min="0.00" max="1.00">
+                        </div>
+                        <div class="release">
+                            <span>Release</span>
+                            <input type="range" step="0.01" min="0.01" max="4.00">
+                        </div>
+                    </div>
+                    <div class="volume1">
+                        <span class="volume-title">Volume</span>
+                        <input type="range" step="1" min="-60" max="0">
+                    </div>
+                    <div class="portamento1">
+                        <span class="porta-title">Portamento</span>
+                        <input type="range" step="0.01" min="0.00" max="0.10">
+                    </div>
+                    <span class="osc-type-v1">Oscillator Type</span>
+                    <select class="osc-type1">
+                        <option value="sine">sine</option>
+                        <option value="square">square</option>
+                        <option value="sawtooth">sawtooth</option>
+                    </select>
+                </div>
+                <!-- <div class="voice1">
+                    <span class="freq-env-title1">Frequency Envelope</span>
+                    <div class="freq-env1">
+                        <div class="attack">
+                            <span>Attack</span>
+                            <input type="range">
+                        </div>
+                        <div class="decay">
+                            <span>Decay</span>
+                            <input type="range">
+                        </div>
+                        <div class="sustain">
+                            <span>Sustain</span>
+                            <input type="range">
+                        </div>
+                        <div class="release">
+                            <span>Release</span>
+                            <input type="range">
+                        </div>
+                    </div>
+                    <span class="amp-env-title1">Amplitude Envelope</span>
+                    <div class="amp-env1">
+                        <div class="attack">
+                            <span>Attack</span>
+                            <input type="range">
+                        </div>
+                        <div class="decay">
+                            <span>Decay</span>
+                            <input type="range">
+                        </div>
+                        <div class="sustain">
+                            <span>Sustain</span>
+                            <input type="range">
+                        </div>
+                        <div class="release">
+                            <span>Release</span>
+                            <input type="range">
+                        </div>
+                    </div>
+                    <div class="volume1">
+                        <span class="volume-title">Volume</span>
+                        <input type="range">
+                    </div>
+                    <div class="portamento1">
+                        <span class="porta-title">Volume</span>
+                        <input type="range">
+                    </div>
+                    <select class="osc-type1">
+                        <option value="sine">sine</option>
+                        <option value="square">square</option>
+                        <option value="sawtooth">sawtooth</option>
+                    </select>
+                </div> -->
+            </div>
+            
+            <div class="mono-synth">
+                 <!-- for voice 0 -->
+                 
+                 <span class="freq-env-title">Frequency Envelope</span>
+                 <div class="freq-env">
+                     <div class="attack">
+                         <span>Attack</span>
+                         <input type="range" step="0.01" min="0.01" max="2.00">
+                     </div>
+                     <div class="decay">
+                         <span>Decay</span>
+                         <input type="range" step="0.01" min="0.01" max="2.00">
+                     </div>
+                     <div class="sustain">
+                         <span>Sustain</span>
+                         <input type="range" step="0.01" min="0" max="1">
+                     </div>
+                     <div class="release">
+                         <span>Release</span>
+                         <input type="range" step="0.01" min="0.01" max="4.00">
+                     </div>
+                 </div>
+                 <span class="amp-env-title">Amplitude Envelope</span>
+                 <div class="amp-env">
+                     <div class="attack">
+                         <span>Attack</span>
+                         <input type="range" step="0.01" min="0.01" max="2.00">
+                     </div>
+                     <div class="decay">
+                         <span>Decay</span>
+                         <input type="range" step="0.01" min="0.01" max="2.00">
+                     </div>
+                     <div class="sustain">
+                         <span>Sustain</span>
+                         <input type="range" step="0.01" min="0.00" max="1.0">
+                     </div>
+                     <div class="release">
+                         <span>Release</span>
+                         <input type="range" step="0.01" min="0.01" max="4.00">
+                     </div>
+                 </div>
+                 <span class="osc-type-v0">Oscillator Type</span>
+                 <select class="osc-type">
+                     <option value="sine">sine</option>
+                     <option value="square">square</option>
+                     <option value="sawtooth">sawtooth</option>
+                 </select>
+                 <br>
+                 <div class="filter">
+                     <div class="q">
+                         <span class="q">Q</span>
+                         <input type="range" step="0.01" min="0" max="5">
+                     </div>
+                     <div class="filter-type">
+                         <span class="filter-type-title">Type</span>
+                         <select class="type">
+                             <option value="lowpass">lowpass</option>
+                             <option value="bandpass">bandpass</option>
+                             <option value="highpass">highpass</option>
+                         </select>
+                     </div>
+                     <div class="rolloff">
+                         <span class="rolloff-title">Rolloff</span>
+                         <input type="range" step="0.01" min="0" max="5">
+                     </div>
+                 </div>
+            </div>
         </div>
         <div class="right-side">
             <div class="record-time">
@@ -497,5 +691,6 @@
     <div id="container"></div>
     <script src="main.js"></script>
     <script src="audio.js"></script>
+    <script src="accordion.js"></script>
 </body>
 </html>

@@ -172,7 +172,7 @@
 }
 
 .middle .piano-wrap .piano-tiles div.white-tile:hover {
-    background-color: rgb(224, 159, 17);
+    background-color: rgb(224, 159, 17) !important;
 }
 
 .middle .piano-wrap .piano-tiles div:first-child {
@@ -237,7 +237,7 @@
 
 
 .middle .piano-wrap .btile-wrapper div:hover {
-    background-color: rgb(224, 159, 17);
+    background-color: rgb(224, 159, 17) !important;
 }
 .middle .piano-wrap .btile-wrapper div:nth-child(1) {
     position:relative;
@@ -390,5 +390,3 @@ label[name="release"] {
     color: white;
     font-family: 'Roboto', sans-serif;
 }
-
-
