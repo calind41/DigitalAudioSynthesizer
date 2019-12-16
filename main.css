@@ -7,3 +7,29 @@
     display: flex;
     height: 100%;
 }
+
+.wrapper .middle .song-maker {
+    display: block;
+    position: relative;
+    left: 5%;
+    top: 10%;
+}
+.wrapper .middle .song-maker input {
+    width: 86%;
+}
+.wrapper .middle .song-maker .c1 span,
+.wrapper .middle .song-maker .c2 span,
+.wrapper .middle .song-maker .c3 span,
+.wrapper .middle .song-maker .c4 span,
+.wrapper .middle .song-maker .c5 span {
+    width: 50px;
+    height: 50px;
+    background-color: white;
+    display: inline-block;
+    cursor: pointer;
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    outline: 0;
+    border: 0;
+}

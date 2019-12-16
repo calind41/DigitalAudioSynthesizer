@@ -34,7 +34,7 @@ for (let i = 0; i < 21; i++ ) {
     }
 }
 
-// ---------------------------------------------------------------------------------------------------------------------------------------------
+// ------------------------------------------------------------------------DUO SYNTH---------------------------------------------------------------------
 let synths = [];
 let duoSynth = new Tone.DuoSynth().toMaster();
 let monoS = new Tone.MonoSynth().toMaster();
@@ -44,7 +44,9 @@ synths[1] = monoS;
 synths[2] = amSynth;
 
 // div containing 4 input ranges 
-let synthValues = document.querySelectorAll('.duo-synth')[0];
+let duoSynthVals = document.querySelectorAll('.duo-synth')[0];
+let monoSynthVals = document.querySelectorAll('.mono-synth')[0];
+let amSynthVals = document.querySelectorAll('.am-synth')[0];
 
 
 let attack = undefined;
@@ -54,8 +56,46 @@ let release = undefined;
 
 let sel = document.getElementById('synth-type');
 
-synthValues.children[0].children[1].onchange = () => {
-    let vibratoAmount = synthValues.children[0].children[1].value;
+
+// hide controls for other types of synths and show only the one is selected
+document.getElementById('synth-type').onchange = (evt) => {
+    let selVal = evt.currentTarget.value;
+    let duoSynth = document.querySelectorAll('.duo-synth')[0];
+    let monoSynth = document.querySelectorAll('.mono-synth')[0];
+    let amSynth = document.querySelectorAll('.am-synth')[0];
+    let musicMaker = document.querySelectorAll('.song-maker')[0];
+    if (selVal === '0') {
+        // nothing is selected so display nothing
+        duoSynth.style.display="none";
+        monoSynth.style.display="none";
+        amSynth.style.display="none";
+        musicMaker.style.display="block";
+    }
+    else if (selVal === '1') {
+        // display duo synth
+        duoSynth.style.display="block";
+        monoSynth.style.display="none";
+        amSynth.style.display="none";
+        musicMaker.style.display="none";
+    }
+    else if (selVal === '2') {
+        // display duo synth
+        monoSynth.style.display="block";
+        duoSynth.style.display="none";
+        amSynth.style.display="none";
+        musicMaker.style.display="none";
+    }
+    else if (selVal === '3') {
+        // display duo synth
+        amSynth.style.display="block";
+        duoSynth.style.display="none";
+        monoSynth.style.display="none";
+        musicMaker.style.display="none";
+    }
+}
+
+duoSynthVals.children[0].children[1].onchange = () => {
+    let vibratoAmount = duoSynthVals.children[0].children[1].value;
     let idx = Number(document.getElementById('synth-type').value);
     if (idx-1 === 0) {
         synths[idx-1] = new Tone.DuoSynth({
@@ -64,8 +104,8 @@ synthValues.children[0].children[1].onchange = () => {
     }
 }
 
-synthValues.children[1].children[1].onchange = () => {
-    let vibratoRate = synthValues.children[1].children[1].value;
+duoSynthVals.children[1].children[1].onchange = () => {
+    let vibratoRate = duoSynthVals.children[1].children[1].value;
     let idx = Number(document.getElementById('synth-type').value);
     if (idx-1 === 0) {
         synths[idx-1] = new Tone.DuoSynth({
@@ -74,8 +114,8 @@ synthValues.children[1].children[1].onchange = () => {
     }
 }
 
-synthValues.children[2].children[1].onchange = () => {
-    let harmonicity = synthValues.children[2].children[1].value;
+duoSynthVals.children[2].children[1].onchange = () => {
+    let harmonicity = duoSynthVals.children[2].children[1].value;
     let idx = Number(document.getElementById('synth-type').value);
     if (idx-1 === 0) {
         synths[idx-1] = new Tone.DuoSynth({
@@ -86,9 +126,12 @@ synthValues.children[2].children[1].onchange = () => {
 
 // ----------------------------------------------------------------------- duo synth voice 0 ------------------------------------------------------
 // freq env voice0
-synthValues.children[3].children[3].children[0].children[1].onchange = () => {
-    let attack = synthValues.children[3].children[3].children[0].children[1].value;
+duoSynthVals.children[3].children[3].children[0].children[1].onchange = () => {
+    let attack = duoSynthVals.children[3].children[3].children[0].children[1].value;
     let idx = Number(document.getElementById('synth-type').value);
+    let displayValueElem = duoSynthVals.children[3].children[3].children[0].children[0].children[0];
+    displayValueElem.innerHTML = "" + attack;
+    displayValueElem.style.color="white";
     if (idx-1 === 0) {
         synths[idx-1] = new Tone.DuoSynth({
             "voice0" : {
@@ -99,9 +142,12 @@ synthValues.children[3].children[3].children[0].children[1].onchange = () => {
         }).toMaster();
     }
 }
-synthValues.children[3].children[3].children[1].children[1].onchange = () => {
-    let decay = synthValues.children[3].children[3].children[1].children[1].value;
+duoSynthVals.children[3].children[3].children[1].children[1].onchange = () => {
+    let decay = duoSynthVals.children[3].children[3].children[1].children[1].value;
     let idx = Number(document.getElementById('synth-type').value);
+    let displayValueElem = duoSynthVals.children[3].children[3].children[1].children[0].children[0];
+    displayValueElem.innerHTML = "" + decay;
+    displayValueElem.style.color="white";
     if (idx-1 === 0) {
         synths[idx-1] = new Tone.DuoSynth({
             "voice0" : {
@@ -112,9 +158,12 @@ synthValues.children[3].children[3].children[1].children[1].onchange = () => {
         }).toMaster();
     }
 }
-synthValues.children[3].children[3].children[2].children[1].onchange = () => {
-    let sustain = synthValues.children[3].children[3].children[2].children[1].value;
+duoSynthVals.children[3].children[3].children[2].children[1].onchange = () => {
+    let sustain = duoSynthVals.children[3].children[3].children[2].children[1].value;
     let idx = Number(document.getElementById('synth-type').value);
+    let displayValueElem = duoSynthVals.children[3].children[3].children[2].children[0].children[0];
+    displayValueElem.innerHTML = "" + sustain;
+    displayValueElem.style.color="white";
     if (idx-1 === 0) {
         synths[idx-1] = new Tone.DuoSynth({
             "voice0" : {
@@ -125,9 +174,12 @@ synthValues.children[3].children[3].children[2].children[1].onchange = () => {
         }).toMaster();
     }
 }
-synthValues.children[3].children[3].children[3].children[1].onchange = () => {
-    let release = synthValues.children[3].children[3].children[3].children[1].value;
+duoSynthVals.children[3].children[3].children[3].children[1].onchange = () => {
+    let release = duoSynthVals.children[3].children[3].children[3].children[1].value;
     let idx = Number(document.getElementById('synth-type').value);
+    let displayValueElem = duoSynthVals.children[3].children[3].children[3].children[0].children[0];
+    displayValueElem.innerHTML = "" + release;
+    displayValueElem.style.color="white";
     if (idx-1 === 0) {
         synths[idx-1] = new Tone.DuoSynth({
             "voice0" : {
@@ -141,9 +193,12 @@ synthValues.children[3].children[3].children[3].children[1].onchange = () => {
 //  end freq env voice0
 
 // amp env voice0 
-synthValues.children[3].children[5].children[0].children[1].onchange = () => {
-    let attack = synthValues.children[3].children[5].children[0].children[1].value;
+duoSynthVals.children[3].children[5].children[0].children[1].onchange = () => {
+    let attack = duoSynthVals.children[3].children[5].children[0].children[1].value;
     let idx = Number(document.getElementById('synth-type').value);
+    let displayValueElem = duoSynthVals.children[3].children[5].children[0].children[0].children[0];
+    displayValueElem.innerHTML = "" + attack;
+    displayValueElem.style.color="white";
     if (idx-1 === 0) {
         synths[idx-1] = new Tone.DuoSynth({
             "voice0" : {
@@ -154,9 +209,12 @@ synthValues.children[3].children[5].children[0].children[1].onchange = () => {
         }).toMaster();
     }
 }
-synthValues.children[3].children[5].children[1].children[1].onchange = () => {
-    let decay = synthValues.children[3].children[5].children[1].children[1].value;
+duoSynthVals.children[3].children[5].children[1].children[1].onchange = () => {
+    let decay = duoSynthVals.children[3].children[5].children[1].children[1].value;
     let idx = Number(document.getElementById('synth-type').value);
+    let displayValueElem = duoSynthVals.children[3].children[5].children[1].children[0].children[0];
+    displayValueElem.innerHTML = "" + decay;
+    displayValueElem.style.color="white";
     if (idx-1 === 0) {
         synths[idx-1] = new Tone.DuoSynth({
             "voice0" : {
@@ -167,9 +225,12 @@ synthValues.children[3].children[5].children[1].children[1].onchange = () => {
         }).toMaster();
     }
 }
-synthValues.children[3].children[5].children[2].children[1].onchange = () => {
-    let sustain = synthValues.children[3].children[5].children[2].children[1].value;
+duoSynthVals.children[3].children[5].children[2].children[1].onchange = () => {
+    let sustain = duoSynthVals.children[3].children[5].children[2].children[1].value;
     let idx = Number(document.getElementById('synth-type').value);
+    let displayValueElem = duoSynthVals.children[3].children[5].children[2].children[0].children[0];
+    displayValueElem.innerHTML = "" + sustain;
+    displayValueElem.style.color="white";
     if (idx-1 === 0) {
         synths[idx-1] = new Tone.DuoSynth({
             "voice0" : {
@@ -181,9 +242,12 @@ synthValues.children[3].children[5].children[2].children[1].onchange = () => {
     }
 }
 
-synthValues.children[3].children[5].children[3].children[1].onchange = () => {
-    let release = synthValues.children[3].children[5].children[3].children[1].value;
+duoSynthVals.children[3].children[5].children[3].children[1].onchange = () => {
+    let release = duoSynthVals.children[3].children[5].children[3].children[1].value;
     let idx = Number(document.getElementById('synth-type').value);
+    let displayValueElem = duoSynthVals.children[3].children[5].children[3].children[0].children[0];
+    displayValueElem.innerHTML = "" + release;
+    displayValueElem.style.color="white";
     if (idx-1 === 0) {
         synths[idx-1] = new Tone.DuoSynth({
             "voice0" : {
@@ -197,8 +261,8 @@ synthValues.children[3].children[5].children[3].children[1].onchange = () => {
 // end amp env voice0 
 
 // voice0 volume
-synthValues.children[3].children[6].children[1].onchange = () => {
-    let volume = synthValues.children[3].children[6].children[1].value;
+duoSynthVals.children[3].children[6].children[1].onchange = () => {
+    let volume = duoSynthVals.children[3].children[6].children[1].value;
     let idx = Number(document.getElementById('synth-type').value);
     if (idx-1 === 0) {
         synths[idx-1] = new Tone.DuoSynth({
@@ -209,8 +273,8 @@ synthValues.children[3].children[6].children[1].onchange = () => {
     }
 }
 // voice0 portamento 
-synthValues.children[3].children[7].children[1].onchange = () => {
-    let portamento = synthValues.children[3].children[7].children[1].value;
+duoSynthVals.children[3].children[7].children[1].onchange = () => {
+    let portamento = duoSynthVals.children[3].children[7].children[1].value;
     let idx = Number(document.getElementById('synth-type').value);
     if (idx-1 === 0) {
         synths[idx-1] = new Tone.DuoSynth({
@@ -222,7 +286,7 @@ synthValues.children[3].children[7].children[1].onchange = () => {
 }
 
 // voice0 oscillator type 
-synthValues.children[3].children[9].onchange = (evt) => {
+duoSynthVals.children[3].children[9].onchange = (evt) => {
   let oscTypeValue = evt.currentTarget.value;
   let idx = Number(document.getElementById('synth-type').value);
   if (idx-1 === 0) {
@@ -238,9 +302,12 @@ synthValues.children[3].children[9].onchange = (evt) => {
 
 // ----------------------------------------------------------------------- duo synth voice 1 ------------------------------------------------------
 // freq-env1 
-synthValues.children[4].children[3].children[0].children[1].onchange = () => {
-    let attack = synthValues.children[4].children[3].children[0].children[1].value;
+duoSynthVals.children[4].children[3].children[0].children[1].onchange = () => {
+    let attack = duoSynthVals.children[4].children[3].children[0].children[1].value;
     let idx = Number(document.getElementById('synth-type').value);
+    let displayValueElem = duoSynthVals.children[4].children[3].children[0].children[0].children[0];
+    displayValueElem.innerHTML = "" + attack;
+    displayValueElem.style.color="white";
     if (idx-1 === 0) {
         synths[idx-1] = new Tone.DuoSynth({
             "voice1" : {
@@ -252,9 +319,12 @@ synthValues.children[4].children[3].children[0].children[1].onchange = () => {
     }
 }
 
-synthValues.children[4].children[3].children[1].children[1].onchange = () => {
-    let decay = synthValues.children[4].children[3].children[1].children[1].value;
+duoSynthVals.children[4].children[3].children[1].children[1].onchange = () => {
+    let decay = duoSynthVals.children[4].children[3].children[1].children[1].value;
     let idx = Number(document.getElementById('synth-type').value);
+    let displayValueElem = duoSynthVals.children[4].children[3].children[1].children[0].children[0];
+    displayValueElem.innerHTML = "" + decay;
+    displayValueElem.style.color="white";
     if (idx-1 === 0) {
         synths[idx-1] = new Tone.DuoSynth({
             "voice1" : {
@@ -265,9 +335,12 @@ synthValues.children[4].children[3].children[1].children[1].onchange = () => {
         }).toMaster();
     }
 }
-synthValues.children[4].children[3].children[2].children[1].onchange = () => {
-    let sustain = synthValues.children[4].children[3].children[2].children[1].value;
+duoSynthVals.children[4].children[3].children[2].children[1].onchange = () => {
+    let sustain = duoSynthVals.children[4].children[3].children[2].children[1].value;
     let idx = Number(document.getElementById('synth-type').value);
+    let displayValueElem = duoSynthVals.children[4].children[3].children[2].children[0].children[0];
+    displayValueElem.innerHTML = "" + sustain;
+    displayValueElem.style.color="white";
     if (idx-1 === 0) {
         synths[idx-1] = new Tone.DuoSynth({
             "voice1" : {
@@ -278,9 +351,12 @@ synthValues.children[4].children[3].children[2].children[1].onchange = () => {
         }).toMaster();
     }
 }
-synthValues.children[4].children[3].children[3].children[1].onchange = () => {
-    let release = synthValues.children[4].children[3].children[3].children[1].value;
+duoSynthVals.children[4].children[3].children[3].children[1].onchange = () => {
+    let release = duoSynthVals.children[4].children[3].children[3].children[1].value;
     let idx = Number(document.getElementById('synth-type').value);
+    let displayValueElem = duoSynthVals.children[4].children[3].children[3].children[0].children[0];
+    displayValueElem.innerHTML = "" + release;
+    displayValueElem.style.color="white";
     if (idx-1 === 0) {
         synths[idx-1] = new Tone.DuoSynth({
             "voice1" : {
@@ -294,9 +370,12 @@ synthValues.children[4].children[3].children[3].children[1].onchange = () => {
 // end freq env voice1
 
 // amp env voice1
-synthValues.children[4].children[5].children[0].children[1].onchange = () => {
-    let attack = synthValues.children[4].children[5].children[0].children[1].value;
+duoSynthVals.children[4].children[5].children[0].children[1].onchange = () => {
+    let attack = duoSynthVals.children[4].children[5].children[0].children[1].value;
     let idx = Number(document.getElementById('synth-type').value);
+    let displayValueElem = duoSynthVals.children[4].children[5].children[0].children[0].children[0];
+    displayValueElem.innerHTML = "" + attack;
+    displayValueElem.style.color="white";
     if (idx-1 === 0) {
         synths[idx-1] = new Tone.DuoSynth({
             "voice1" : {
@@ -307,9 +386,12 @@ synthValues.children[4].children[5].children[0].children[1].onchange = () => {
         }).toMaster();
     }
 }
-synthValues.children[4].children[5].children[1].children[1].onchange = () => {
-    let decay = synthValues.children[4].children[5].children[1].children[1].value;
+duoSynthVals.children[4].children[5].children[1].children[1].onchange = () => {
+    let decay = duoSynthVals.children[4].children[5].children[1].children[1].value;
     let idx = Number(document.getElementById('synth-type').value);
+    let displayValueElem = duoSynthVals.children[4].children[5].children[1].children[0].children[0];
+    displayValueElem.innerHTML = "" + decay;
+    displayValueElem.style.color="white";
     if (idx-1 === 0) {
         synths[idx-1] = new Tone.DuoSynth({
             "voice1" : {
@@ -320,9 +402,12 @@ synthValues.children[4].children[5].children[1].children[1].onchange = () => {
         }).toMaster();
     }
 }
-synthValues.children[4].children[5].children[2].children[1].onchange = () => {
-    let sustain = synthValues.children[4].children[5].children[2].children[1].value;
+duoSynthVals.children[4].children[5].children[2].children[1].onchange = () => {
+    let sustain = duoSynthVals.children[4].children[5].children[2].children[1].value;
     let idx = Number(document.getElementById('synth-type').value);
+    let displayValueElem = duoSynthVals.children[4].children[5].children[2].children[0].children[0];
+    displayValueElem.innerHTML = "" + sustain;
+    displayValueElem.style.color="white";
     if (idx-1 === 0) {
         synths[idx-1] = new Tone.DuoSynth({
             "voice1" : {
@@ -333,9 +418,12 @@ synthValues.children[4].children[5].children[2].children[1].onchange = () => {
         }).toMaster();
     }
 }
-synthValues.children[4].children[5].children[3].children[1].onchange = () => {
-    let release = synthValues.children[4].children[5].children[3].children[1].value;
+duoSynthVals.children[4].children[5].children[3].children[1].onchange = () => {
+    let release = duoSynthVals.children[4].children[5].children[3].children[1].value;
     let idx = Number(document.getElementById('synth-type').value);
+    let displayValueElem = duoSynthVals.children[4].children[5].children[3].children[0].children[0];
+    displayValueElem.innerHTML = "" + release;
+    displayValueElem.style.color="white";
     if (idx-1 === 0) {
         synths[idx-1] = new Tone.DuoSynth({
             "voice1" : {
@@ -349,8 +437,8 @@ synthValues.children[4].children[5].children[3].children[1].onchange = () => {
 // end envelope voice1
 
 
-synthValues.children[4].children[6].children[1].onchange = () => {
-    let volume = synthValues.children[4].children[6].children[1].value;
+duoSynthVals.children[4].children[6].children[1].onchange = () => {
+    let volume = duoSynthVals.children[4].children[6].children[1].value;
     let idx = Number(document.getElementById('synth-type').value);
     if (idx-1 === 0) {
         synths[idx-1] = new Tone.DuoSynth({
@@ -361,8 +449,8 @@ synthValues.children[4].children[6].children[1].onchange = () => {
     }
 }
 
-synthValues.children[4].children[7].children[1].onchange = () => {
-    let portamento = synthValues.children[4].children[7].children[1].value;
+duoSynthVals.children[4].children[7].children[1].onchange = () => {
+    let portamento = duoSynthVals.children[4].children[7].children[1].value;
     let idx = Number(document.getElementById('synth-type').value);
     if (idx-1 === 0) {
         synths[idx-1] = new Tone.DuoSynth({
@@ -373,7 +461,7 @@ synthValues.children[4].children[7].children[1].onchange = () => {
     }
 }
 
-synthValues.children[4].children[9].onchange = (evt) => {
+duoSynthVals.children[4].children[9].onchange = (evt) => {
     let oscTypeValue = evt.currentTarget.value;
     let idx = Number(document.getElementById('synth-type').value);
     if (idx-1 === 0) {
@@ -386,54 +474,374 @@ synthValues.children[4].children[9].onchange = (evt) => {
         }).toMaster();
     }  
 }
+//------------------------------------------------------------------END DUO SYNTH----------------------------------------------------------------
 
+
+//-------------------------------------------------------------------MONO SYNTH------------------------------------------------------------------
+
+// freq env 
+monoSynthVals.children[1].children[0].children[1].onchange = () => {
+    let attack = monoSynthVals.children[1].children[0].children[1].value;
+    let idx = Number(document.getElementById('synth-type').value);
+    if (idx-1 === 1) {
+        synths[idx-1] = new Tone.MonoSynth({ 
+            "filterEnvelope" : {
+                "attack": Number(attack)
+            }
+        }).toMaster();
+    }
+}
+monoSynthVals.children[1].children[1].children[1].onchange = () => {
+    let decay = monoSynthVals.children[1].children[1].children[1].value;
+    let idx = Number(document.getElementById('synth-type').value);
+    if (idx-1 === 1) {
+        synths[idx-1] = new Tone.MonoSynth({ 
+            "filterEnvelope" : {
+                "decay": Number(decay)
+            }
+        }).toMaster();
+    }
+}
+monoSynthVals.children[1].children[2].children[1].onchange = () => {
+    let sustain = monoSynthVals.children[1].children[2].children[1].value;
+    let idx = Number(document.getElementById('synth-type').value);
+    if (idx-1 === 1) {
+        synths[idx-1] = new Tone.MonoSynth({ 
+            "filterEnvelope" : {
+                "sustain": Number(sustain)
+            }
+        }).toMaster();
+    }
+}
+monoSynthVals.children[1].children[3].children[1].onchange = () => {
+    let release = monoSynthVals.children[1].children[3].children[1].value;
+    let idx = Number(document.getElementById('synth-type').value);
+    if (idx-1 === 1) {
+        synths[idx-1] = new Tone.MonoSynth({ 
+            "filterEnvelope" : {
+                "release": Number(release)
+            }
+        }).toMaster();
+    }
+}
+
+// amp env 
+monoSynthVals.children[3].children[0].children[1].onchange = () => {
+    let attack = monoSynthVals.children[3].children[0].children[1].value;
+    let idx = Number(document.getElementById('synth-type').value);
+    if (idx-1 === 1) {
+        synths[idx-1] = new Tone.MonoSynth({ 
+            "envelope" : {
+                "attack": Number(attack)
+            }
+        }).toMaster();
+    }
+}
+monoSynthVals.children[3].children[1].children[1].onchange = () => {
+    let decay = monoSynthVals.children[3].children[1].children[1].value;
+    let idx = Number(document.getElementById('synth-type').value);
+    if (idx-1 === 1) {
+        synths[idx-1] = new Tone.MonoSynth({ 
+            "envelope" : {
+                "decay": Number(decay)
+            }
+        }).toMaster();
+    }
+}
+monoSynthVals.children[3].children[2].children[1].onchange = () => {
+    let sustain = monoSynthVals.children[3].children[2].children[1].value;
+    let idx = Number(document.getElementById('synth-type').value);
+    if (idx-1 === 1) {
+        synths[idx-1] = new Tone.MonoSynth({ 
+            "envelope" : {
+                "sustain": Number(sustain)
+            }
+        }).toMaster();
+    }
+}
+monoSynthVals.children[3].children[3].children[1].onchange = () => {
+    let release = monoSynthVals.children[3].children[3].children[1].value;
+    let idx = Number(document.getElementById('synth-type').value);
+    if (idx-1 === 1) {
+        synths[idx-1] = new Tone.MonoSynth({ 
+            "envelope" : {
+                "release": Number(release)
+            }
+        }).toMaster();
+    }
+}
+
+// oscillator type 
+monoSynthVals.children[5].onchange = (evt) => {
+    let oscTypeValue = evt.currentTarget.value;
+    let idx = Number(document.getElementById('synth-type').value);
+    if (idx-1 === 1) {
+        synths[idx-1] = new Tone.MonoSynth({
+            "oscillator" : {
+                "type" : oscTypeValue
+            }
+        }).toMaster();
+  }
+}
+
+// filter values 
+monoSynthVals.children[7].children[0].children[1].onchange = () => {
+    let q = monoSynthVals.children[7].children[0].children[1].value;
+    let idx = Number(document.getElementById('synth-type').value);
+    if (idx-1 === 1) {
+        synths[idx-1] = new Tone.MonoSynth({ 
+            "filter" : {
+                "Q": Number(q)
+            }
+        }).toMaster();
+    }
+}
+
+monoSynthVals.children[7].children[1].children[1].onchange = (evt) => {
+    let filterType = evt.currentTarget.value;
+    let idx = Number(document.getElementById('synth-type').value);
+    if (idx-1 === 1) {
+        synths[idx-1] = new Tone.MonoSynth({
+            "filter" : {
+                "type" : filterType
+            }
+        }).toMaster();
+  }
+}
+
+monoSynthVals.children[7].children[2].children[1].onchange = () => {
+    let rolloff = monoSynthVals.children[7].children[2].children[1].value;
+    let idx = Number(document.getElementById('synth-type').value);
+    if (idx-1 === 1) {
+        synths[idx-1] = new Tone.MonoSynth({ 
+            "filter" : {
+                "rolloff": Number(rolloff)
+            }
+        }).toMaster();
+    }
+}
+
+//-----------------------------------------------------------END MONOSYNTH-----------------------------------------------------------------------
+
+//-----------------------------------------------------------AM SYNTH---------------------------------------------------------------------------
+
+// amp env (envelope)
+amSynthVals.children[2].children[0].children[1].onchange = () => {
+    let attack = amSynthVals.children[2].children[0].children[1].value;
+    let idx = Number(document.getElementById('synth-type').value);
+    if (idx-1 === 2) {
+        synths[idx-1] = new Tone.AMSynth({
+            "envelope" : {
+                "attack" : Number(attack)
+            }
+        }).toMaster();
+  }
+}
+amSynthVals.children[2].children[1].children[1].onchange = () => {
+    let decay = amSynthVals.children[2].children[1].children[1].value;
+    let idx = Number(document.getElementById('synth-type').value);
+    if (idx-1 === 2) {
+        synths[idx-1] = new Tone.AMSynth({
+            "envelope" : {
+                "decay" : Number(decay)
+            }
+        }).toMaster();
+  }
+}
+amSynthVals.children[2].children[2].children[1].onchange = () => {
+    let sustain = amSynthVals.children[2].children[2].children[1].value;
+    let idx = Number(document.getElementById('synth-type').value);
+    if (idx-1 === 2) {
+        synths[idx-1] = new Tone.AMSynth({
+            "envelope" : {
+                "sustain" : Number(sustain)
+            }
+        }).toMaster();
+  }
+}
+amSynthVals.children[2].children[3].children[1].onchange = () => {
+    let release = amSynthVals.children[2].children[3].children[1].value;
+    let idx = Number(document.getElementById('synth-type').value);
+    if (idx-1 === 2) {
+        synths[idx-1] = new Tone.AMSynth({
+            "envelope" : {
+                "release" : Number(release)
+            }
+        }).toMaster();
+  }
+}
+
+// amp env (modulation env)
+amSynthVals.children[5].children[0].children[1].onchange = () => {
+    let attack = amSynthVals.children[5].children[0].children[1].value;
+    let idx = Number(document.getElementById('synth-type').value);
+    if (idx-1 === 2) {
+        synths[idx-1] = new Tone.AMSynth({
+            "modulationEnvelope" : {
+                "attack" : Number(attack)
+            }
+        }).toMaster();
+  }
+}
+amSynthVals.children[5].children[1].children[1].onchange = () => {
+    let decay = amSynthVals.children[5].children[1].children[1].value;
+    let idx = Number(document.getElementById('synth-type').value);
+    if (idx-1 === 2) {
+        synths[idx-1] = new Tone.AMSynth({
+            "modulationEnvelope" : {
+                "decay" : Number(decay)
+            }
+        }).toMaster();
+  }
+}
+amSynthVals.children[5].children[2].children[1].onchange = () => {
+    let sustain = amSynthVals.children[5].children[2].children[1].value;
+    let idx = Number(document.getElementById('synth-type').value);
+    if (idx-1 === 2) {
+        synths[idx-1] = new Tone.AMSynth({
+            "modulationEnvelope" : {
+                "sustain" : Number(sustain)
+            }
+        }).toMaster();
+  }
+}
+amSynthVals.children[5].children[3].children[1].onchange = () => {
+    let release = amSynthVals.children[5].children[3].children[1].value;
+    let idx = Number(document.getElementById('synth-type').value);
+    if (idx-1 === 2) {
+        synths[idx-1] = new Tone.AMSynth({
+            "modulationEnvelope" : {
+                "release" : Number(release)
+            }
+        }).toMaster();
+  }
+}
+
+// harmonicity
+amSynthVals.children[0].children[1].onchange = () => {
+    let h = amSynthVals.children[0].children[1].value;
+    let idx = Number(document.getElementById('synth-type').value);
+    if (idx-1 === 2) {
+        synths[idx-1] = new Tone.AMSynth({
+            "harmonicity" : Number(h)
+        }).toMaster();
+  }
+}
+
+// modulation type
+amSynthVals.children[3].children[1].onchange = (evt) => {
+    let modType = evt.currentTarget.value;
+    let idx = Number(document.getElementById('synth-type').value);
+    if (idx-1 === 2) {
+        synths[idx-1] = new Tone.AMSynth({
+            "modulation" : {
+                "type" : modType
+            }
+        }).toMaster();
+  }
+}
+
+// osc type 
+amSynthVals.children[6].children[1].onchange = (evt) => {
+    let oscType = evt.currentTarget.value;
+    let idx = Number(document.getElementById('synth-type').value);
+    if (idx-1 === 2) {
+        synths[idx-1] = new Tone.AMSynth({
+            "oscillator" : {
+                "type" : oscType
+            }
+        }).toMaster();
+  }
+}
+
+// --------------------------------------------------------- END AM SYNTH ------------------------------------------------------------------------
 
 window.onkeydown = (evt) => {
     sel.blur();
     let code = evt.keyCode;
-    let vibratoAmount = synthValues.children[0].children[1].value;
-    let vibratoRate = synthValues.children[1].children[1].value;
-    let harmonicity = synthValues.children[2].children[1].value;
 
-    let v0Volume = synthValues.children[3].children[6].children[1].value;
-    let v0Portamento = synthValues.children[3].children[7].children[1].value;
-    let v0OscType = synthValues.children[3].children[9].options[synthValues.children[3].children[9].selectedIndex].value;
+    // Values For DuoSynth----------------------------------------
+    let vibratoAmount = duoSynthVals.children[0].children[1].value;
+    let vibratoRate = duoSynthVals.children[1].children[1].value;
+    let harmonicity = duoSynthVals.children[2].children[1].value;
 
-    let v0FreqEnvAttack = synthValues.children[3].children[3].children[0].children[1].value;
-    let v0FreqEnvDecay = synthValues.children[3].children[3].children[1].children[1].value;
-    let v0FreqEnvSustain = synthValues.children[3].children[3].children[2].children[1].value;
-    let v0FreqEnvRelease = synthValues.children[3].children[3].children[3].children[1].value;
+    let v0Volume = duoSynthVals.children[3].children[6].children[1].value;
+    let v0Portamento = duoSynthVals.children[3].children[7].children[1].value;
+    let v0OscType = duoSynthVals.children[3].children[9].options[duoSynthVals.children[3].children[9].selectedIndex].value;
 
-    let v0AmpEnvAttack = synthValues.children[3].children[5].children[0].children[1].value;
-    let v0AmpEnvDecay = synthValues.children[3].children[5].children[1].children[1].value;
-    let v0AmpEnvSustain = synthValues.children[3].children[5].children[2].children[1].value;
-    let v0AmpEnvRelease = synthValues.children[3].children[5].children[3].children[1].value;
+    let v0FreqEnvAttack = duoSynthVals.children[3].children[3].children[0].children[1].value;
+    let v0FreqEnvDecay = duoSynthVals.children[3].children[3].children[1].children[1].value;
+    let v0FreqEnvSustain = duoSynthVals.children[3].children[3].children[2].children[1].value;
+    let v0FreqEnvRelease = duoSynthVals.children[3].children[3].children[3].children[1].value;
 
-    let v1Volume = synthValues.children[3].children[6].children[1].value;
-    let v1Portamento = synthValues.children[3].children[7].children[1].value;
-    let v1OscType = synthValues.children[3].children[9].options[synthValues.children[3].children[9].selectedIndex].value;
+    let v0AmpEnvAttack = duoSynthVals.children[3].children[5].children[0].children[1].value;
+    let v0AmpEnvDecay = duoSynthVals.children[3].children[5].children[1].children[1].value;
+    let v0AmpEnvSustain = duoSynthVals.children[3].children[5].children[2].children[1].value;
+    let v0AmpEnvRelease = duoSynthVals.children[3].children[5].children[3].children[1].value;
 
-    let v1FreqEnvAttack = synthValues.children[4].children[3].children[0].children[1].value;
-    let v1FreqEnvDecay = synthValues.children[4].children[3].children[1].children[1].value;
-    let v1FreqEnvSustain = synthValues.children[4].children[3].children[2].children[1].value;
-    let v1FreqEnvRelease = synthValues.children[4].children[3].children[3].children[1].value;
+    let v1Volume = duoSynthVals.children[3].children[6].children[1].value;
+    let v1Portamento = duoSynthVals.children[3].children[7].children[1].value;
+    let v1OscType = duoSynthVals.children[3].children[9].options[duoSynthVals.children[3].children[9].selectedIndex].value;
 
-    let v1AmpEnvAttack = synthValues.children[3].children[5].children[0].children[1].value;
-    let v1AmpEnvDecay = synthValues.children[3].children[5].children[1].children[1].value;
-    let v1AmpEnvSustain = synthValues.children[3].children[5].children[2].children[1].value;
-    let v1AmpEnvRelease = synthValues.children[3].children[5].children[3].children[1].value;
+    let v1FreqEnvAttack = duoSynthVals.children[4].children[3].children[0].children[1].value;
+    let v1FreqEnvDecay = duoSynthVals.children[4].children[3].children[1].children[1].value;
+    let v1FreqEnvSustain = duoSynthVals.children[4].children[3].children[2].children[1].value;
+    let v1FreqEnvRelease = duoSynthVals.children[4].children[3].children[3].children[1].value;
+
+    let v1AmpEnvAttack = duoSynthVals.children[3].children[5].children[0].children[1].value;
+    let v1AmpEnvDecay = duoSynthVals.children[3].children[5].children[1].children[1].value;
+    let v1AmpEnvSustain = duoSynthVals.children[3].children[5].children[2].children[1].value;
+    let v1AmpEnvRelease = duoSynthVals.children[3].children[5].children[3].children[1].value;
+    // End Values for DuoSynth---------------------------------------------------------------
+
+    // Values For Monosynth ---------------------------------------------------
+    let monoFreqAttack = monoSynthVals.children[1].children[0].children[1].value;
+    let monoFreqDecay = monoSynthVals.children[1].children[1].children[1].value;
+    let monoFreqSustain = monoSynthVals.children[1].children[2].children[1].value;
+    let monoFreqRelease = monoSynthVals.children[1].children[3].children[1].value;
+
+    let monoAmpAttack = monoSynthVals.children[3].children[0].children[1].value;
+    let monoAmpDecay = monoSynthVals.children[3].children[1].children[1].value;
+    let monoAmpSustain = monoSynthVals.children[3].children[2].children[1].value;
+    let monoAmpRelease = monoSynthVals.children[3].children[3].children[1].value;
+
+    let monoOscType = monoSynthVals.children[5].options[monoSynthVals.children[5].selectedIndex].value;
+
+    let monoFilterQ = monoSynthVals.children[7].children[0].children[1].value;
+    let monoFilterType = monoSynthVals.children[7].children[1].children[1].options[monoSynthVals.children[7].children[1].children[1].selectedIndex].value;
+    let monoFilterRolloff = monoSynthVals.children[7].children[2].children[1].value;
+    // End Values For MonoSynth----------------------------------------------------
 
 
+    // Values For AmSynth
+    let amEnvAttack = amSynthVals.children[2].children[0].children[1].value;
+    let amEnvDecay = amSynthVals.children[2].children[1].children[1].value;
+    let amEnvSustain = amSynthVals.children[2].children[2].children[1].value;
+    let amEnvRelease = amSynthVals.children[2].children[3].children[1].value;
 
- 
+    let amModEnvAttack = amSynthVals.children[5].children[0].children[1].value;
+    let amModEnvDecay = amSynthVals.children[5].children[1].children[1].value;
+    let amModEnvSustain = amSynthVals.children[5].children[2].children[1].value;
+    let amModEnvRelease = amSynthVals.children[5].children[3].children[1].value;
 
-
-
+    let amHarmonicity = amSynthVals.children[0].children[1].value;
+    let amModType = amSynthVals.children[3].children[1].options[amSynthVals.children[3].children[1].selectedIndex].value;
+    let amOscType = amSynthVals.children[6].children[1].options[amSynthVals.children[6].children[1].selectedIndex].value;
+    // End Values For AmSynth
+    
     let idx = Number(document.getElementById('synth-type').value);
     if (idx-1 === 0) {
     
         synths[idx-1] = new Tone.DuoSynth({
+            "vibratoAmount": Number(vibratoAmount),
+            "vibratoRate": Number(vibratoRate),
+            "harmonicity": Number(harmonicity),
             "voice0": {
+                "volume": Number(v0Volume),
+                "portamento": Number(v0Portamento),
+                "oscillator": {
+                    "type": v0OscType
+                },
                 "filterEnvelope": {
                     "attack": Number(v0FreqEnvAttack),
                     "decay": Number(v0FreqEnvDecay),
@@ -448,6 +856,11 @@ window.onkeydown = (evt) => {
                 }
             },
             "voice1": {
+                "volume": Number(v1Volume),
+                "portamento": Number(v1Portamento),
+                "oscillator": {
+                    "type": v1OscType
+                },
                 "filterEnvelope": {
                     "attack": Number(v1FreqEnvAttack),
                     "decay": Number(v1FreqEnvDecay),
@@ -465,21 +878,48 @@ window.onkeydown = (evt) => {
     }
     if (idx-1 === 1) {
         synths[idx-1] = new Tone.MonoSynth({
+            "oscillator": {
+                "type": monoOscType
+            },
+            "filter" : {
+                "Q": Number(monoFilterQ),
+                "type": monoFilterType,
+                "rolloff": Number(monoFilterRolloff)
+            },
             "envelope": {
-                "attack": Number(attack),
-                "decay": Number(decay),
-                "sustain": Number(sustain),
-                "release": Number(release)
+                "attack": Number(monoAmpAttack),
+                "decay": Number(monoAmpDecay),
+                "sustain": Number(monoAmpSustain),
+                "release": Number(monoAmpRelease)
+            },
+            "filterEnvelope": {
+                "attack": Number(monoFreqAttack),
+                "decay": Number(monoFreqDecay),
+                "sustain": Number(monoFreqSustain),
+                "release": Number(monoFreqRelease)
             }
         }).toMaster();
     }
     if (idx-1 === 2) {
         synths[idx-1] = new Tone.AMSynth({
+            "harmonicity": Number(amHarmonicity),
+            "oscillator": {
+                "type": amOscType
+            },
             "envelope": {
-                "attack": Number(attack),
-                "decay": Number(decay),
-                "sustain": Number(sustain),
-                "release": Number(release)
+                "attack": Number(amEnvAttack),
+                "decay": Number(amEnvDecay),
+                "sustain": Number(amEnvSustain),
+                "release": Number(amEnvRelease)
+            },
+            "modulation": {
+                "type": amModType
+            },
+            "modulationEnvelope": {
+                "attack": Number(amModEnvAttack),
+                "decay": Number(amModEnvDecay),
+                "sustain": Number(amModEnvSustain),
+                "release": Number(amModEnvRelease)
             }
         }).toMaster();
     }

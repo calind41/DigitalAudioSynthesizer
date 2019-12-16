@@ -10,12 +10,38 @@
 
 /* -- */
 .duo-synth .vibrato-amount {
+    position: relative;
+    cursor: pointer;
+    top: 32px;
+    left: 5px;
     color: rgb(143, 133, 133);
 }
+.duo-synth .vibrato-rate {
+    position: relative;
+    cursor: pointer;
+    top: 41px;
+    left: 5px;
+    color: rgb(143, 133, 133);
+}
+.duo-synth .vibrato-rate input {
+    margin-left: 23px;
+}
+.duo-synth .harmonicity {
+    position: relative;
+    cursor: pointer;
+    top: 50px;
+    left: 5px;
+    color: rgb(143, 133, 133);
+}
+.duo-synth .harmonicity input {
+    margin-left: 23.5px;
+}
+
 .duo-synth .vibrato-amount span {
     position: relative;
     font-weight: bold;
 }
+
 
 .duo-synth .voices .voice0-lbl,
 .duo-synth .voice1 .voice1-lbl {
@@ -27,13 +53,73 @@
 .duo-synth .voice1 .osc-type-v1 {
     color: red;
     font-size: 14px;
+    position: relative;
+    top: 23px;
 }
+
+.duo-synth .voices .osc-type ,
+.duo-synth .voice1 .osc-type1 {
+    position: relative;
+    top: 23px;
+    left: 9px;
+}
+
 
 .duo-synth .voices .volume,
 .duo-synth .voice1 .volume1,
 .duo-synth .voices .portamento,
 .duo-synth .voice1 .portamento1 {
     color: rgb(143, 133, 133);
+    font-weight: bold;
+    position: relative;
+    top: 14px;
+}
+
+.duo-synth .voices .volume input,
+.duo-synth .voice1 .volume1 input {
+    margin-left: 28px;
+}
+
+.duo-synth .voices .freq-env .attack span span,
+.duo-synth .voices .freq-env .decay span span,
+.duo-synth .voices .freq-env .sustain span span,
+.duo-synth .voices .freq-env .release span span,
+.duo-synth .voices .amp-env .attack span span,
+.duo-synth .voices .amp-env .decay span span,
+.duo-synth .voices .amp-env .sustain span span,
+.duo-synth .voices .amp-env .release span span  {
+   border: 1px solid red;
+   position: relative;
+   left: 180px;
+   width: 32px;
+   height: 25px;
+   display: inline-block;
+}
+.duo-synth .voice1 .freq-env1 .attack span span,
+.duo-synth .voice1 .freq-env1 .decay span span,
+.duo-synth .voice1 .freq-env1 .sustain span span,
+.duo-synth .voice1 .freq-env1 .release span span,
+.duo-synth .voice1 .amp-env1 .attack span span,
+.duo-synth .voice1 .amp-env1 .decay span span,
+.duo-synth .voice1 .amp-env1 .sustain span span,
+.duo-synth .voice1 .amp-env1 .release span span {
+    border: 1px solid red;
+    position: relative;
+    left: 180px;
+    width: 32px;
+    height: 25px;
+    display: inline-block;
+}
+
+
+.duo-synth .voices .freq-env .decay input {
+    margin-left: 3px;
+}
+.duo-synth .voices .freq-env .sustain input {
+    margin-left: -3px;
+}
+.duo-synth .voices .freq-env .release input {
+    margin-left: -5px;
 }
 
 
@@ -128,46 +214,49 @@
     background: goldenrod;
     margin-top: -4px;
 }
-/* --- */
 
 
-/* -- */
-.duo-synth .vibrato-rate {
-    color: rgb(143, 133, 133);
-}
 .duo-synth .vibrato-rate span {
     position: relative;
     font-weight: bold;
 }
 
-/* --- */
 
-/* -- */
-.duo-synth .harmonicity {
-    color: rgb(143, 133, 133);
-}
 .duo-synth .harmonicity span {
     position: relative;
     font-weight: bold;
 }
 
-/* --- */
+
 
 .duo-synth .voices {
     height: 50%;
+    width: 32%;
+    position: relative;
+    left:370px;
+    bottom: 41px;
+}
+.duo-synth .voice1  {
+    position: relative;
+    left: 70%;
+    bottom: 210px;
 }
 
 .duo-synth .voices .freq-env-title,
 .duo-synth .voice1 .freq-env-title1 {
     color: rgb(143, 133, 133);
     cursor: pointer;
+    font-weight: bold;
     transition: 0.4s;
 }
 .duo-synth .voices .amp-env-title,
 .duo-synth .voice1 .amp-env-title1 {
     color: rgb(143, 133, 133);
     cursor: pointer;
+    font-weight: bold;
     transition: 0.4s;
+    position: relative;
+    top: 5px;
 }
 
 .duo-synth .voices .freq-env,
@@ -191,8 +280,3 @@
 
 
 
-.duo-synth .voice1  {
-    position: relative;
-    left: 50%;
-    bottom: 170px;
-}

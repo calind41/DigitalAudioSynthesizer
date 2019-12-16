@@ -1,0 +1,136 @@
+
+.mono-synth {
+    display: none;
+    position: relative;
+    left: 41%;
+    top: 10%;
+    width: 50%;
+    height: 20%;
+
+}
+
+
+
+.mono-synth  .osc-type-title {
+    color: red;
+    font-size: 14px;
+}
+
+.mono-synth .m-freq-env-title {
+    position: relative;
+    bottom: 5px;
+}
+.mono-synth .freq-env {
+    position: relative;
+    bottom: 5px;
+}
+.mono-synth .osc-type-title {
+    position: relative;
+    top: 5px;
+}
+.mono-synth .osc-type {
+    position: relative;
+    top: 5px;
+}
+.mono-synth .filter {
+    position: relative;
+    top: 10px;
+}
+.mono-synth .filter .filter-type {
+    position: relative;
+    top: 5px;
+}
+.mono-synth .filter .filter-type select {
+    margin-left: 14px;
+}
+.mono-synth .filter .rolloff {
+    position: relative;
+    top: 14px;
+}
+
+.mono-synth  .freq-env .attack input,
+.mono-synth  .freq-env .decay input,
+.mono-synth  .freq-env .sustain input,
+.mono-synth  .freq-env .release input,
+.mono-synth  .amp-env .attack input,
+.mono-synth  .amp-env .decay input,
+.mono-synth  .amp-env .sustain input,
+.mono-synth  .amp-env .release input,
+.mono-synth .filter .q input {
+    position: relative;
+    -webkit-appearance: none;
+    top: -1px;
+    left: 14px;
+}
+
+.mono-synth  .freq-env .attack input::-webkit-slider-runnable-track,
+.mono-synth  .freq-env .decay input::-webkit-slider-runnable-track,
+.mono-synth  .freq-env .sustain input::-webkit-slider-runnable-track,
+.mono-synth  .freq-env .release input::-webkit-slider-runnable-track,
+.mono-synth  .amp-env .attack input::-webkit-slider-runnable-track,
+.mono-synth  .amp-env .decay input::-webkit-slider-runnable-track,
+.mono-synth  .amp-env .sustain input::-webkit-slider-runnable-track,
+.mono-synth  .amp-env .release input::-webkit-slider-runnable-track,
+.mono-synth .filter .q input::-webkit-slider-runnable-track {
+    width: 320px;
+    height: 7px;
+    background: #ddd;
+    border: none;
+    border-radius: 3px;
+}
+
+
+.mono-synth  .freq-env .attack input::-webkit-slider-thumb,
+.mono-synth  .freq-env .decay input::-webkit-slider-thumb,
+.mono-synth  .freq-env .sustain input::-webkit-slider-thumb,
+.mono-synth  .freq-env .release input::-webkit-slider-thumb,
+.mono-synth  .amp-env .attack input::-webkit-slider-thumb,
+.mono-synth  .amp-env .decay input::-webkit-slider-thumb,
+.mono-synth  .amp-env .sustain input::-webkit-slider-thumb,
+.mono-synth  .amp-env .release input::-webkit-slider-thumb,
+.mono-synth .filter .q input::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    border: none;
+    height: 16px;
+    width: 16px;
+    border-radius: 50%;
+    background: goldenrod;
+    margin-top: -4px;
+}
+
+
+
+
+.mono-synth .m-freq-env-title {
+    color: rgb(143, 133, 133);
+    cursor: pointer;
+    transition: 0.4s;
+}
+.mono-synth .m-amp-env-title {
+    color: rgb(143, 133, 133);
+    cursor: pointer;
+    transition: 0.4s;
+}
+
+.mono-synth .freq-env {
+   
+    position:relative;
+    max-height: 0;
+    box-sizing: border-box;
+    /* padding: 5px; */
+    transition: max-height 0.2s ease-out;
+    overflow: hidden;
+}
+.mono-synth .amp-env  {
+    position: relative;
+    box-sizing: border-box;
+    max-height: 0;
+    transition: max-height 0.2s ease-out;
+    overflow: hidden;
+}
+
+.mono-synth .filter .q span,
+.mono-synth .filter .filter-type span,
+.mono-synth .filter .rolloff span {
+    color: rgb(143, 133, 133);
+}
