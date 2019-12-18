@@ -1,5 +1,5 @@
 
-// apply transition on white piano tiles 
+// apply transition on white piano tiles -------------------------------------------------------------------------------------------------------
 const whiteTiles = [];
 for (let i = 0; i < 21; i++ ) {
     let nr = i+1;
@@ -26,23 +26,38 @@ for (let i = 0; i < 15; i++ ) {
     }
 }
 
-// adding keypress events 
-for (let i = 0; i < 21; i++ ) {
-    whiteTiles[i].onkeydown = () => {
-        // let  keyCode = event.which || event.keyCode;
-        console.log('wtf');
-    }
-}
+//----------------------------------------------------------------------------------------------------------------------------------------------
+
+// // adding keypress events 
+// for (let i = 0; i < 21; i++ ) {
+//     whiteTiles[i].onkeydown = () => {
+//         // let  keyCode = event.which || event.keyCode;
+//         console.log('wtf');
+//     }
+// }
+
+
 
 // ------------------------------------------------------------------------DUO SYNTH---------------------------------------------------------------------
+
+const audio = document.querySelector('audio');
+const actx = Tone.context;
+const dest = actx.createMediaStreamDestination();
+const recorder = new MediaRecorder(dest.stream);
+
+
 let synths = [];
 let duoSynth = new Tone.DuoSynth().toMaster();
 let monoS = new Tone.MonoSynth().toMaster();
 let amSynth = new Tone.AMSynth().toMaster();
+duoSynth.connect(dest);
+monoS.connect(dest);
+amSynth.connect(dest);
 synths[0] = duoSynth;
 synths[1] = monoS;
 synths[2] = amSynth;
 
+ 
 // div containing 4 input ranges 
 let duoSynthVals = document.querySelectorAll('.duo-synth')[0];
 let monoSynthVals = document.querySelectorAll('.mono-synth')[0];
@@ -59,6 +74,14 @@ let sel = document.getElementById('synth-type');
 
 // hide controls for other types of synths and show only the one is selected
 document.getElementById('synth-type').onchange = (evt) => {
+
+    if (evt.currentTarget.value !== '0') {
+        drums.style.backgroundColor='rgb(48, 43, 43)';
+        bass.style.backgroundColor='rgb(48, 43, 43)';
+        guitar.style.backgroundColor='rgb(48, 43, 43)';
+        cymbal.style.backgroundColor='rgb(48, 43, 43)';
+        percussion.style.backgroundColor='rgb(48, 43, 43)';
+}
     let selVal = evt.currentTarget.value;
     let duoSynth = document.querySelectorAll('.duo-synth')[0];
     let monoSynth = document.querySelectorAll('.mono-synth')[0];
@@ -101,6 +124,7 @@ duoSynthVals.children[0].children[1].onchange = () => {
         synths[idx-1] = new Tone.DuoSynth({
             "vibratoAmount" : Number(vibratoAmount)
         }).toMaster();
+        synths[idx-1].connect(dest);
     }
 }
 
@@ -111,6 +135,7 @@ duoSynthVals.children[1].children[1].onchange = () => {
         synths[idx-1] = new Tone.DuoSynth({
             "vibratoRate" : Number(vibratoRate)
         }).toMaster();
+        synths[idx-1].connect(dest);
     }
 }
 
@@ -121,6 +146,7 @@ duoSynthVals.children[2].children[1].onchange = () => {
         synths[idx-1] = new Tone.DuoSynth({
             "harmonicity" : Number(harmonicity)
         }).toMaster();
+        synths[idx-1].connect(dest);
     }
 }
 
@@ -140,6 +166,7 @@ duoSynthVals.children[3].children[3].children[0].children[1].onchange = () => {
                 }
             }
         }).toMaster();
+        synths[idx-1].connect(dest);
     }
 }
 duoSynthVals.children[3].children[3].children[1].children[1].onchange = () => {
@@ -156,6 +183,8 @@ duoSynthVals.children[3].children[3].children[1].children[1].onchange = () => {
                 }
             }
         }).toMaster();
+        synths[idx-1].connect(dest);
+
     }
 }
 duoSynthVals.children[3].children[3].children[2].children[1].onchange = () => {
@@ -172,6 +201,8 @@ duoSynthVals.children[3].children[3].children[2].children[1].onchange = () => {
                 }
             }
         }).toMaster();
+        synths[idx-1].connect(dest);
+
     }
 }
 duoSynthVals.children[3].children[3].children[3].children[1].onchange = () => {
@@ -207,6 +238,8 @@ duoSynthVals.children[3].children[5].children[0].children[1].onchange = () => {
                 }
             }
         }).toMaster();
+        synths[idx-1].connect(dest);
+
     }
 }
 duoSynthVals.children[3].children[5].children[1].children[1].onchange = () => {
@@ -223,6 +256,8 @@ duoSynthVals.children[3].children[5].children[1].children[1].onchange = () => {
                 }
             }
         }).toMaster();
+        synths[idx-1].connect(dest);
+
     }
 }
 duoSynthVals.children[3].children[5].children[2].children[1].onchange = () => {
@@ -239,6 +274,8 @@ duoSynthVals.children[3].children[5].children[2].children[1].onchange = () => {
                 }
             }
         }).toMaster();
+        synths[idx-1].connect(dest);
+
     }
 }
 
@@ -256,37 +293,43 @@ duoSynthVals.children[3].children[5].children[3].children[1].onchange = () => {
                 }
             }
         }).toMaster();
+        synths[idx-1].connect(dest);
+
     }
 }
 // end amp env voice0 
 
-// voice0 volume
-duoSynthVals.children[3].children[6].children[1].onchange = () => {
-    let volume = duoSynthVals.children[3].children[6].children[1].value;
-    let idx = Number(document.getElementById('synth-type').value);
-    if (idx-1 === 0) {
-        synths[idx-1] = new Tone.DuoSynth({
-            "voice0" : {
-                "volume": Number(volume)
-            }
-        }).toMaster();
-    }
-}
-// voice0 portamento 
-duoSynthVals.children[3].children[7].children[1].onchange = () => {
-    let portamento = duoSynthVals.children[3].children[7].children[1].value;
-    let idx = Number(document.getElementById('synth-type').value);
-    if (idx-1 === 0) {
-        synths[idx-1] = new Tone.DuoSynth({
-            "voice0": {
-                "portamento": Number(portamento)
-            }
-        }).toMaster();
-    }
-}
+// // voice0 volume
+// duoSynthVals.children[3].children[6].children[1].onchange = () => {
+//     let volume = duoSynthVals.children[3].children[6].children[1].value;
+//     let idx = Number(document.getElementById('synth-type').value);
+//     if (idx-1 === 0) {
+//         synths[idx-1] = new Tone.DuoSynth({
+//             "voice0" : {
+//                 "volume": Number(volume)
+//             }
+//         }).toMaster();
+//         synths[idx-1].connect(dest);
+
+//     }
+// }
+// // voice0 portamento 
+// duoSynthVals.children[3].children[7].children[1].onchange = () => {
+//     let portamento = duoSynthVals.children[3].children[7].children[1].value;
+//     let idx = Number(document.getElementById('synth-type').value);
+//     if (idx-1 === 0) {
+//         synths[idx-1] = new Tone.DuoSynth({
+//             "voice0": {
+//                 "portamento": Number(portamento)
+//             }
+//         }).toMaster();
+//         synths[idx-1].connect(dest);
+
+//     }
+// }
 
 // voice0 oscillator type 
-duoSynthVals.children[3].children[9].onchange = (evt) => {
+duoSynthVals.children[3].children[7].onchange = (evt) => {
   let oscTypeValue = evt.currentTarget.value;
   let idx = Number(document.getElementById('synth-type').value);
   if (idx-1 === 0) {
@@ -297,6 +340,8 @@ duoSynthVals.children[3].children[9].onchange = (evt) => {
               }
           }
       }).toMaster();
+      synths[idx-1].connect(dest);
+
   }  
 }
 
@@ -316,6 +361,8 @@ duoSynthVals.children[4].children[3].children[0].children[1].onchange = () => {
                 }
             }
         }).toMaster();
+        synths[idx-1].connect(dest);
+
     }
 }
 
@@ -333,6 +380,8 @@ duoSynthVals.children[4].children[3].children[1].children[1].onchange = () => {
                 }
             }
         }).toMaster();
+        synths[idx-1].connect(dest);
+
     }
 }
 duoSynthVals.children[4].children[3].children[2].children[1].onchange = () => {
@@ -349,6 +398,8 @@ duoSynthVals.children[4].children[3].children[2].children[1].onchange = () => {
                 }
             }
         }).toMaster();
+        synths[idx-1].connect(dest);
+
     }
 }
 duoSynthVals.children[4].children[3].children[3].children[1].onchange = () => {
@@ -365,6 +416,8 @@ duoSynthVals.children[4].children[3].children[3].children[1].onchange = () => {
                 }
             }
         }).toMaster();
+        synths[idx-1].connect(dest);
+
     }
 }
 // end freq env voice1
@@ -384,6 +437,8 @@ duoSynthVals.children[4].children[5].children[0].children[1].onchange = () => {
                 }
             }
         }).toMaster();
+        synths[idx-1].connect(dest);
+
     }
 }
 duoSynthVals.children[4].children[5].children[1].children[1].onchange = () => {
@@ -400,6 +455,8 @@ duoSynthVals.children[4].children[5].children[1].children[1].onchange = () => {
                 }
             }
         }).toMaster();
+        synths[idx-1].connect(dest);
+
     }
 }
 duoSynthVals.children[4].children[5].children[2].children[1].onchange = () => {
@@ -416,6 +473,8 @@ duoSynthVals.children[4].children[5].children[2].children[1].onchange = () => {
                 }
             }
         }).toMaster();
+        synths[idx-1].connect(dest);
+
     }
 }
 duoSynthVals.children[4].children[5].children[3].children[1].onchange = () => {
@@ -432,49 +491,59 @@ duoSynthVals.children[4].children[5].children[3].children[1].onchange = () => {
                 }
             }
         }).toMaster();
+        synths[idx-1].connect(dest);
+
     }
 }
 // end envelope voice1
 
 
-duoSynthVals.children[4].children[6].children[1].onchange = () => {
-    let volume = duoSynthVals.children[4].children[6].children[1].value;
-    let idx = Number(document.getElementById('synth-type').value);
-    if (idx-1 === 0) {
-        synths[idx-1] = new Tone.DuoSynth({
-            "voice1" : {
-                "volume": Number(volume)
-            }
-        }).toMaster();
-    }
-}
+// duoSynthVals.children[4].children[6].children[1].onchange = () => {
+//     let volume = duoSynthVals.children[4].children[6].children[1].value;
+//     let idx = Number(document.getElementById('synth-type').value);
+//     if (idx-1 === 0) {
+//         synths[idx-1] = new Tone.DuoSynth({
+//             "voice1" : {
+//                 "volume": Number(volume)
+//             }
+//         }).toMaster();
+//         synths[idx-1].connect(dest);
 
-duoSynthVals.children[4].children[7].children[1].onchange = () => {
-    let portamento = duoSynthVals.children[4].children[7].children[1].value;
-    let idx = Number(document.getElementById('synth-type').value);
-    if (idx-1 === 0) {
-        synths[idx-1] = new Tone.DuoSynth({
-            "voice1": {
-                "portamento": Number(portamento)
-            }
-        }).toMaster();
-    }
-}
+//     }
+// }
 
-duoSynthVals.children[4].children[9].onchange = (evt) => {
-    let oscTypeValue = evt.currentTarget.value;
-    let idx = Number(document.getElementById('synth-type').value);
-    if (idx-1 === 0) {
-        synths[idx-1] = new Tone.DuoSynth({
-            "voice1": {
-                "oscillator" : {
-                    "type" : oscTypeValue
-                }
-            }
-        }).toMaster();
-    }  
-}
+// duoSynthVals.children[4].children[7].children[1].onchange = () => {
+//     let portamento = duoSynthVals.children[4].children[7].children[1].value;
+//     let idx = Number(document.getElementById('synth-type').value);
+//     if (idx-1 === 0) {
+//         synths[idx-1] = new Tone.DuoSynth({
+//             "voice1": {
+//                 "portamento": Number(portamento)
+//             }
+//         }).toMaster();
+//         synths[idx-1].connect(dest);
+
+//     }
+// }
+
+// duoSynthVals.children[4].children[9].onchange = (evt) => {
+//     let oscTypeValue = evt.currentTarget.value;
+//     let idx = Number(document.getElementById('synth-type').value);
+//     if (idx-1 === 0) {
+//         synths[idx-1] = new Tone.DuoSynth({
+//             "voice1": {
+//                 "oscillator" : {
+//                     "type" : oscTypeValue
+//                 }
+//             }
+//         }).toMaster();
+//         synths[idx-1].connect(dest);
+
+//     }  
+// }
 //------------------------------------------------------------------END DUO SYNTH----------------------------------------------------------------
+
+
 
 
 //-------------------------------------------------------------------MONO SYNTH------------------------------------------------------------------
@@ -489,6 +558,8 @@ monoSynthVals.children[1].children[0].children[1].onchange = () => {
                 "attack": Number(attack)
             }
         }).toMaster();
+        synths[idx-1].connect(dest);
+
     }
 }
 monoSynthVals.children[1].children[1].children[1].onchange = () => {
@@ -500,6 +571,8 @@ monoSynthVals.children[1].children[1].children[1].onchange = () => {
                 "decay": Number(decay)
             }
         }).toMaster();
+        synths[idx-1].connect(dest);
+
     }
 }
 monoSynthVals.children[1].children[2].children[1].onchange = () => {
@@ -511,6 +584,8 @@ monoSynthVals.children[1].children[2].children[1].onchange = () => {
                 "sustain": Number(sustain)
             }
         }).toMaster();
+        synths[idx-1].connect(dest);
+
     }
 }
 monoSynthVals.children[1].children[3].children[1].onchange = () => {
@@ -522,6 +597,8 @@ monoSynthVals.children[1].children[3].children[1].onchange = () => {
                 "release": Number(release)
             }
         }).toMaster();
+        synths[idx-1].connect(dest);
+
     }
 }
 
@@ -535,6 +612,8 @@ monoSynthVals.children[3].children[0].children[1].onchange = () => {
                 "attack": Number(attack)
             }
         }).toMaster();
+        synths[idx-1].connect(dest);
+
     }
 }
 monoSynthVals.children[3].children[1].children[1].onchange = () => {
@@ -546,6 +625,8 @@ monoSynthVals.children[3].children[1].children[1].onchange = () => {
                 "decay": Number(decay)
             }
         }).toMaster();
+        synths[idx-1].connect(dest);
+
     }
 }
 monoSynthVals.children[3].children[2].children[1].onchange = () => {
@@ -557,6 +638,8 @@ monoSynthVals.children[3].children[2].children[1].onchange = () => {
                 "sustain": Number(sustain)
             }
         }).toMaster();
+        synths[idx-1].connect(dest);
+
     }
 }
 monoSynthVals.children[3].children[3].children[1].onchange = () => {
@@ -568,6 +651,8 @@ monoSynthVals.children[3].children[3].children[1].onchange = () => {
                 "release": Number(release)
             }
         }).toMaster();
+        synths[idx-1].connect(dest);
+
     }
 }
 
@@ -581,6 +666,8 @@ monoSynthVals.children[5].onchange = (evt) => {
                 "type" : oscTypeValue
             }
         }).toMaster();
+        synths[idx-1].connect(dest);
+
   }
 }
 
@@ -594,6 +681,8 @@ monoSynthVals.children[7].children[0].children[1].onchange = () => {
                 "Q": Number(q)
             }
         }).toMaster();
+        synths[idx-1].connect(dest);
+
     }
 }
 
@@ -606,6 +695,8 @@ monoSynthVals.children[7].children[1].children[1].onchange = (evt) => {
                 "type" : filterType
             }
         }).toMaster();
+        synths[idx-1].connect(dest);
+
   }
 }
 
@@ -618,10 +709,15 @@ monoSynthVals.children[7].children[2].children[1].onchange = () => {
                 "rolloff": Number(rolloff)
             }
         }).toMaster();
+        synths[idx-1].connect(dest);
+
     }
 }
 
 //-----------------------------------------------------------END MONOSYNTH-----------------------------------------------------------------------
+
+
+
 
 //-----------------------------------------------------------AM SYNTH---------------------------------------------------------------------------
 
@@ -635,6 +731,8 @@ amSynthVals.children[2].children[0].children[1].onchange = () => {
                 "attack" : Number(attack)
             }
         }).toMaster();
+        synths[idx-1].connect(dest);
+
   }
 }
 amSynthVals.children[2].children[1].children[1].onchange = () => {
@@ -646,6 +744,8 @@ amSynthVals.children[2].children[1].children[1].onchange = () => {
                 "decay" : Number(decay)
             }
         }).toMaster();
+        synths[idx-1].connect(dest);
+
   }
 }
 amSynthVals.children[2].children[2].children[1].onchange = () => {
@@ -657,6 +757,8 @@ amSynthVals.children[2].children[2].children[1].onchange = () => {
                 "sustain" : Number(sustain)
             }
         }).toMaster();
+        synths[idx-1].connect(dest);
+
   }
 }
 amSynthVals.children[2].children[3].children[1].onchange = () => {
@@ -668,6 +770,8 @@ amSynthVals.children[2].children[3].children[1].onchange = () => {
                 "release" : Number(release)
             }
         }).toMaster();
+        synths[idx-1].connect(dest);
+
   }
 }
 
@@ -681,6 +785,8 @@ amSynthVals.children[5].children[0].children[1].onchange = () => {
                 "attack" : Number(attack)
             }
         }).toMaster();
+        synths[idx-1].connect(dest);
+
   }
 }
 amSynthVals.children[5].children[1].children[1].onchange = () => {
@@ -692,6 +798,8 @@ amSynthVals.children[5].children[1].children[1].onchange = () => {
                 "decay" : Number(decay)
             }
         }).toMaster();
+        synths[idx-1].connect(dest);
+
   }
 }
 amSynthVals.children[5].children[2].children[1].onchange = () => {
@@ -703,6 +811,8 @@ amSynthVals.children[5].children[2].children[1].onchange = () => {
                 "sustain" : Number(sustain)
             }
         }).toMaster();
+        synths[idx-1].connect(dest);
+
   }
 }
 amSynthVals.children[5].children[3].children[1].onchange = () => {
@@ -714,6 +824,8 @@ amSynthVals.children[5].children[3].children[1].onchange = () => {
                 "release" : Number(release)
             }
         }).toMaster();
+        synths[idx-1].connect(dest);
+
   }
 }
 
@@ -725,6 +837,8 @@ amSynthVals.children[0].children[1].onchange = () => {
         synths[idx-1] = new Tone.AMSynth({
             "harmonicity" : Number(h)
         }).toMaster();
+        synths[idx-1].connect(dest);
+
   }
 }
 
@@ -738,6 +852,8 @@ amSynthVals.children[3].children[1].onchange = (evt) => {
                 "type" : modType
             }
         }).toMaster();
+        synths[idx-1].connect(dest);
+
   }
 }
 
@@ -751,6 +867,8 @@ amSynthVals.children[6].children[1].onchange = (evt) => {
                 "type" : oscType
             }
         }).toMaster();
+        synths[idx-1].connect(dest);
+
   }
 }
 
@@ -765,9 +883,9 @@ window.onkeydown = (evt) => {
     let vibratoRate = duoSynthVals.children[1].children[1].value;
     let harmonicity = duoSynthVals.children[2].children[1].value;
 
-    let v0Volume = duoSynthVals.children[3].children[6].children[1].value;
-    let v0Portamento = duoSynthVals.children[3].children[7].children[1].value;
-    let v0OscType = duoSynthVals.children[3].children[9].options[duoSynthVals.children[3].children[9].selectedIndex].value;
+    // let v0Volume = duoSynthVals.children[3].children[6].children[1].value;
+    // let v0Portamento = duoSynthVals.children[3].children[7].children[1].value;
+    let v0OscType = duoSynthVals.children[3].children[7].options[duoSynthVals.children[3].children[7].selectedIndex].value;
 
     let v0FreqEnvAttack = duoSynthVals.children[3].children[3].children[0].children[1].value;
     let v0FreqEnvDecay = duoSynthVals.children[3].children[3].children[1].children[1].value;
@@ -779,9 +897,9 @@ window.onkeydown = (evt) => {
     let v0AmpEnvSustain = duoSynthVals.children[3].children[5].children[2].children[1].value;
     let v0AmpEnvRelease = duoSynthVals.children[3].children[5].children[3].children[1].value;
 
-    let v1Volume = duoSynthVals.children[3].children[6].children[1].value;
-    let v1Portamento = duoSynthVals.children[3].children[7].children[1].value;
-    let v1OscType = duoSynthVals.children[3].children[9].options[duoSynthVals.children[3].children[9].selectedIndex].value;
+    // let v1Volume = duoSynthVals.children[3].children[6].children[1].value;
+    // let v1Portamento = duoSynthVals.children[3].children[7].children[1].value;
+    // let v1OscType = duoSynthVals.children[3].children[9].options[duoSynthVals.children[3].children[9].selectedIndex].value;
 
     let v1FreqEnvAttack = duoSynthVals.children[4].children[3].children[0].children[1].value;
     let v1FreqEnvDecay = duoSynthVals.children[4].children[3].children[1].children[1].value;
@@ -837,8 +955,6 @@ window.onkeydown = (evt) => {
             "vibratoRate": Number(vibratoRate),
             "harmonicity": Number(harmonicity),
             "voice0": {
-                "volume": Number(v0Volume),
-                "portamento": Number(v0Portamento),
                 "oscillator": {
                     "type": v0OscType
                 },
@@ -856,11 +972,6 @@ window.onkeydown = (evt) => {
                 }
             },
             "voice1": {
-                "volume": Number(v1Volume),
-                "portamento": Number(v1Portamento),
-                "oscillator": {
-                    "type": v1OscType
-                },
                 "filterEnvelope": {
                     "attack": Number(v1FreqEnvAttack),
                     "decay": Number(v1FreqEnvDecay),
@@ -875,6 +986,8 @@ window.onkeydown = (evt) => {
                 }
             }
         }).toMaster();
+        synths[idx-1].connect(dest);
+
     }
     if (idx-1 === 1) {
         synths[idx-1] = new Tone.MonoSynth({
@@ -899,6 +1012,8 @@ window.onkeydown = (evt) => {
                 "release": Number(monoFreqRelease)
             }
         }).toMaster();
+        synths[idx-1].connect(dest);
+
     }
     if (idx-1 === 2) {
         synths[idx-1] = new Tone.AMSynth({
@@ -922,6 +1037,8 @@ window.onkeydown = (evt) => {
                 "release": Number(amModEnvRelease)
             }
         }).toMaster();
+        synths[idx-1].connect(dest);
+
     }
   
     switch (code) {
@@ -930,7 +1047,6 @@ window.onkeydown = (evt) => {
             whiteTiles[0].style.top='2%';
             whiteTiles[0].style.backgroundColor = 'red';
             let idx = Number(document.getElementById('synth-type').value);
-            console.log('idx is ' + idx);
             synths[idx-1].triggerAttackRelease('c3','7n');
         
             
@@ -939,7 +1055,6 @@ window.onkeydown = (evt) => {
         }
         case 115:
         case 83: {
-            console.log('pressed s or S');
             whiteTiles[1].style.top='2%';
             whiteTiles[1].style.backgroundColor = 'red';
             let idx = Number(document.getElementById('synth-type').value);
@@ -948,7 +1063,6 @@ window.onkeydown = (evt) => {
         }
         case 100:
         case 68: {
-            console.log('pressed d or D');
             whiteTiles[2].style.top='2%';
             whiteTiles[2].style.backgroundColor = 'red';
             let idx = Number(document.getElementById('synth-type').value);
@@ -957,7 +1071,6 @@ window.onkeydown = (evt) => {
         }
         case 102:
         case 70: {
-            console.log('pressed f or F');
             whiteTiles[3].style.top='2%';
             whiteTiles[3].style.backgroundColor = 'red';
             let idx = Number(document.getElementById('synth-type').value);
@@ -966,7 +1079,6 @@ window.onkeydown = (evt) => {
         }
         case 103:
         case 71: {
-            console.log('pressed g or G');
             whiteTiles[4].style.top='2%';
             whiteTiles[4].style.backgroundColor = 'red';
             let idx = Number(sel.value);
@@ -975,7 +1087,6 @@ window.onkeydown = (evt) => {
         }
         case 104:
         case 72: {
-            console.log('pressed h or H');
             whiteTiles[5].style.top='2%';
             whiteTiles[5].style.backgroundColor = 'red';
             let idx = Number(sel.value);
@@ -984,7 +1095,6 @@ window.onkeydown = (evt) => {
         }
         case 106:
         case 74: {
-            console.log('pressed j or J');
             whiteTiles[6].style.top='2%';
             whiteTiles[6].style.backgroundColor = 'red';
             let idx = Number(sel.value);
@@ -993,7 +1103,6 @@ window.onkeydown = (evt) => {
         }
         case 107:
         case 75: {
-            console.log('pressed k or K');
             whiteTiles[7].style.top='2%';
             whiteTiles[7].style.backgroundColor = 'red';
             let idx = Number(sel.value);
@@ -1002,7 +1111,6 @@ window.onkeydown = (evt) => {
         }
         case 108: 
         case 76: {
-            console.log('pressed l or L');
             whiteTiles[8].style.top='2%';
             whiteTiles[8].style.backgroundColor = 'red';
             let idx = Number(sel.value);
@@ -1010,7 +1118,6 @@ window.onkeydown = (evt) => {
             break;
         }
         case 186: {
-            console.log('pressed ;');
             whiteTiles[9].style.top='2%';
             whiteTiles[9].style.backgroundColor = 'red';
             let idx = Number(sel.value);
@@ -1018,7 +1125,6 @@ window.onkeydown = (evt) => {
             break;
         }
         case 222: {
-            console.log('pressed \'');
             whiteTiles[10].style.top='2%';
             whiteTiles[10].style.backgroundColor = 'red';
             let idx = Number(sel.value);
@@ -1027,7 +1133,6 @@ window.onkeydown = (evt) => {
         }
         case 122:
         case 90: {
-            console.log('pressed z or Z');
             whiteTiles[11].style.top='2%';
             whiteTiles[11].style.backgroundColor = 'red';
             let idx = Number(sel.value);
@@ -1036,7 +1141,6 @@ window.onkeydown = (evt) => {
         }
         case 120:
         case 88: {
-            console.log('pressed x or X');
             whiteTiles[12].style.top='2%';
             whiteTiles[12].style.backgroundColor = 'red';
             let idx = Number(sel.value);
@@ -1045,7 +1149,6 @@ window.onkeydown = (evt) => {
         }
         case 99: 
         case 67: {
-            console.log('pressed c or C');
             whiteTiles[13].style.top='2%';
             whiteTiles[13].style.backgroundColor = 'red';
             let idx = Number(sel.value);
@@ -1054,7 +1157,6 @@ window.onkeydown = (evt) => {
         }
         case 118: 
         case 86: {
-            console.log('pressed v or V');
             whiteTiles[14].style.top='2%';
             whiteTiles[14].style.backgroundColor = 'red';
             let idx = Number(sel.value);
@@ -1063,7 +1165,6 @@ window.onkeydown = (evt) => {
         }
         case 98: 
         case 66: {
-            console.log('pressed b or B');
             whiteTiles[15].style.top='2%';
             whiteTiles[15].style.backgroundColor = 'red';
             let idx = Number(sel.value);
@@ -1072,7 +1173,6 @@ window.onkeydown = (evt) => {
         }
         case 110: 
         case 78: {
-            console.log('pressed n or N');
             whiteTiles[16].style.top='2%';
             whiteTiles[16].style.backgroundColor = 'red';
             let idx = Number(sel.value);
@@ -1081,7 +1181,6 @@ window.onkeydown = (evt) => {
         }
         case 109:
         case 77: {
-            console.log('pressed m or M');
             whiteTiles[17].style.top='2%';
             whiteTiles[17].style.backgroundColor = 'red';
             let idx = Number(sel.value);
@@ -1089,7 +1188,6 @@ window.onkeydown = (evt) => {
             break;
         }
         case 188: {
-            console.log('pressed , ');
             whiteTiles[18].style.top='2%';
             whiteTiles[18].style.backgroundColor = 'red';
             let idx = Number(sel.value);
@@ -1097,7 +1195,6 @@ window.onkeydown = (evt) => {
             break;
         }
         case 190: {
-            console.log('pressed . ');
             whiteTiles[19].style.top='2%';
             whiteTiles[19].style.backgroundColor = 'red';
             let idx = Number(sel.value);
@@ -1105,7 +1202,6 @@ window.onkeydown = (evt) => {
             break;
         }
         case 191: {
-            console.log('pressed  / ');
             whiteTiles[20].style.top='2%';
             whiteTiles[20].style.backgroundColor = 'red';
             let idx = Number(sel.value);
@@ -1114,7 +1210,6 @@ window.onkeydown = (evt) => {
         }
         // black tile keycodes
         case 81: {
-            console.log('pressed q');
             blackTiles[0].style.top = '2%';
             blackTiles[0].style.backgroundColor = 'red';
             let idx = Number(sel.value);
@@ -1122,7 +1217,6 @@ window.onkeydown = (evt) => {
             break;
         }
         case 87: {
-            console.log('pressed w');
             blackTiles[1].style.top = '2%';
             blackTiles[1].style.backgroundColor = 'red';
             let idx = Number(sel.value);
@@ -1130,7 +1224,6 @@ window.onkeydown = (evt) => {
             break;
         }
         case 69: {
-            console.log('pressed e');
             blackTiles[2].style.top = '2%';
             blackTiles[2].style.backgroundColor = 'red';
             let idx = Number(sel.value);
@@ -1138,7 +1231,6 @@ window.onkeydown = (evt) => {
             break;
         }
         case 82: {
-            console.log('pressed r');
             blackTiles[3].style.top = '2%';
             blackTiles[3].style.backgroundColor = 'red';
             let idx = Number(sel.value);
@@ -1146,7 +1238,6 @@ window.onkeydown = (evt) => {
             break;
         }
         case 84: {
-            console.log('pressed t');
             blackTiles[4].style.top = '2%';
             blackTiles[4].style.backgroundColor = 'red';
             let idx = Number(sel.value);
@@ -1154,7 +1245,6 @@ window.onkeydown = (evt) => {
             break;
         }
         case 89: {
-            console.log('pressed y');
             blackTiles[5].style.top = '2%';
             blackTiles[5].style.backgroundColor = 'red';
             let idx = Number(sel.value);
@@ -1162,7 +1252,6 @@ window.onkeydown = (evt) => {
             break;
         }
         case 85: {
-            console.log('pressed u');
             blackTiles[6].style.top = '2%';
             blackTiles[6].style.backgroundColor = 'red';
             let idx = Number(sel.value);
@@ -1170,7 +1259,6 @@ window.onkeydown = (evt) => {
             break;
         }
         case 73: {
-            console.log('pressed i');
             blackTiles[7].style.top = '2%';
             blackTiles[7].style.backgroundColor = 'red';
             let idx = Number(sel.value);
@@ -1178,7 +1266,6 @@ window.onkeydown = (evt) => {
             break;
         }
         case 79: {
-            console.log('pressed o');
             blackTiles[8].style.top = '2%';
             blackTiles[8].style.backgroundColor = 'red';
             let idx = Number(sel.value);
@@ -1186,7 +1273,6 @@ window.onkeydown = (evt) => {
             break;
         }
         case 80: {
-            console.log('pressed p');
             blackTiles[9].style.top = '2%';
             blackTiles[9].style.backgroundColor = 'red';
             let idx = Number(sel.value);
@@ -1194,7 +1280,6 @@ window.onkeydown = (evt) => {
             break;
         }
         case 219: {
-            console.log('pressed [');
             blackTiles[10].style.top = '2%';
             blackTiles[10].style.backgroundColor = 'red';
             let idx = Number(sel.value);
@@ -1202,7 +1287,6 @@ window.onkeydown = (evt) => {
             break;
         }
         case 221: {
-            console.log('pressed ]');
             blackTiles[11].style.top = '2%';
             blackTiles[11].style.backgroundColor = 'red';
             let idx = Number(sel.value);
@@ -1210,7 +1294,6 @@ window.onkeydown = (evt) => {
             break;
         }
         case 48: {
-            console.log('pressed 0');
             blackTiles[12].style.top = '2%';
             blackTiles[12].style.backgroundColor = 'red';
             let idx = Number(sel.value);
@@ -1218,7 +1301,6 @@ window.onkeydown = (evt) => {
             break;
         }
         case 189: {
-            console.log('pressed -');
             blackTiles[13].style.top = '2%';
             blackTiles[13].style.backgroundColor = 'red';
             let idx = Number(sel.value);
@@ -1226,7 +1308,6 @@ window.onkeydown = (evt) => {
             break;
         }
         case 187: {
-            console.log('pressed =');
             blackTiles[14].style.top = '2%';
             blackTiles[14].style.backgroundColor = 'red';
             let idx = Number(sel.value);
@@ -1245,12 +1326,9 @@ window.onkeyup = (evt) => {
     let code = evt.keyCode;
     sel.blur();
     
-
-    console.log('outside switch' + code);
     switch (code) {
         case 97:
         case 65: {
-            console.log('pressed a or A');
             whiteTiles[0].style.top='0%';
             whiteTiles[0].style.backgroundColor = 'white';
            
@@ -1258,226 +1336,191 @@ window.onkeyup = (evt) => {
         }
         case 115:
         case 83: {
-            console.log('pressed s or S');
             whiteTiles[1].style.top='0%';
             whiteTiles[1].style.backgroundColor = 'white';
             break;
         }
         case 100:
         case 68: {
-            console.log('pressed d or D');
             whiteTiles[2].style.top='0%';
             whiteTiles[2].style.backgroundColor = 'white';
             break;
         }
         case 102:
         case 70: {
-            console.log('pressed f or F');
             whiteTiles[3].style.top='0%';
             whiteTiles[3].style.backgroundColor = 'white';
             break;
         }
         case 103:
         case 71: {
-            console.log('pressed g or G');
             whiteTiles[4].style.top='0%';
             whiteTiles[4].style.backgroundColor = 'white';
             break;
         }
         case 104:
         case 72: {
-            console.log('pressed h or H');
             whiteTiles[5].style.top='0%';
             whiteTiles[5].style.backgroundColor = 'white';
             break;
         }
         case 106:
         case 74: {
-            console.log('pressed j or J');
             whiteTiles[6].style.top='0%';
             whiteTiles[6].style.backgroundColor = 'white';
             break;
         }
         case 107:
         case 75: {
-            console.log('pressed k or K');
             whiteTiles[7].style.top='0%';
             whiteTiles[7].style.backgroundColor = 'white';
             break;
         }
         case 108: 
         case 76: {
-            console.log('pressed l or L');
             whiteTiles[8].style.top='0%';
             whiteTiles[8].style.backgroundColor = 'white';
             break;
         }
         case 186: {
-            console.log('pressed ;');
             whiteTiles[9].style.top='0%';
             whiteTiles[9].style.backgroundColor = 'white';
             break;
         }
         case 222: {
-            console.log('pressed \'');
             whiteTiles[10].style.top='0%';
             whiteTiles[10].style.backgroundColor = 'white';
             break;
         }
         case 122:
         case 90: {
-            console.log('pressed z or Z');
             whiteTiles[11].style.top='0%';
             whiteTiles[11].style.backgroundColor = 'white';
             break;
         }
         case 120:
         case 88: {
-            console.log('pressed x or X');
             whiteTiles[12].style.top='0%';
             whiteTiles[12].style.backgroundColor = 'white';
             break;
         }
         case 99: 
         case 67: {
-            console.log('pressed c or C');
             whiteTiles[13].style.top='0%';
             whiteTiles[13].style.backgroundColor = 'white';
             break;
         }
         case 118: 
         case 86: {
-            console.log('pressed v or V');
             whiteTiles[14].style.top='0%';
             whiteTiles[14].style.backgroundColor = 'white';
             break;
         }
         case 98: 
         case 66: {
-            console.log('pressed b or B');
             whiteTiles[15].style.top='0%';
             whiteTiles[15].style.backgroundColor = 'white';
             break;
         }
         case 110: 
         case 78: {
-            console.log('pressed n or N');
             whiteTiles[16].style.top='0%';
             whiteTiles[16].style.backgroundColor = 'white';
             break;
         }
         case 109:
         case 77: {
-            console.log('pressed m or M');
             whiteTiles[17].style.top='0%';
             whiteTiles[17].style.backgroundColor = 'white';
             break;
         }
         case 188: {
-            console.log('pressed , ');
             whiteTiles[18].style.top='0%';
             whiteTiles[18].style.backgroundColor = 'white';
             break;
         }
         case 190: {
-            console.log('pressed . ');
             whiteTiles[19].style.top='0%';
             whiteTiles[19].style.backgroundColor = 'white';
             break;
         }
         case 191: {
-            console.log('pressed  / ');
             whiteTiles[20].style.top='0%';
             whiteTiles[20].style.backgroundColor = 'white';
             break;
         }
         // black tile keycodes
         case 81: {
-            console.log('pressed q');
             blackTiles[0].style.top = '0%';
             blackTiles[0].style.backgroundColor = 'black';
             break;
         }
         case 87: {
-            console.log('pressed w');
             blackTiles[1].style.top = '0%';
             blackTiles[1].style.backgroundColor = 'black';
             break;
         }
         case 69: {
-            console.log('pressed e');
             blackTiles[2].style.top = '0%';
             blackTiles[2].style.backgroundColor = 'black';
             break;
         }
         case 82: {
-            console.log('pressed r');
             blackTiles[3].style.top = '0%';
             blackTiles[3].style.backgroundColor = 'black';
             break;
         }
         case 84: {
-            console.log('pressed t');
             blackTiles[4].style.top = '0%';
             blackTiles[4].style.backgroundColor = 'black';
             break;
         }
         case 89: {
-            console.log('pressed y');
             blackTiles[5].style.top = '0%';
             blackTiles[5].style.backgroundColor = 'black';
             break;
         }
         case 85: {
-            console.log('pressed u');
             blackTiles[6].style.top = '0%';
             blackTiles[6].style.backgroundColor = 'black';
             break;
         }
         case 73: {
-            console.log('pressed i');
             blackTiles[7].style.top = '0%';
             blackTiles[7].style.backgroundColor = 'black';
             break;
         }
         case 79: {
-            console.log('pressed o');
             blackTiles[8].style.top = '0%';
             blackTiles[8].style.backgroundColor = 'black';
             break;
         }
         case 80: {
-            console.log('pressed p');
             blackTiles[9].style.top = '0%';
             blackTiles[9].style.backgroundColor = 'black';
             break;
         }
         case 219: {
-            console.log('pressed [');
             blackTiles[10].style.top = '0%';
             blackTiles[10].style.backgroundColor = 'black';
             break;
         }
         case 221: {
-            console.log('pressed ]');
             blackTiles[11].style.top = '0%';
             blackTiles[11].style.backgroundColor = 'black';
             break;
         }
         case 48: {
-            console.log('pressed 0');
             blackTiles[12].style.top = '0%';
             blackTiles[12].style.backgroundColor = 'black';
             break;
         }
         case 189: {
-            console.log('pressed -');
             blackTiles[13].style.top = '0%';
             blackTiles[13].style.backgroundColor = 'black';
             break;
         }
         case 187: {
-            console.log('pressed =');
             blackTiles[14].style.top = '0%';
             blackTiles[14].style.backgroundColor = 'black';
             break;
@@ -1488,3 +1531,161 @@ window.onkeyup = (evt) => {
 }
 
 
+
+//----------------------------------------------------- RECORDING PART --------------------------------------------------------------------------
+let chunks = [];
+
+recorder.ondataavailable = evt => chunks.push(evt.data);
+recorder.onstop = evt => {
+    let blob = new Blob(chunks,{ type: 'audio/ogg; codecs=opus'});
+    //  audio.src = URL.createObjectURL(blob);
+     a = new Audio();
+     context = new (window.AudioContext || window.webkitAudioContext)();
+     analyser = context.createAnalyser();
+     a.src = URL.createObjectURL(blob); // the source path
+     document.querySelector('.save-export').href = a.src;
+     document.querySelector('.save-export').download='file.mp3';
+     source = context.createMediaElementSource(a);
+     source.connect(analyser);
+     analyser.connect(context.destination);
+     frequency_array = new Uint8Array(analyser.frequencyBinCount);
+     a.play();
+     animationLooper();
+     chunks = [];
+}
+
+let playBackUp = document.querySelector('.right-side .record-controls .tempo .change-tempo i:first-child');
+let playBackDown = document.querySelector('.right-side .record-controls .tempo .change-tempo i:nth-child(2)');
+
+playBackUp.onclick = () => {
+    a.playbackRate += 0.1;
+    console.log(a.playbackRate);
+    document.querySelector('.t-nr').innerHTML = "" + a.playbackRate.toFixed(1);
+}
+
+playBackDown.onclick = () => {
+    a.playbackRate -= 0.1;
+    console.log(a.playbackRate);
+    document.querySelector('.t-nr').innerHTML = "" + a.playbackRate.toFixed(1);
+}
+
+
+
+let paused = false;
+document.querySelector('canvas').onclick = () => {
+    if (paused){
+        paused = false;
+        a.play();
+    }
+    else {
+        a.pause();
+        paused = true;
+    }
+}
+
+// play and stop
+let intervalID;
+document.querySelector('#start_record').onclick = () => {
+    console.log('started');
+    totalSeconds = 0;
+    intervalID = setInterval(countTimer,1000);
+    recorder.start();
+}
+document.querySelector('.stop').onclick = () => {
+    recorder.stop();
+    clearInterval(intervalID);
+} 
+var duration;
+document.querySelector('#playbtn').onclick = () => {
+    duration = a.duration;
+    let display = document.querySelector('.timer');
+    if (duration > 0) {
+        console.log('duration is ' + duration);
+        console.log('esteeee ');
+        startTimer(duration,display);
+        
+    }
+        
+    a.play();
+}
+
+//----------------------------------------------------END RECORDING PART--------------------------------------------------------------------------
+
+
+//--------------------------------------------------- VISUALIZE RECORDING PART-------------------------------------------------------------------
+let canvas, 
+    ctx, 
+    center_x, 
+    center_y, 
+    radius, 
+    bars, 
+    x_end, 
+    y_end, 
+    bar_height, 
+    bar_width,
+    frequency_array,a;
+
+bars = 230;
+bar_width = 2;
+
+function initPage(){
+    a = new Audio();
+    context = new (window.AudioContext || window.webkitAudioContext)();
+    analyser = context.createAnalyser();
+    a.src = fileName; // the source path
+    source = context.createMediaElementSource(a);
+    source.connect(analyser);
+    analyser.connect(context.destination);
+    frequency_array = new Uint8Array(analyser.frequencyBinCount);
+    a.play();
+    animationLooper();
+}
+
+function animationLooper(){
+    // set to the size of device
+    canvas = document.getElementById("renderer");
+    // canvas.width = 500;
+    // canvas.height = 1000;
+    ctx = canvas.getContext("2d");
+    // find the center of the window
+    center_x = canvas.width / 2;
+    center_y = canvas.height / 2;
+    radius = 50;
+    // style the background
+    var gradient = ctx.createLinearGradient(0,0,0,canvas.height);
+    gradient.addColorStop(0,"rgba(35, 7, 77, 1)");
+    gradient.addColorStop(1,"rgba(204, 83, 51, 1)");
+    ctx.fillStyle = gradient;
+    ctx.fillRect(0,0,canvas.width,canvas.height);
+    //draw a circle
+    ctx.beginPath();
+    ctx.arc(center_x,center_y,radius,0,2*Math.PI);
+    ctx.stroke();
+    analyser.getByteFrequencyData(frequency_array);
+    for(var i = 0; i < bars; i++) {
+        //divide a circle into equal parts
+        rads = Math.PI * 2 / bars;
+        bar_height = frequency_array[i]*0.2;
+        // set coordinates
+        x = center_x + Math.cos(rads * i) * (radius);
+        y = center_y + Math.sin(rads * i) * (radius);
+        x_end = center_x + Math.cos(rads * i)*(radius + bar_height);
+        y_end = center_y + Math.sin(rads * i)*(radius + bar_height);
+        //draw a bar
+        drawBar(x, y, x_end, y_end, bar_width,frequency_array[i]);
+    }
+    window.requestAnimationFrame(animationLooper);
+}
+
+// for drawing a bar
+function drawBar(x1, y1, x2, y2, width,frequency) {
+    var lineColor = "rgb(" + frequency + ", " + frequency + ", " + 205 + ")";
+    ctx.strokeStyle = lineColor;
+    ctx.lineWidth = width;
+    ctx.beginPath();
+    ctx.moveTo(x1,y1);
+    ctx.lineTo(x2,y2);
+    ctx.stroke();
+}
+
+//----------------------------------------------- END VISUALIZING RECORDING PART ----------------------------------------------------------------

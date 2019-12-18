@@ -3,7 +3,7 @@
     display: none;
     position: relative;
     left: 41%;
-    top: 10%;
+    top: 5%;
     width: 50%;
     height: 20%;  
 }
@@ -11,7 +11,7 @@
 
 
 .am-synth  .am-osc-type span {
-    color: red;
+    color: white;
     font-size: 14px;
 }
 
@@ -37,6 +37,18 @@
     
 }
 
+
+.am-synth  .am-amp-env .attack span,
+.am-synth  .am-amp-env .decay span,
+.am-synth  .am-amp-env .sustain span,
+.am-synth  .am-amp-env .release span,
+.am-synth  .modulation-env .attack span,
+.am-synth  .modulation-env .decay span,
+.am-synth  .modulation-env .sustain span,
+.am-synth  .modulation-env .release span {
+    color: goldenrod;
+    opacity: 0.5;
+}
 
 .am-synth  .am-amp-env .attack input,
 .am-synth  .am-amp-env .decay input,
@@ -90,12 +102,12 @@
 
 
 .am-synth .m-freq-env-title {
-    color: rgb(143, 133, 133);
+    color: white;
     cursor: pointer;
     transition: 0.4s;
 }
 .am-synth .m-amp-env-title {
-    color: rgb(143, 133, 133);
+    color: white;
     cursor: pointer;
     transition: 0.4s;
 }
@@ -122,6 +134,6 @@
 .am-synth .modulation-env-title,
 .am-synth .modulation-type span,
 .am-synth .harmonicity span {
-    color: rgb(143, 133, 133);
+    color: white;
     cursor: pointer;
 }

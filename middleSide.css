@@ -1,6 +1,7 @@
 .middle {
     position: relative;
-    background-color: rgb(48, 43, 43);
+    /* background-color: rgb(48, 43, 43); */
+    background-color: rgb(82, 73, 73);
     width: 65%;
     height: 100vh;
 }
@@ -389,4 +390,20 @@ label[name="release"] {
     left: 500px;
     color: white;
     font-family: 'Roboto', sans-serif;
+}
+
+
+
+input[type="file"] {
+    display: none;
+}
+.custom-file-upload {
+    display: inline-block;
+    /* padding: 5px; */
+    cursor: pointer;
+    color: white;
+    font-weight: bold;
+}
+.custom-file-upload:hover {
+    color: gray;
 }

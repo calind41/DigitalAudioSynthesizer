@@ -15,8 +15,56 @@
     top: 10%;
 }
 .wrapper .middle .song-maker input {
+    position: relative;
+    bottom: 14px;
     width: 86%;
+    -webkit-appearance: none;
 }
+
+.wrapper .middle .song-maker input::-webkit-slider-runnable-track {
+    width: 320px;
+    height: 7px;
+    background: #ddd;
+    border: none;
+    border-radius: 3px;
+}
+.wrapper .middle .song-maker input::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    border: none;
+    height: 16px;
+    width: 16px;
+    border-radius: 0;
+    background: goldenrod;
+    margin-top: -4px;
+}
+#bpmVal {
+    position: absolute;
+    bottom: 300px;
+}
+
+.wrapper .middle .song-maker button:first-child {
+    position: absolute;
+    left:0px;
+    bottom: 330px;
+    width: 35px;
+    height: 20px;
+    border-style:none;
+    border-radius: 2px;
+    font-weight: bold;
+    padding: 2px;
+}
+.wrapper .middle .song-maker .play {
+    position: absolute;
+    width: 35px;
+    height: 20px;
+    bottom: 330px;
+    left: 40px;
+    border-radius: 2px;
+    border-style: none;
+    font-weight: bold;
+    padding: 2px;
+}
+
 .wrapper .middle .song-maker .c1 span,
 .wrapper .middle .song-maker .c2 span,
 .wrapper .middle .song-maker .c3 span,
@@ -32,4 +80,11 @@
     padding: 0;
     outline: 0;
     border: 0;
+    border-radius: 5px;
+}
+
+.song-maker label {
+    position: relative;
+    bottom: 50px;
+    color: white;
 }

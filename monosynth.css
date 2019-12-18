@@ -3,7 +3,7 @@
     display: none;
     position: relative;
     left: 41%;
-    top: 10%;
+    top: 5%;
     width: 50%;
     height: 20%;
 
@@ -12,7 +12,8 @@
 
 
 .mono-synth  .osc-type-title {
-    color: red;
+    color: white;
+    font-weight: bold;
     font-size: 14px;
 }
 
@@ -46,6 +47,19 @@
 .mono-synth .filter .rolloff {
     position: relative;
     top: 14px;
+}
+
+
+.mono-synth  .freq-env .attack span,
+.mono-synth  .freq-env .decay span,
+.mono-synth  .freq-env .sustain span,
+.mono-synth  .freq-env .release span,
+.mono-synth  .amp-env .attack span,
+.mono-synth  .amp-env .decay span,
+.mono-synth  .amp-env .sustain span,
+.mono-synth  .amp-env .release span {
+    color: goldenrod;
+    opacity: 0.5;
 }
 
 .mono-synth  .freq-env .attack input,
@@ -102,12 +116,12 @@
 
 
 .mono-synth .m-freq-env-title {
-    color: rgb(143, 133, 133);
+    color: white;
     cursor: pointer;
     transition: 0.4s;
 }
 .mono-synth .m-amp-env-title {
-    color: rgb(143, 133, 133);
+    color: white;
     cursor: pointer;
     transition: 0.4s;
 }
@@ -132,5 +146,5 @@
 .mono-synth .filter .q span,
 .mono-synth .filter .filter-type span,
 .mono-synth .filter .rolloff span {
-    color: rgb(143, 133, 133);
+    color: white;
 }

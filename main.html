@@ -9,6 +9,7 @@
     <!-- <script src="p5.sound.js"></script> -->
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons"rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script src="https://unpkg.com/tone"></script>
     <link rel="stylesheet" type="text/css" href="main.css"/>
@@ -24,115 +25,68 @@
     <div class ="wrapper">
         <div class="left-side">
             <div class="search">
-                <i class="material-icons">search</i>
-                <input type="text" placeholder="Search"/>
+              SOUND PLAY
             </div>
 
             <div class="instruments">
                 <h3>
                     INSTRUMENTS 
-                    <i class="material-icons">keyboard_arrow_down</i>
+                    <i id="instr" class="material-icons">keyboard_arrow_down</i>
                 </h3>
-                <div class="keyboard">
-                    <i class="material-icons">
-                        control_point
-                    </i>
-                    <span>Keyboards</span>
-                </div>
+                
                 <div class="drums">
-                    <i class="material-icons">
-                        control_point
-                    </i>
+                    
                     <span>Drums</span>
                 </div>
-                <div class="guitar">
-                    <i class="material-icons">
-                        control_point
-                    </i>
-                    <span>Guitars</span>
-                </div>
                 <div class="bass">
-                    <i class="material-icons">
-                        control_point
-                    </i>
                     <span>Bass</span>
                 </div>
-                <div class="electronic">
-                    <i class="material-icons">
-                        control_point
-                    </i>
-                    <span>Electronic</span>
+                <div class="guitar">
+                    
+                    <span>Guitars</span>
                 </div>
-                <div class="orchestral">
-                    <i class="material-icons">
-                        control_point
-                    </i>
-                    <span>Orchestral</span>
+                
+                <div class="cymbal">
+                   
+                    <span>Cymbal</span>
+                </div>
+                <div class="percussion">
+                   
+                    <span>Percussion</span>
                 </div>
 
-                <div class="experimental">
-                    <i class="material-icons">
-                        control_point
-                    </i>
-                    <span>Experimental</span>
-                </div>
+                
 
             </div>
 
-            <div class="effect">
-                <h3>
-                    EFFECTS
-                    <i class="material-icons">keyboard_arrow_down</i>
-                </h3>
-                <div class="audio">
-                    <i class="material-icons">
-                        format_indent_increase
-                    </i>
-                    <span>Audio</span>
-                </div>
-                <div class="midi">
-                    <i class="material-icons">
-                        format_indent_increase
-                    </i>
-                    <span>MIDI</span>
-                </div>
-            </div>
+            
 
             <div class="resources">
                 <h3>
                     RESOURCES
-                    <i class="material-icons">keyboard_arrow_down</i>
+                    <i id="rsrc"class="material-icons">keyboard_arrow_down</i>
                 </h3>
                 <div class="import">
                     <i class="material-icons">
                         get_app
                     </i>
-                    <span>Import audio</span>
-                </div>
-                <div class="library">
-                    <i class="material-icons">
-                        view_module
-                    </i>
-                    <span>My library</span>
+                    <label for="files" class="custom-file-upload">
+                         Upload Song
+                    </label>
+                    <input id="files" type="file"/>
                 </div>
             </div>
 
             <div class="account">
                 <h3>
                     ACCOUNT
-                    <i class="material-icons">keyboard_arrow_down</i>
+                    <i id="acc"class="material-icons">keyboard_arrow_down</i>
                 </h3>
                 <div class="help">
                     <i class="material-icons">
                         view_list
                     </i>
                     <span>Help</span>
-                </div>
-                <div class="settings">
-                        <i class="material-icons">
-                            settings_applications
-                        </i>
-                    <span>Settings</span>
                 </div>
             </div>
         </div>
@@ -304,19 +258,19 @@
                     <span class="freq-env-title">Frequency Envelope</span>
                     <div class="freq-env">
                         <div class="attack">
-                            <span>Attack<span class="a-val"></span></span>
+                            <span>Attack</span>
                             <input type="range" step="0.01" min="0.01" max="2.00">
                         </div>
                         <div class="decay">
-                            <span>Decay<span class="d-val"></span></span>
+                            <span>Decay</span>
                             <input type="range" step="0.01" min="0.01" max="2.00">
                         </div>
                         <div class="sustain">
-                            <span>Sustain<span class="s-val"></span></span>
+                            <span>Sustain</span>
                             <input type="range" step="0.01" min="0" max="1">
                         </div>
                         <div class="release">
-                            <span>Release<span class="r-val"></span></span>
+                            <span>Release</span>
                             <input type="range" step="0.01" min="0.01" max="4.00">
                         </div>
                     </div>
@@ -339,14 +293,14 @@
                             <input type="range" step="0.01" min="0.01" max="4.00">
                         </div>
                     </div>
-                    <div class="volume">
+                    <!-- <div class="volume">
                         <span class="volume-title">Volume</span>
                         <input type="range" step="1" min="-60" max="0">
                     </div>
                     <div class="portamento">
                         <span class="porta-title">Portamento</span>
                         <input type="range" step="0.01" min="0.00" max="0.10">
-                    </div>
+                    </div> -->
                     <span class="osc-type-v0">Oscillator Type</span>
                     <select class="osc-type">
                         <option value="sine">sine</option>
@@ -363,55 +317,41 @@
                     <span class="freq-env-title1">Frequency Envelope</span>
                     <div class="freq-env1">  <!-- 14 -->
                         <div class="attack">
-                            <span>Attack <span class="a-val"></span></span>
+                            <span>Attack </span>
                             <input type="range" step="0.01" min="0.01" max="2.00">
                         </div>
                         <div class="decay">
-                            <span>Decay<span class="d-val"></span></span>
+                            <span>Decay</span>
                             <input type="range" step="0.01" min="0.01" max="2.00">
                         </div>
                         <div class="sustain">
-                            <span>Sustain<span class="s-val"></span></span>
+                            <span>Sustain</span>
                             <input type="range" step="0.01" min="0.00" max="1.00">
                         </div>
                         <div class="release">
-                            <span>Release<span class="r-val"></span></span>
+                            <span>Release</span>
                             <input type="range" step="0.01" min="0.01" max="4.00">
                         </div>
                     </div>
                     <span class="amp-env-title1">Amplitude Envelope</span>
                     <div class="amp-env1">
                         <div class="attack">
-                            <span>Attack<span class="a-val"></span></span>
+                            <span>Attack</span>
                             <input type="range" step="0.01" min="0.01" max="2.00">
                         </div>
                         <div class="decay">
-                            <span>Decay<span class="d-val"></span></span>
+                            <span>Decay</span>
                             <input type="range" step="0.01" min="0.01" max="2.00">
                         </div>
                         <div class="sustain">
-                            <span>Sustain<span class="s-val"></span></span>
+                            <span>Sustain</span>
                             <input type="range" step="0.01" min="0.00" max="1.00">
                         </div>
                         <div class="release">
-                            <span>Release<span class="r-val"></span></span>
+                            <span>Release</span>
                             <input type="range" step="0.01" min="0.01" max="4.00">
                         </div>
                     </div>
-                    <div class="volume1">
-                        <span class="volume-title">Volume</span>
-                        <input type="range" step="1" min="-60" max="0">
-                    </div>
-                    <div class="portamento1">
-                        <span class="porta-title">Portamento</span>
-                        <input type="range" step="0.01" min="0.00" max="0.10">
-                    </div>
-                    <span class="osc-type-v1">Oscillator Type</span>
-                    <select class="osc-type1">
-                        <option value="sine">sine</option>
-                        <option value="square">square</option>
-                        <option value="sawtooth">sawtooth</option>
-                    </select>
                 </div>
                 
             </div>
@@ -556,6 +496,9 @@
             </div>
 
             <div class="song-maker">
+                <button>Stop</button>
+                <button class="play">Play</button>
+                <label id="bpmVal"name="value">bpm: 135</label>
                 <input type="range" min="30" max="240" step="1">
                 <div class="c1">
                     <span></span>
@@ -650,11 +593,12 @@
                     <span></span>
                 </div>
             </div>
+
         </div>
         <div class="right-side">
             <div class="record-time">
                 <div class="timer">
-                    01:20:00
+                  0h:0m:0s
                 </div>
                 <span class="clock-icon">
                     <i class="material-icons">
@@ -662,20 +606,16 @@
                     </i>
                 </span>
                 <span class="options-i">
-                    <i class="material-icons">
-                        more_horiz
-                    </i>
+                 
                 </span>
             </div>
 
             <div class="record-controls">
-                <span class="play">
+                <span id="playbtn" class="play">
                     <i class="material-icons">
                         play_arrow
                     </i>
-                    <!-- <i class="material-icons">
-                        pause
-                    </i>     -->
+                   
                 </span>
                 <span class="stop">
                     <i class="material-icons">
@@ -686,11 +626,11 @@
                     <i class="material-icons">
                         adjust
                     </i>
-                    <span class="r-lbl">REC</span>
+                    <span id="start_record" class="r-lbl">REC</span>
                 </span>
                 <span class="tempo">
-                    Tempo 
-                    <span class="t-nr">120</span>
+                    Speed 
+                    <span class="t-nr">1</span>
                     <span class="change-tempo">
                         <i class="material-icons">
                             expand_less
@@ -702,107 +642,30 @@
                 </span>
             </div>
 
-            <div class="channels">
-                <h3>
-                    CHANNELS
-                    <i class="material-icons">keyboard_arrow_down</i>
-                </h3>
-                <div class="ch1">
-                    <i class="material-icons">
-                        toggle_off
-                    </i>
-                    <span class="ch-name">
-                        T01 / Keyboard
-                    </span>
-                    <span class="opts-i">
-                        <i class="material-icons">
-                            more_vert
-                        </i>
-                    </span>
-                </div>
-
-                <div class="ch1">
-                    <i class="material-icons">
-                        toggle_off
-                    </i>
-                    <span class="ch-name">
-                        T01 / Keyboard
-                    </span>
-                    <span class="opts-i">
-                        <i class="material-icons">
-                            more_vert
-                        </i>
-                    </span>
-                </div>
-
-                <div class="ch1">
-                    <i class="material-icons">
-                        toggle_off
-                    </i>
-                    <span class="ch-name">
-                        T01 / Keyboard
-                    </span>
-                    <span class="opts-i">
-                        <i class="material-icons">
-                            more_vert
-                        </i>
-                    </span>
-                </div>
-
-                <div class="ch1">
-                    <i class="material-icons">
-                        toggle_off
-                    </i>
-                    <span class="ch-name">
-                        T01 / Keyboard
-                    </span>
-                    <span class="opts-i">
-                        <i class="material-icons">
-                            more_vert
-                        </i>
-                    </span>
-                </div>
-
-
-            </div>
+            
 
             <div class="effects-visualizer">
                 <h3>
                     EFFECTS VISUALIZER
-                    <i class="material-icons">keyboard_arrow_down</i>
+                    <!-- <i class="material-icons">keyboard_arrow_down</i> -->
                 </h3>
                 <div class="visualizer">
-
+                    <canvas style="width:261px; height:163px;" id="renderer"></canvas>
                 </div>
             </div>
 
             <div class="export">
-                <h3>
-                    EXPORT
-                    <i class="material-icons">keyboard_arrow_down</i>
-                </h3>
-                <div class="save-path">
-                    <i class="material-icons">
-                        folder_open
-                        </i>
-                    <span class="txt">Save to:</span>
-                </div>
-                <div class="format">
-                    <i class="material-icons">
-                        insert_drive_file
-                    </i>
-                    <span class="txt">
-                        Format:
-                    </span>
-                    <i class="material-icons">
-                        expand_more
-                    </i>
-                </div>
+                
+               
 
-                <button class="save-export">SAVE & EXPORT</button>
+                <a download class="save-export">SAVE & EXPORT</a>
+                
             </div>
         </div>
     </div>
+    
+
+    <!-- <audio controls ></audio> -->
     <div id="container"></div>
     <script src="main.js"></script>
     <script src="audio.js"></script>
@@ -810,5 +673,9 @@
     <script src="monosynth.js"></script>
     <script src="amsynth.js"></script>
     <script src="musicmaker.js"></script>
+    <script src="recordSound.js"></script>
+    <script src="readSoundFiles.js"></script>
+    <script src="countUpTimer.js"></script>
+    <script src="countDownTimer.js"></script>
 </body>
 </html>
