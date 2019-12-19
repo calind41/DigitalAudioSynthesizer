@@ -1,5 +1,4 @@
 function sequencerV1() {
-    
     const openHat = new Tone.Player("./drums/open_hat.wav").toMaster();
     const closedHat = new Tone.Player("./drums/closed_hat.wav").toMaster();
     const clap = new Tone.Player("./drums/clap-808.wav").toMaster();
@@ -7,6 +6,11 @@ function sequencerV1() {
     const kick = new Tone.Player("./drums/kick-electro01.wav").toMaster();
     const snare = new Tone.Player("./drums/snare-lofi02.wav").toMaster();
   
+    openHat.connect(dest);
+    closedHat.connect(dest);
+    clap.connect(dest);
+    kick.connect(dest);
+    snare.connect(dest);
     
     let index = 0;
 
@@ -22,6 +26,7 @@ function sequencerV1() {
             Tone.Transport.start();
         let step = index % 16;
         console.log(step);
+
         let openHatInputs = document.querySelector(`.c1 span:nth-child(${step + 1})`);
         let closedHatInputs = document.querySelector(`.c2 span:nth-child(${step + 1})`);
         let clapInputs = document.querySelector(`.c3 span:nth-child(${step + 1})`);
@@ -60,6 +65,12 @@ function sequencerV2() {
     const casioQuickB = new Tone.Player("./BASS/acoustic/Alesis-Fusion-Acoustic-Bass-C2 (2).wav").toMaster();
     const casioSB = new Tone.Player("./BASS/synth/casio-synth-bass.wav").toMaster();
     
+
+    casioBass2.connect(dest);
+    casioBDB.connect(dest);
+    casioPulse.connect(dest);
+    casioQuickB.connect(dest);
+    casioSB.connect(dest);
   
     
     let index = 0;
@@ -108,14 +119,20 @@ function sequencerV2() {
 
 // guitar
 function sequencerV3() {
-    const casioBass2 = new Tone.Player("./GUITAR/acoustic/Kawai-K5000W-SteelGt1-C3.wav").toMaster();
-    const casioBDB = new Tone.Player("./GUITAR/acoustic/Ensoniq-SQ-1-ClassicGuitar-C5.wav").toMaster();
-    const casioPulse = new Tone.Player("./GUITAR/acoustic/Ensoniq-SQ-1-ClassicGuitar-C3.wav").toMaster();
+    const g1 = new Tone.Player("./GUITAR/acoustic/Kawai-K5000W-SteelGt1-C3.wav").toMaster();
+    const g2 = new Tone.Player("./GUITAR/acoustic/Ensoniq-SQ-1-ClassicGuitar-C5.wav").toMaster();
+    const g3 = new Tone.Player("./GUITAR/acoustic/Ensoniq-SQ-1-ClassicGuitar-C3.wav").toMaster();
 
-    const casioQuickB = new Tone.Player("./GUITAR/acoustic/E-Mu-Proteus-FX-AcStereo-C3.wav").toMaster();
-    const casioSB = new Tone.Player("./GUITAR/acoustic/Alesis-Fusion-Nylon-String-Guitar-C4.wav").toMaster();
+    const g4 = new Tone.Player("./GUITAR/acoustic/E-Mu-Proteus-FX-AcStereo-C3.wav").toMaster();
+    const g5 = new Tone.Player("./GUITAR/acoustic/Alesis-Fusion-Nylon-String-Guitar-C4.wav").toMaster();
     
   
+
+    g1.connect(dest);
+    g2.connect(dest);
+    g3.connect(dest);
+    g4.connect(dest);
+    g5.connect(dest);
     
     let index = 0;
 
@@ -132,28 +149,28 @@ function sequencerV3() {
             Tone.Transport.start();
         let step = index % 16;
         console.log(step);
-        let casioBass2Inputs = document.querySelector(`.c1 span:nth-child(${step + 1})`);
-        let casioBDBInputs = document.querySelector(`.c2 span:nth-child(${step + 1})`);
-        let casioPulseInputs = document.querySelector(`.c3 span:nth-child(${step + 1})`);
+        let g1Inputs = document.querySelector(`.c1 span:nth-child(${step + 1})`);
+        let g2Inputs = document.querySelector(`.c2 span:nth-child(${step + 1})`);
+        let g3Inputs = document.querySelector(`.c3 span:nth-child(${step + 1})`);
 
-        let casioQuickBInputs = document.querySelector(`.c4 span:nth-child(${step + 1})`);
-        let casioSBInputs = document.querySelector(`.c5 span:nth-child(${step + 1})`);
+        let g4Inputs = document.querySelector(`.c4 span:nth-child(${step + 1})`);
+        let g5Inputs = document.querySelector(`.c5 span:nth-child(${step + 1})`);
        
-        if (casioBass2Inputs.style.backgroundColor === 'goldenrod') {
-            casioBass2.start();
+        if (g1Inputs.style.backgroundColor === 'goldenrod') {
+            g1.start();
         }
-        if (casioBDBInputs.style.backgroundColor === 'goldenrod') {
-            casioBDB.start();
+        if (g2Inputs.style.backgroundColor === 'goldenrod') {
+            g2.start();
         }
-        if (casioPulseInputs.style.backgroundColor === 'goldenrod') {
-            casioPulse.start();
+        if (g3Inputs.style.backgroundColor === 'goldenrod') {
+            g3.start();
         }
 
-        if (casioQuickBInputs.style.backgroundColor === 'goldenrod') {
-            casioQuickB.start();
+        if (g4Inputs.style.backgroundColor === 'goldenrod') {
+            g4.start();
         }
-        if (casioSBInputs.style.backgroundColor === 'goldenrod') {
-            casioSB.start();
+        if (g5Inputs.style.backgroundColor === 'goldenrod') {
+            g5.start();
         }
         index++;
        
@@ -164,14 +181,20 @@ function sequencerV3() {
 // cymbal
 function sequencerV4() {
     
-    const casioBass2 = new Tone.Player("./z_CYMBALS/crash/Crash-Cymbal-1.wav").toMaster();
-    const casioBDB = new Tone.Player("./z_CYMBALS/crash/Crash-Cymbal-2.wav").toMaster();
-    const casioPulse = new Tone.Player("./z_CYMBALS/crash/Crash-Cymbal-3.wav").toMaster();
+    const c1 = new Tone.Player("./z_CYMBALS/crash/Crash-Cymbal-1.wav").toMaster();
+    const c2 = new Tone.Player("./z_CYMBALS/crash/Crash-Cymbal-2.wav").toMaster();
+    const c3 = new Tone.Player("./z_CYMBALS/crash/Crash-Cymbal-3.wav").toMaster();
 
-    const casioQuickB = new Tone.Player("./z_CYMBALS/crash/Crash-Cymbal-4.wav").toMaster();
-    const casioSB = new Tone.Player("./z_CYMBALS/crash/Crash-Cymbal-5.wav").toMaster();
+    const c4 = new Tone.Player("./z_CYMBALS/crash/Crash-Cymbal-4.wav").toMaster();
+    const c5 = new Tone.Player("./z_CYMBALS/crash/Crash-Cymbal-5.wav").toMaster();
     
   
+
+    c1.connect(dest);
+    c2.connect(dest);
+    c3.connect(dest);
+    c4.connect(dest);
+    c5.connect(dest);
     
     let index = 0;
 
@@ -188,28 +211,28 @@ function sequencerV4() {
             Tone.Transport.start();
         let step = index % 16;
         console.log(step);
-        let casioBass2Inputs = document.querySelector(`.c1 span:nth-child(${step + 1})`);
-        let casioBDBInputs = document.querySelector(`.c2 span:nth-child(${step + 1})`);
-        let casioPulseInputs = document.querySelector(`.c3 span:nth-child(${step + 1})`);
+        let c1Inputs = document.querySelector(`.c1 span:nth-child(${step + 1})`);
+        let c2Inputs = document.querySelector(`.c2 span:nth-child(${step + 1})`);
+        let c3Inputs = document.querySelector(`.c3 span:nth-child(${step + 1})`);
 
-        let casioQuickBInputs = document.querySelector(`.c4 span:nth-child(${step + 1})`);
-        let casioSBInputs = document.querySelector(`.c5 span:nth-child(${step + 1})`);
+        let c4Inputs = document.querySelector(`.c4 span:nth-child(${step + 1})`);
+        let c5Inputs = document.querySelector(`.c5 span:nth-child(${step + 1})`);
        
-        if (casioBass2Inputs.style.backgroundColor === 'goldenrod') {
-            casioBass2.start();
+        if (c1Inputs.style.backgroundColor === 'goldenrod') {
+            c1.start();
         }
-        if (casioBDBInputs.style.backgroundColor === 'goldenrod') {
-            casioBDB.start();
+        if (c2Inputs.style.backgroundColor === 'goldenrod') {
+            c2.start();
         }
-        if (casioPulseInputs.style.backgroundColor === 'goldenrod') {
-            casioPulse.start();
+        if (c3Inputs.style.backgroundColor === 'goldenrod') {
+            c3.start();
         }
 
-        if (casioQuickBInputs.style.backgroundColor === 'goldenrod') {
-            casioQuickB.start();
+        if (c4Inputs.style.backgroundColor === 'goldenrod') {
+            c4.start();
         }
-        if (casioSBInputs.style.backgroundColor === 'goldenrod') {
-            casioSB.start();
+        if (c5Inputs.style.backgroundColor === 'goldenrod') {
+            c5.start();
         }
         index++;
       
@@ -221,14 +244,20 @@ function sequencerV4() {
 // Percussions
 function sequencerV5() {
     
-    const casioBass2 = new Tone.Player("./Percussion/Kawai-K5000W-Marimba-C4.wav").toMaster();
-    const casioBDB = new Tone.Player("./Percussion/Kawai-K5000W-Glocken-C5.wav").toMaster();
-    const casioPulse = new Tone.Player("./Percussion/Kawai-K11-Open-Triangle.wav").toMaster();
+    const p1 = new Tone.Player("./Percussion/Kawai-K5000W-Marimba-C4.wav").toMaster();
+    const p2 = new Tone.Player("./Percussion/Kawai-K5000W-Glocken-C5.wav").toMaster();
+    const p3 = new Tone.Player("./Percussion/Kawai-K11-Open-Triangle.wav").toMaster();
 
-    const casioQuickB = new Tone.Player("./Percussion/E-Mu-Proteus-FX-Marimba-C3.wav").toMaster();
-    const casioSB = new Tone.Player("./Percussion/E-Mu-Proteus-2-Glockenspiel-C4.wav").toMaster();
+    const p4 = new Tone.Player("./Percussion/E-Mu-Proteus-FX-Marimba-C3.wav").toMaster();
+    const p5 = new Tone.Player("./Percussion/E-Mu-Proteus-2-Glockenspiel-C4.wav").toMaster();
     
-  
+    
+
+    p1.connect(dest);
+    p2.connect(dest);
+    p3.connect(dest);
+    p4.connect(dest);
+    p5.connect(dest);
     
     let index = 0;
 
@@ -245,28 +274,28 @@ function sequencerV5() {
             Tone.Transport.start();
         let step = index % 16;
         console.log(step);
-        let casioBass2Inputs = document.querySelector(`.c1 span:nth-child(${step + 1})`);
-        let casioBDBInputs = document.querySelector(`.c2 span:nth-child(${step + 1})`);
-        let casioPulseInputs = document.querySelector(`.c3 span:nth-child(${step + 1})`);
+        let p1Inputs = document.querySelector(`.c1 span:nth-child(${step + 1})`);
+        let p2Inputs = document.querySelector(`.c2 span:nth-child(${step + 1})`);
+        let p3Inputs = document.querySelector(`.c3 span:nth-child(${step + 1})`);
 
-        let casioQuickBInputs = document.querySelector(`.c4 span:nth-child(${step + 1})`);
-        let casioSBInputs = document.querySelector(`.c5 span:nth-child(${step + 1})`);
+        let p4Inputs = document.querySelector(`.c4 span:nth-child(${step + 1})`);
+        let p5Inputs = document.querySelector(`.c5 span:nth-child(${step + 1})`);
        
-        if (casioBass2Inputs.style.backgroundColor === 'goldenrod') {
-            casioBass2.start();
+        if (p1Inputs.style.backgroundColor === 'goldenrod') {
+            p1.start();
         }
-        if (casioBDBInputs.style.backgroundColor === 'goldenrod') {
-            casioBDB.start();
+        if (p2Inputs.style.backgroundColor === 'goldenrod') {
+            p2.start();
         }
-        if (casioPulseInputs.style.backgroundColor === 'goldenrod') {
-            casioPulse.start();
+        if (p3Inputs.style.backgroundColor === 'goldenrod') {
+            p3.start();
         }
 
-        if (casioQuickBInputs.style.backgroundColor === 'goldenrod') {
-            casioQuickB.start();
+        if (p4Inputs.style.backgroundColor === 'goldenrod') {
+            p4.start();
         }
-        if (casioSBInputs.style.backgroundColor === 'goldenrod') {
-            casioSB.start();
+        if (p5Inputs.style.backgroundColor === 'goldenrod') {
+            p5.start();
         }
         index++;
         
@@ -441,11 +470,6 @@ playBtn.onclick = () => {
     }
 }
 
-// sequencerV1();
-// sequencerV2();
-// sequencerV3();
-// sequencerV4();
-// sequencerV5();
 
 const bpmElem = document.querySelector('.song-maker input');
 bpmElem.onchange = (evt) => {

@@ -7,7 +7,6 @@ let ampEnv = document.querySelectorAll('.m-amp-env-title')[0];
 envs[0] = freqEnv;
 envs[1] = ampEnv;
 
-console.log( envs[0].nextElementSibling);
 
 // accordion effect
 for (let i = 0; i < 2; i++ ) {
@@ -22,8 +21,6 @@ for (let i = 0; i < 2; i++ ) {
             ebody.style.maxHeight = ebody.scrollHeight + "px";
     });
 }
-
-// attach events to triger sounds on duo synth
 
 
 

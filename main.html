@@ -5,20 +5,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <script src="https://cdn.jsdelivr.net/npm/p5@0.10.2/lib/p5.js"></script>
-    <!-- <script src="https://github.com/processing/p5.js-sound/blob/master/lib/p5.sound.js"></script> -->
-    <!-- <script src="p5.sound.js"></script> -->
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons"rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script src="https://unpkg.com/tone"></script>
-    <link rel="stylesheet" type="text/css" href="main.css"/>
-    <link rel="stylesheet" type="text/css" href="leftSide.css"/>
-    <link rel="stylesheet" type="text/css" href="rightSide.css"/>
-    <link rel="stylesheet" type="text/css" href="middleSide.css"/>
-    <link rel="stylesheet" type="text/css" href="accordion.css"/>
-    <link rel="stylesheet" type="text/css" href="monosynth.css"/>
-    <link rel="stylesheet" type="text/css" href="amsynth.css"/>
+    <link rel="stylesheet" type="text/css" href="./pageParts/main.css"/>
+    <link rel="stylesheet" type="text/css" href="./pageParts/leftSide.css"/>
+    <link rel="stylesheet" type="text/css" href="./pageParts/rightSide.css"/>
+    <link rel="stylesheet" type="text/css" href="./pageParts/middleSide.css"/>
+    <link rel="stylesheet" type="text/css" href="./synths/duoSynth/duoSynth.css"/>
+    <link rel="stylesheet" type="text/css" href="./synths/monoSynth/monosynth.css"/>
+    <link rel="stylesheet" type="text/css" href="./synths/amSynth/amsynth.css"/>
     <title>Audio Synth</title>
 </head>
 <body>
@@ -31,7 +29,6 @@
             <div class="instruments">
                 <h3>
                     INSTRUMENTS 
-                    <i id="instr" class="material-icons">keyboard_arrow_down</i>
                 </h3>
                 
                 <div class="drums">
@@ -54,9 +51,6 @@
                    
                     <span>Percussion</span>
                 </div>
-
-                
-
             </div>
 
             
@@ -64,7 +58,6 @@
             <div class="resources">
                 <h3>
                     RESOURCES
-                    <i id="rsrc"class="material-icons">keyboard_arrow_down</i>
                 </h3>
                 <div class="import">
                     <i class="material-icons">
@@ -80,7 +73,6 @@
             <div class="account">
                 <h3>
                     ACCOUNT
-                    <i id="acc"class="material-icons">keyboard_arrow_down</i>
                 </h3>
                 <div class="help">
                     <i class="material-icons">
@@ -277,30 +269,22 @@
                     <span class="amp-env-title">Amplitude Envelope</span>
                     <div class="amp-env">
                         <div class="attack">
-                            <span>Attack<span class="a-val"></span></span>
+                            <span>Attack</span>
                             <input type="range" step="0.01" min="0.01" max="2.00">
                         </div>
                         <div class="decay">
-                            <span>Decay<span class="d-val"></span></span>
+                            <span>Decay</span>
                             <input type="range" step="0.01" min="0.01" max="2.00">
                         </div>
                         <div class="sustain">
-                            <span>Sustain<span class="s-val"></span></span>
+                            <span>Sustain</span>
                             <input type="range" step="0.01" min="0.00" max="1.0">
                         </div>
                         <div class="release">
-                            <span>Release<span class="r-val"></span></span>
+                            <span>Release</span>
                             <input type="range" step="0.01" min="0.01" max="4.00">
                         </div>
                     </div>
-                    <!-- <div class="volume">
-                        <span class="volume-title">Volume</span>
-                        <input type="range" step="1" min="-60" max="0">
-                    </div>
-                    <div class="portamento">
-                        <span class="porta-title">Portamento</span>
-                        <input type="range" step="0.01" min="0.00" max="0.10">
-                    </div> -->
                     <span class="osc-type-v0">Oscillator Type</span>
                     <select class="osc-type">
                         <option value="sine">sine</option>
@@ -416,10 +400,7 @@
                              <option value="bandpass">bandpass</option>
                              <option value="highpass">highpass</option>
                              <option value="allpass">allpass</option>
-                             <option value="lowshelf">lowshelf</option>
-                             <option value="highshelf">highshelf</option>
-                             <option value="peaking">peaking</option>
-                             <option value="notch">notch</option>
+                             
                          </select>
                      </div>
                      <div class="rolloff">
@@ -647,7 +628,6 @@
             <div class="effects-visualizer">
                 <h3>
                     EFFECTS VISUALIZER
-                    <!-- <i class="material-icons">keyboard_arrow_down</i> -->
                 </h3>
                 <div class="visualizer">
                     <canvas style="width:261px; height:163px;" id="renderer"></canvas>
@@ -655,27 +635,22 @@
             </div>
 
             <div class="export">
-                
-               
-
                 <a download class="save-export">SAVE & EXPORT</a>
-                
             </div>
         </div>
     </div>
     
-
-    <!-- <audio controls ></audio> -->
     <div id="container"></div>
-    <script src="main.js"></script>
-    <script src="audio.js"></script>
-    <script src="accordion.js"></script>
-    <script src="monosynth.js"></script>
-    <script src="amsynth.js"></script>
-    <script src="musicmaker.js"></script>
-    <script src="recordSound.js"></script>
-    <script src="readSoundFiles.js"></script>
-    <script src="countUpTimer.js"></script>
-    <script src="countDownTimer.js"></script>
+    <script src="./pageParts/main.js"></script>
+    <script src="./synths/duoSynth/duoSynth.js"></script>
+    <script src="./synths/monoSynth/monosynth.js"></script>
+    <script src="./synths/amSynth/amsynth.js"></script>
+    <script src="./processSound/musicmaker.js"></script>
+    <script src="./processSound/recordSound.js"></script>
+    <script src="./processSound/readSoundFiles.js"></script>
+    <script src="./timer/countUpTimer.js"></script>
+    <script src="./timer/countDownTimer.js"></script>
+    <script src="./synths/synthControls.js"></script>
+    <script src="./processSound/visualizeRecordSound.js"></script>
 </body>
 </html>

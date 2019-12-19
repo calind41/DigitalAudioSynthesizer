@@ -9,8 +9,6 @@
 
 }
 
-
-
 .mono-synth  .osc-type-title {
     color: white;
     font-weight: bold;
@@ -112,9 +110,6 @@
     margin-top: -4px;
 }
 
-
-
-
 .mono-synth .m-freq-env-title {
     color: white;
     cursor: pointer;
@@ -131,7 +126,6 @@
     position:relative;
     max-height: 0;
     box-sizing: border-box;
-    /* padding: 5px; */
     transition: max-height 0.2s ease-out;
     overflow: hidden;
 }

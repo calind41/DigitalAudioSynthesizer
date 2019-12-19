@@ -1,9 +1,3 @@
-// let intervalID = setInterval(countTimer,1000);
-
-// later 
-// setInterval(function () {
-//     clearInterval(intervalID)},5000);
-
 var totalSeconds = 0;
 
 function countTimer() {

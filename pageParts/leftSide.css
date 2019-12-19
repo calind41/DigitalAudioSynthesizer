@@ -19,9 +19,6 @@
 
 
 .left-side .instruments h3,
-.left-side .effect h3,
-.left-side .effect .audio i,
-.left-side .effect .midi i,
 .left-side .resources h3,
 .left-side .resources .import i,
 .left-side .account h3,
@@ -39,10 +36,11 @@
 /* ------------------------------------------------------------------- */
 .left-side .instruments h3 {
     margin: 20px;
-    margin-top: 30px;
+    margin-top: 59px;
     margin-bottom: 5px;
     border-top: 1px solid white;
     font-size: 17px;
+    padding-top: 10px;
 }
 .left-side .instruments h3 i {
     position:relative;
@@ -56,19 +54,22 @@
 .left-side .instruments .bass,
 .left-side .instruments .cymbal,
 .left-side .instruments .percussion,
-.left-side .effect h3,
-.left-side .effect .audio,
-.left-side .effect .midi,
 .left-side .resources h3,
 .left-side .resources .import,
-.left-side .resources .library,
 .left-side .account h3,
-.left-side .account .help,
-.left-side .account .settings {
+.left-side .account .help {
     margin-left: 20px;
     margin-top: 5px;
     font-size: 14px;
     font-weight: normal;
+}
+
+.left-side .instruments .drums span:hover,
+.left-side .instruments .guitar span:hover,
+.left-side .instruments .bass span:hover,
+.left-side .instruments .cymbal span:hover,
+.left-side .instruments .percussion span:hover {
+    color: gray;
 }
 
 
@@ -77,12 +78,8 @@
 .left-side .instruments .bass i,
 .left-side .instruments .cymbal i,
 .left-side .instruments .percussion i,
-.left-side .effect .audio i,
-.left-side .effect .midi i,
 .left-side .resources .import i,
-.left-side .resources .library i,
-.left-side .account .help i,
-.left-side .account .settings i {
+.left-side .account .help i {
     font-size: 23px;
     position:relative;
     top: 5px;
@@ -95,7 +92,7 @@
     margin-bottom: 5px;
     border-top: 1px solid white;
     font-size: 17px;
-
+    padding-top: 10px;
 }
 .left-side .resources h3 i {
     position:relative;
@@ -104,8 +101,7 @@
     font-size: 30px;
 }
 
-.left-side .resources .import i,
-.left-side .resources .library i {
+.left-side .resources .import i {
     font-size: 23px;
 }
 
@@ -117,6 +113,7 @@
     margin-bottom: 5px;
     border-top: 1px solid white;
     font-size: 17px;
+    padding-top: 10px;
 
 }
 
@@ -141,8 +138,7 @@
 .left-side .instruments .bass span,
 .left-side .instruments .cymbal span,
 .left-side .instruments .percussion span,
-.left-side .account .help span,
-.left-side .account .settings span {
+.left-side .account .help span {
     color: white;
     cursor: pointer;
 }

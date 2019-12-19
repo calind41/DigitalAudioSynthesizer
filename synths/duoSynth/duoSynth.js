@@ -23,7 +23,6 @@ for (let i = 0; i < 4; i++ ) {
     });
 }
 
-// attach events to triger sounds on duo synth
 
 
 

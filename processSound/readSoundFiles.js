@@ -32,7 +32,3 @@ function playFile(file) {
 
 player = document.getElementById('player');
 document.getElementById('files').addEventListener('change',handleFileSelect,false);
-
-document.getElementById('play').onclick = function () {
-    // player.play();
-}

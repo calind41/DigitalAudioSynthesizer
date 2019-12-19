@@ -24,9 +24,7 @@
     cursor: pointer;
     font-size: 23px;
 }
-/* .right-side .record-time .clock-icon i {
-    font-size: 20px;
-} */
+
 .right-side .record-time .options-i {
     color: rgb(122, 113, 113);
     position: relative;
@@ -153,30 +151,6 @@
     left: 20px;
     height: 60%;
 }
-
-.right-side .export {
-    height: 16%;
-    position: relative;
-    bottom: 60px;
-    width: 93%;
-}
-.right-side .export h3 {
-    border-top: 1px solid white;
-    width: 93%;
-    padding-top: 10px;
-    display: flex;
-    justify-content: space-between;
-    color: white;
-    position: relative;
-    left: 20px;
-    top: 32px;
-    margin-bottom: 20px;
-}
-.right-side .export h3 i {
-    position: relative;
-    right: 0;
-}
-
 
 /* ------------------------------------------------------------------------------------------------------- */
 
