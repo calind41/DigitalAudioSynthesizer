@@ -1,0 +1,153 @@
+* {
+    font-family: 'Roboto', sans-serif;
+
+}
+.left-side {
+    background-color: rgb(48, 43, 43);
+    width: 15%;
+    height: 100vh;
+}
+
+.wrapper .left-side .search {
+    color: white;
+    position: relative;
+    left: 23px;
+    top: 20px;
+    font-size: 32px;
+}
+
+
+
+.left-side .instruments h3,
+.left-side .resources h3,
+.left-side .resources .import i,
+.left-side .account h3,
+.left-side .account .help i {
+    color: white;
+    cursor: pointer;
+}
+.left-side .instruments h3 #instr,
+.left-side .account #acc,
+.left-side .resources #rsrc {
+    display: inline-block;
+    font-size: 23px;
+}
+
+/* ------------------------------------------------------------------- */
+.left-side .instruments h3 {
+    margin: 20px;
+    margin-top: 59px;
+    margin-bottom: 5px;
+    border-top: 1px solid white;
+    font-size: 17px;
+    padding-top: 10px;
+}
+.left-side .instruments h3 i {
+    position:relative;
+    top: 9px;
+    left: 50px;
+    font-size: 30px;
+}
+
+.left-side .instruments .drums,
+.left-side .instruments .guitar,
+.left-side .instruments .bass,
+.left-side .instruments .cymbal,
+.left-side .instruments .percussion,
+.left-side .resources h3,
+.left-side .resources .import,
+.left-side .account h3,
+.left-side .account .help {
+    margin-left: 20px;
+    margin-top: 5px;
+    font-size: 14px;
+    font-weight: normal;
+}
+
+.left-side .instruments .drums span:hover,
+.left-side .instruments .guitar span:hover,
+.left-side .instruments .bass span:hover,
+.left-side .instruments .cymbal span:hover,
+.left-side .instruments .percussion span:hover {
+    color: gray;
+}
+
+
+.left-side .instruments .drums i,
+.left-side .instruments .guitar i,
+.left-side .instruments .bass i,
+.left-side .instruments .cymbal i,
+.left-side .instruments .percussion i,
+.left-side .resources .import i,
+.left-side .account .help i {
+    font-size: 23px;
+    position:relative;
+    top: 5px;
+}
+
+
+
+.left-side .resources h3 {
+    margin: 20px;
+    margin-bottom: 5px;
+    border-top: 1px solid white;
+    font-size: 17px;
+    padding-top: 10px;
+}
+.left-side .resources h3 i {
+    position:relative;
+    left: 72px;
+    top: 9px;
+    font-size: 30px;
+}
+
+.left-side .resources .import i {
+    font-size: 23px;
+}
+
+
+/* ------------------------------------------------------------------- */
+
+.left-side .account h3 {
+    margin: 20px;
+    margin-bottom: 5px;
+    border-top: 1px solid white;
+    font-size: 17px;
+    padding-top: 10px;
+
+}
+
+.left-side .account h3 #acc {
+    position: relative;
+    left: 100px;
+    top: 9px;
+    left: 86px;
+    font-size: 22px;
+}
+
+
+.left-side .account .help i,
+.left-side .resources .import i {
+    font-size: 20px;
+}
+
+/* ---------------------------------------------------------------- */
+
+.left-side .instruments .drums span,
+.left-side .instruments .guitar span,
+.left-side .instruments .bass span,
+.left-side .instruments .cymbal span,
+.left-side .instruments .percussion span,
+.left-side .account .help span {
+    color: white;
+    cursor: pointer;
+}
+
+.left-side .instruments .drums,
+.left-side .instruments .guitar,
+.left-side .instruments .bass,
+.left-side .instruments .cymbal,
+.left-side .instruments .percussion {
+    position: relative;
+    left: 5px;
+}

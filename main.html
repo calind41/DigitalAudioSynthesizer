@@ -1,0 +1,656 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="https://cdn.jsdelivr.net/npm/p5@0.10.2/lib/p5.js"></script>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons"rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://unpkg.com/tone"></script>
+    <link rel="stylesheet" type="text/css" href="./pageParts/main.css"/>
+    <link rel="stylesheet" type="text/css" href="./pageParts/leftSide.css"/>
+    <link rel="stylesheet" type="text/css" href="./pageParts/rightSide.css"/>
+    <link rel="stylesheet" type="text/css" href="./pageParts/middleSide.css"/>
+    <link rel="stylesheet" type="text/css" href="./synths/duoSynth/duoSynth.css"/>
+    <link rel="stylesheet" type="text/css" href="./synths/monoSynth/monosynth.css"/>
+    <link rel="stylesheet" type="text/css" href="./synths/amSynth/amsynth.css"/>
+    <title>Audio Synth</title>
+</head>
+<body>
+    <div class ="wrapper">
+        <div class="left-side">
+            <div class="search">
+              SOUND PLAY
+            </div>
+
+            <div class="instruments">
+                <h3>
+                    INSTRUMENTS 
+                </h3>
+                
+                <div class="drums">
+                    
+                    <span>Drums</span>
+                </div>
+                <div class="bass">
+                    <span>Bass</span>
+                </div>
+                <div class="guitar">
+                    
+                    <span>Guitars</span>
+                </div>
+                
+                <div class="cymbal">
+                   
+                    <span>Cymbal</span>
+                </div>
+                <div class="percussion">
+                   
+                    <span>Percussion</span>
+                </div>
+            </div>
+
+            
+
+            <div class="resources">
+                <h3>
+                    RESOURCES
+                </h3>
+                <div class="import">
+                    <i class="material-icons">
+                        get_app
+                    </i>
+                    <label for="files" class="custom-file-upload">
+                         Upload Song
+                    </label>
+                    <input id="files" type="file"/>
+                </div>
+            </div>
+
+            <div class="account">
+                <h3>
+                    ACCOUNT
+                </h3>
+                <div class="help">
+                    <i class="material-icons">
+                        view_list
+                    </i>
+                    <span>Help</span>
+                </div>
+            </div>
+        </div>
+        <div class="middle">
+            <div class="controls">
+                <select id="synth-type">
+                    <option value="0">Select Synth Type</option>
+                    <option value="1">Duo Synth</option>
+                    <option value="2">Mono Synth</option>
+                    <option value="3">AM Synth</option>
+                </select>
+            </div>
+            <div class="piano-wrap">
+               <div class="piano-tiles">
+                   
+                   <div id="wt1" class="white-tile">
+                       <span>A</span>
+                   </div>
+                   <div id="wt2"class="white-tile">
+                        <span>S</span>
+                   </div>
+                   <div id="wt3"class="white-tile">
+                        <span>D</span>
+                   </div>
+                   <div id="wt4" class="white-tile">
+                        <span>F</span>
+                   </div>
+                   <div id="wt5" class="white-tile">
+                        <span>G</span>
+                   </div>
+                   <div id="wt6" class="white-tile">
+                        <span>H</span>
+                   </div>
+                   <div id="wt7" class="white-tile">
+                        <span>J</span>
+                   </div>
+
+                   
+                   
+                   <div id="wt8" class="white-tile">
+                        <span>K</span>
+                   </div>
+                   <div id="wt9" class="white-tile">
+                        <span>L</span>
+                   </div>
+                   <div id="wt10" class="white-tile">
+                        <span>;</span>
+                   </div>
+                   <div id="wt11" class="white-tile">
+                        <span>'</span>
+                   </div>
+                   <div id="wt12" class="white-tile">
+                       <span>Z</span>
+                   </div>
+                   <div id="wt13" class="white-tile">
+                        <span>X</span>
+                   </div>
+                   <div id="wt14"  class="white-tile">
+                        <span>C</span>
+                   </div>
+
+                   
+                   
+                   <div id="wt15" class="white-tile">
+                        <span>V</span>
+                   </div>
+                   <div id="wt16" class="white-tile">
+                        <span>B</span>
+                   </div>
+                   <div id="wt17" class="white-tile">
+                        <span>N</span>
+                   </div>
+                   <div id="wt18" class="white-tile">
+                        <span>M</span>
+                   </div>
+                   <div id="wt19" class="white-tile">
+                        <span>,</span>
+                   </div>
+                   <div id="wt20" class="white-tile">
+                        <span>.</span>
+                   </div>
+                   <div id="wt21" class="white-tile">
+                        <span>/</span>
+                   </div>
+
+
+
+                   <!-- black tiles -->
+                   <div class="btile-wrapper">
+                       <div id='bt1' class="black-tile1">
+                           <span>q</span>
+                       </div>
+                       <div id='bt2' class="black-tile2">
+                            <span>w</span>
+                        </div>
+
+
+                        <div id='bt3' class="black-tile3">
+                            <span>e</span>
+                        </div>
+                        <div id='bt4' class="black-tile4">
+                            <span>r</span>
+                        </div>
+                        <div id='bt5' class="black-tile5">
+                            <span>t</span>
+                        </div>
+
+
+
+                        <div id='bt6' class="black-tile6">
+                            <span>y</span>
+                        </div>
+                        <div id='bt7' class="black-tile7">
+                            <span>u</span> 
+                        </div>
+
+
+                        <div id='bt8' class="black-tile8">
+                            <span>i</span>
+                        </div>
+                        <div id='bt9' class="black-tile9">
+                            <span>o</span>
+                        </div>
+                        <div id='bt10' class="black-tile10">
+                            <span>p</span>
+                        </div>
+
+
+
+                        <div id='bt11' class="black-tile11">
+                            <span>[</span>
+                        </div>
+                        <div id='bt12' class="black-tile12">
+                            <span>]</span>
+                        </div>
+
+
+
+                        <div id='bt13' class="black-tile13">
+                            <span>0</span>
+                        </div>
+                        <div id='bt14' class="black-tile14">
+                            <span>-</span>
+                        </div>
+                        <div id='bt15' class="black-tile15">
+                            <span>=</span>
+                        </div>
+                   </div>
+               </div>
+
+            </div>
+            <div class="duo-synth">
+                <div class="vibrato-amount">
+                    <span>Vibrato Amount</span>
+                    <input type="range" step="0.01" min="0.5" max="4.0">
+                </div>
+                <div class="vibrato-rate">
+                    <span>Vibrato Rate</span>
+                    <input type="range" step="0.01" min="0.5" max="4.0">
+                </div>
+                <div class="harmonicity">
+                    <span>Harmonicity</span>
+                    <input type="range" step="0.01" min="0.5" max="4.0">
+                </div>
+
+                <div class="voices">
+                    <span class="voice0-lbl">Voice 0</span>
+                    <br>
+                    <span class="freq-env-title">Frequency Envelope</span>
+                    <div class="freq-env">
+                        <div class="attack">
+                            <span>Attack</span>
+                            <input type="range" step="0.01" min="0.01" max="2.00">
+                        </div>
+                        <div class="decay">
+                            <span>Decay</span>
+                            <input type="range" step="0.01" min="0.01" max="2.00">
+                        </div>
+                        <div class="sustain">
+                            <span>Sustain</span>
+                            <input type="range" step="0.01" min="0" max="1">
+                        </div>
+                        <div class="release">
+                            <span>Release</span>
+                            <input type="range" step="0.01" min="0.01" max="4.00">
+                        </div>
+                    </div>
+                    <span class="amp-env-title">Amplitude Envelope</span>
+                    <div class="amp-env">
+                        <div class="attack">
+                            <span>Attack</span>
+                            <input type="range" step="0.01" min="0.01" max="2.00">
+                        </div>
+                        <div class="decay">
+                            <span>Decay</span>
+                            <input type="range" step="0.01" min="0.01" max="2.00">
+                        </div>
+                        <div class="sustain">
+                            <span>Sustain</span>
+                            <input type="range" step="0.01" min="0.00" max="1.0">
+                        </div>
+                        <div class="release">
+                            <span>Release</span>
+                            <input type="range" step="0.01" min="0.01" max="4.00">
+                        </div>
+                    </div>
+                    <span class="osc-type-v0">Oscillator Type</span>
+                    <select class="osc-type">
+                        <option value="sine">sine</option>
+                        <option value="square">square</option>
+                        <option value="sawtooth">sawtooth</option>
+                    </select>
+                    <br>
+                   
+                    
+                </div>
+                <div class="voice1">
+                    <span class="voice1-lbl">Voice 1</span>
+                    <br>
+                    <span class="freq-env-title1">Frequency Envelope</span>
+                    <div class="freq-env1">  <!-- 14 -->
+                        <div class="attack">
+                            <span>Attack </span>
+                            <input type="range" step="0.01" min="0.01" max="2.00">
+                        </div>
+                        <div class="decay">
+                            <span>Decay</span>
+                            <input type="range" step="0.01" min="0.01" max="2.00">
+                        </div>
+                        <div class="sustain">
+                            <span>Sustain</span>
+                            <input type="range" step="0.01" min="0.00" max="1.00">
+                        </div>
+                        <div class="release">
+                            <span>Release</span>
+                            <input type="range" step="0.01" min="0.01" max="4.00">
+                        </div>
+                    </div>
+                    <span class="amp-env-title1">Amplitude Envelope</span>
+                    <div class="amp-env1">
+                        <div class="attack">
+                            <span>Attack</span>
+                            <input type="range" step="0.01" min="0.01" max="2.00">
+                        </div>
+                        <div class="decay">
+                            <span>Decay</span>
+                            <input type="range" step="0.01" min="0.01" max="2.00">
+                        </div>
+                        <div class="sustain">
+                            <span>Sustain</span>
+                            <input type="range" step="0.01" min="0.00" max="1.00">
+                        </div>
+                        <div class="release">
+                            <span>Release</span>
+                            <input type="range" step="0.01" min="0.01" max="4.00">
+                        </div>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="mono-synth">
+                 <!-- for voice 0 -->
+                 
+                 <span class="m-freq-env-title">Frequency Envelope</span>
+                 <div class="freq-env">
+                     <div class="attack">
+                         <span>Attack</span>
+                         <input type="range" step="0.01" min="0.01" max="2.00">
+                     </div>
+                     <div class="decay">
+                         <span>Decay</span>
+                         <input type="range" step="0.01" min="0.01" max="2.00">
+                     </div>
+                     <div class="sustain">
+                         <span>Sustain</span>
+                         <input type="range" step="0.01" min="0" max="1">
+                     </div>
+                     <div class="release">
+                         <span>Release</span>
+                         <input type="range" step="0.01" min="0.01" max="4.00">
+                     </div>
+                 </div>
+                 <span class="m-amp-env-title">Amplitude Envelope</span>
+                 <div class="amp-env">
+                     <div class="attack">
+                         <span>Attack</span>
+                         <input type="range" step="0.01" min="0.01" max="2.00">
+                     </div>
+                     <div class="decay">
+                         <span>Decay</span>
+                         <input type="range" step="0.01" min="0.01" max="2.00">
+                     </div>
+                     <div class="sustain">
+                         <span>Sustain</span>
+                         <input type="range" step="0.01" min="0.00" max="1.0">
+                     </div>
+                     <div class="release">
+                         <span>Release</span>
+                         <input type="range" step="0.01" min="0.01" max="4.00">
+                     </div>
+                 </div>
+                 <span class="osc-type-title">Oscillator Type</span>
+                 <select class="osc-type">
+                     <option value="sine">sine</option>
+                     <option value="square">square</option>
+                     <option value="sawtooth">sawtooth</option>
+                 </select>
+                 <br>
+                 <div class="filter">
+                     <div class="q">
+                         <span class="q">Q</span>
+                         <input type="range" step="0.1" min="0" max="10">
+                     </div>
+                     <div class="filter-type">
+                         <span class="filter-type-title">Type</span>
+                         <select class="type">
+                             <option value="lowpass">lowpass</option>
+                             <option value="bandpass">bandpass</option>
+                             <option value="highpass">highpass</option>
+                             <option value="allpass">allpass</option>
+                             
+                         </select>
+                     </div>
+                     <div class="rolloff">
+                         <span class="rolloff-title">Rolloff</span>
+                         <select>
+                            <option value="-12">-12</option>
+                            <option value="-24">-24</option>
+                            <option value="-48">-48</option>
+                            <option value="-96">-96</option>
+                        </select>
+                     </div>
+                 </div>
+            </div>
+
+            <div class="am-synth">
+                <div class="harmonicity">
+                    <span class="harmonicity-title">Harmonicity</span>
+                    <input type="range" min="0.5" max="4.00" step="0.01"/>
+                </div>
+                <span class="am-amp-env-title">Amplitude Envelope</span>
+                <div class="am-amp-env">
+                    <div class="attack">
+                        <span>Attack</span>
+                        <input type="range" min="0.01" max="2.00" step="0.01"/>
+                    </div>
+                    <div class="decay">
+                        <span>Decay</span>
+                        <input type="range" min="0.01" max="2.00" step="0.01"/>
+                    </div>
+                    <div class="sustain">
+                        <span>Sustain</span>
+                        <input type="range" min="0.00" max="1" step="0.01"/>
+                    </div>
+                    <div class="release">
+                        <span>Release</span>
+                        <input type="range" min="0.01" max="4.00" step="0.01"/>
+                    </div>
+                </div>
+                <div class="modulation-type">
+                    <span>Modulation Type</span>
+                    <select>
+                        <option value="square">square</option>
+                        <option value="sine">sine</option>
+                        <option value="sawtooth">sawtooth</option>
+                    </select>
+                </div>
+                <span class="modulation-env-title">Modulation Envelope</span>
+                <div class="modulation-env">
+                     <div class="attack">
+                        <span>Attack</span>
+                        <input type="range" min="0.01" max="2.00" step="0.01"/>
+                    </div>
+                    <div class="decay">
+                        <span>Decay</span>
+                        <input type="range" min="0.01" max="2.00" step="0.01"/>
+                    </div>
+                    <div class="sustain">
+                        <span>Sustain</span>
+                        <input type="range" min="0.00" max="1" step="0.01"/>
+                    </div>
+                    <div class="release">
+                        <span>Release</span>
+                        <input type="range" min="0.01" max="4" step="0.01"/>
+                    </div>
+                </div>
+                <div class="am-osc-type">
+                    <span>Oscillator Type</span>
+                    <select>
+                        <option value="sine">Sine</option>
+                        <option value="square">Square</option>
+                        <option value="sawtooth">Sawtooth</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="song-maker">
+                <button>Stop</button>
+                <button class="play">Play</button>
+                <label id="bpmVal"name="value">bpm: 135</label>
+                <input type="range" min="30" max="240" step="1">
+                <div class="c1">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    
+                    
+                </div>
+                <div class="c2">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+                <div class="c3">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+                <div class="c4">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+                <div class="c5">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </div>
+
+        </div>
+        <div class="right-side">
+            <div class="record-time">
+                <div class="timer">
+                  0h:0m:0s
+                </div>
+                <span class="clock-icon">
+                    <i class="material-icons">
+                        access_time
+                    </i>
+                </span>
+                <span class="options-i">
+                 
+                </span>
+            </div>
+
+            <div class="record-controls">
+                <span id="playbtn" class="play">
+                    <i class="material-icons">
+                        play_arrow
+                    </i>
+                   
+                </span>
+                <span class="stop">
+                    <i class="material-icons">
+                        stop
+                    </i>
+                </span>
+                <span class="rec-state">
+                    <i class="material-icons">
+                        adjust
+                    </i>
+                    <span id="start_record" class="r-lbl">REC</span>
+                </span>
+                <span class="tempo">
+                    Speed 
+                    <span class="t-nr">1</span>
+                    <span class="change-tempo">
+                        <i class="material-icons">
+                            expand_less
+                        </i>
+                        <i class="material-icons">
+                            expand_more
+                        </i>
+                    </span>
+                </span>
+            </div>
+
+            
+
+            <div class="effects-visualizer">
+                <h3>
+                    EFFECTS VISUALIZER
+                </h3>
+                <div class="visualizer">
+                    <canvas style="width:261px; height:163px;" id="renderer"></canvas>
+                </div>
+            </div>
+
+            <div class="export">
+                <a download class="save-export">SAVE & EXPORT</a>
+            </div>
+        </div>
+    </div>
+    
+    <div id="container"></div>
+    <script src="./pageParts/main.js"></script>
+    <script src="./synths/duoSynth/duoSynth.js"></script>
+    <script src="./synths/monoSynth/monosynth.js"></script>
+    <script src="./synths/amSynth/amsynth.js"></script>
+    <script src="./processSound/musicmaker.js"></script>
+    <script src="./processSound/recordSound.js"></script>
+    <script src="./processSound/readSoundFiles.js"></script>
+    <script src="./timer/countUpTimer.js"></script>
+    <script src="./timer/countDownTimer.js"></script>
+    <script src="./synths/synthControls.js"></script>
+    <script src="./processSound/visualizeRecordSound.js"></script>
+</body>
+</html>

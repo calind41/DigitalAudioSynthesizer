@@ -1,0 +1,20 @@
+{
+  "name": "DigitalAudioSynthesizer",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "deploy": "gh-pages -d ."
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/calind41/DigitalAudioSynthesizer.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/calind41/DigitalAudioSynthesizer/issues"
+  },
+  "homepage": "https://github.com/calind41/DigitalAudioSynthesizer#readme"
+}

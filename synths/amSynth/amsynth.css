@@ -1,0 +1,136 @@
+
+.am-synth {
+    display: none;
+    position: relative;
+    left: 41%;
+    top: 5%;
+    width: 50%;
+    height: 20%;  
+}
+
+.am-synth  .am-osc-type span {
+    color: white;
+    font-size: 14px;
+}
+
+.am-synth .am-amp-env-title,
+.am-synth .am-amp-env {
+    position: relative;
+    top: 5px;
+}
+
+.am-synth .modulation-type {
+    position: relative;
+    top: 9px;
+}
+.am-synth .modulation-env-title,
+.am-synth .modulation-env {
+    position: relative;
+    top: 12px;
+}
+
+.am-synth .am-osc-type {
+    position: relative;
+    top: 18px;
+    
+}
+
+
+.am-synth  .am-amp-env .attack span,
+.am-synth  .am-amp-env .decay span,
+.am-synth  .am-amp-env .sustain span,
+.am-synth  .am-amp-env .release span,
+.am-synth  .modulation-env .attack span,
+.am-synth  .modulation-env .decay span,
+.am-synth  .modulation-env .sustain span,
+.am-synth  .modulation-env .release span {
+    color: goldenrod;
+    opacity: 0.5;
+}
+
+.am-synth  .am-amp-env .attack input,
+.am-synth  .am-amp-env .decay input,
+.am-synth  .am-amp-env .sustain input,
+.am-synth  .am-amp-env .release input,
+.am-synth  .modulation-env .attack input,
+.am-synth  .modulation-env .decay input,
+.am-synth  .modulation-env .sustain input,
+.am-synth  .modulation-env .release input,
+.am-synth .harmonicity input {
+    position: relative;
+    -webkit-appearance: none;
+    top: -1px;
+    left: 14px;
+}
+
+.am-synth  .am-amp-env .attack input::-webkit-slider-runnable-track,
+.am-synth  .am-amp-env .decay input::-webkit-slider-runnable-track,
+.am-synth  .am-amp-env .sustain input::-webkit-slider-runnable-track,
+.am-synth  .am-amp-env .release input::-webkit-slider-runnable-track,
+.am-synth  .modulation-env .attack input::-webkit-slider-runnable-track,
+.am-synth  .modulation-env .decay input::-webkit-slider-runnable-track,
+.am-synth  .modulation-env .sustain input::-webkit-slider-runnable-track,
+.am-synth  .modulation-env .release input::-webkit-slider-runnable-track,
+.am-synth .harmonicity input::-webkit-slider-runnable-track {
+    width: 320px;
+    height: 7px;
+    background: #ddd;
+    border: none;
+    border-radius: 3px;
+}
+
+
+.am-synth  .am-amp-env .attack input::-webkit-slider-thumb,
+.am-synth  .am-amp-env .decay input::-webkit-slider-thumb,
+.am-synth  .am-amp-env .sustain input::-webkit-slider-thumb,
+.am-synth  .am-amp-env .release input::-webkit-slider-thumb,
+.am-synth  .modulation-env .attack input::-webkit-slider-thumb,
+.am-synth  .modulation-env .decay input::-webkit-slider-thumb,
+.am-synth  .modulation-env .sustain input::-webkit-slider-thumb,
+.am-synth  .modulation-env .release input::-webkit-slider-thumb,
+.am-synth .harmonicity input::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    border: none;
+    height: 16px;
+    width: 16px;
+    border-radius: 50%;
+    background: goldenrod;
+    margin-top: -4px;
+}
+
+
+.am-synth .m-freq-env-title {
+    color: white;
+    cursor: pointer;
+    transition: 0.4s;
+}
+.am-synth .m-amp-env-title {
+    color: white;
+    cursor: pointer;
+    transition: 0.4s;
+}
+
+.am-synth .am-amp-env {
+   
+    position:relative;
+    max-height: 0;
+    box-sizing: border-box;
+    transition: max-height 0.2s ease-out;
+    overflow: hidden;
+}
+.am-synth .modulation-env  {
+    position: relative;
+    box-sizing: border-box;
+    max-height: 0;
+    transition: max-height 0.2s ease-out;
+    overflow: hidden;
+}
+
+
+.am-synth .am-amp-env-title,
+.am-synth .modulation-env-title,
+.am-synth .modulation-type span,
+.am-synth .harmonicity span {
+    color: white;
+    cursor: pointer;
+}
