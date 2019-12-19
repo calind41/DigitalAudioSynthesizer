@@ -16,8 +16,5 @@
   "bugs": {
     "url": "https://github.com/calind41/DigitalAudioSynthesizer/issues"
   },
-  "homepage": "https://calind41.github.io/myapp",
-  "dependencies": {
-    "gh-pages": "^2.1.1"
-  }
+  "homepage": "https://github.com/calind41/DigitalAudioSynthesizer#readme"
 }
