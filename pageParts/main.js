@@ -194,18 +194,15 @@ window.onkeydown = (evt) => {
         case 97:
         case 65: {
             whiteTiles[0].style.top='2%';
-            whiteTiles[0].style.backgroundColor = 'red';
+            whiteTiles[0].style.backgroundColor = 'rgb(224, 159, 17)';
             let idx = Number(document.getElementById('synth-type').value);
             synths[idx-1].triggerAttackRelease('c3','7n');
-        
-            
-
             break;
         }
         case 115:
         case 83: {
             whiteTiles[1].style.top='2%';
-            whiteTiles[1].style.backgroundColor = 'red';
+            whiteTiles[1].style.backgroundColor = 'rgb(224, 159, 17)';
             let idx = Number(document.getElementById('synth-type').value);
             synths[idx-1].triggerAttackRelease('d3','7n');
             break;
@@ -213,7 +210,7 @@ window.onkeydown = (evt) => {
         case 100:
         case 68: {
             whiteTiles[2].style.top='2%';
-            whiteTiles[2].style.backgroundColor = 'red';
+            whiteTiles[2].style.backgroundColor = 'rgb(224, 159, 17)';
             let idx = Number(document.getElementById('synth-type').value);
             synths[idx-1].triggerAttackRelease('e3','7n');
             break;
@@ -221,7 +218,7 @@ window.onkeydown = (evt) => {
         case 102:
         case 70: {
             whiteTiles[3].style.top='2%';
-            whiteTiles[3].style.backgroundColor = 'red';
+            whiteTiles[3].style.backgroundColor = 'rgb(224, 159, 17)';
             let idx = Number(document.getElementById('synth-type').value);
             synths[idx-1].triggerAttackRelease('f3','7n');
             break;
@@ -229,7 +226,7 @@ window.onkeydown = (evt) => {
         case 103:
         case 71: {
             whiteTiles[4].style.top='2%';
-            whiteTiles[4].style.backgroundColor = 'red';
+            whiteTiles[4].style.backgroundColor = 'rgb(224, 159, 17)';
             let idx = Number(sel.value);
             synths[idx-1].triggerAttackRelease('g3','7n');
             break;
@@ -237,7 +234,7 @@ window.onkeydown = (evt) => {
         case 104:
         case 72: {
             whiteTiles[5].style.top='2%';
-            whiteTiles[5].style.backgroundColor = 'red';
+            whiteTiles[5].style.backgroundColor = 'rgb(224, 159, 17)';
             let idx = Number(sel.value);
             synths[idx-1].triggerAttackRelease('a3','7n');
             break;
@@ -245,7 +242,7 @@ window.onkeydown = (evt) => {
         case 106:
         case 74: {
             whiteTiles[6].style.top='2%';
-            whiteTiles[6].style.backgroundColor = 'red';
+            whiteTiles[6].style.backgroundColor = 'rgb(224, 159, 17)';
             let idx = Number(sel.value);
             synths[idx-1].triggerAttackRelease('b3','7n');
             break;
@@ -253,7 +250,7 @@ window.onkeydown = (evt) => {
         case 107:
         case 75: {
             whiteTiles[7].style.top='2%';
-            whiteTiles[7].style.backgroundColor = 'red';
+            whiteTiles[7].style.backgroundColor = 'rgb(224, 159, 17)';
             let idx = Number(sel.value);
             synths[idx-1].triggerAttackRelease('c4','7n');
             break;
@@ -261,21 +258,21 @@ window.onkeydown = (evt) => {
         case 108: 
         case 76: {
             whiteTiles[8].style.top='2%';
-            whiteTiles[8].style.backgroundColor = 'red';
+            whiteTiles[8].style.backgroundColor = 'rgb(224, 159, 17)';
             let idx = Number(sel.value);
             synths[idx-1].triggerAttackRelease('d4','7n');
             break;
         }
         case 186: {
             whiteTiles[9].style.top='2%';
-            whiteTiles[9].style.backgroundColor = 'red';
+            whiteTiles[9].style.backgroundColor = 'rgb(224, 159, 17)';
             let idx = Number(sel.value);
             synths[idx-1].triggerAttackRelease('e4','7n');
             break;
         }
         case 222: {
             whiteTiles[10].style.top='2%';
-            whiteTiles[10].style.backgroundColor = 'red';
+            whiteTiles[10].style.backgroundColor = 'rgb(224, 159, 17)';
             let idx = Number(sel.value);
             synths[idx-1].triggerAttackRelease('f4','7n');
             break;
@@ -283,7 +280,7 @@ window.onkeydown = (evt) => {
         case 122:
         case 90: {
             whiteTiles[11].style.top='2%';
-            whiteTiles[11].style.backgroundColor = 'red';
+            whiteTiles[11].style.backgroundColor = 'rgb(224, 159, 17)';
             let idx = Number(sel.value);
             synths[idx-1].triggerAttackRelease('g4','7n');
             break;
@@ -291,7 +288,7 @@ window.onkeydown = (evt) => {
         case 120:
         case 88: {
             whiteTiles[12].style.top='2%';
-            whiteTiles[12].style.backgroundColor = 'red';
+            whiteTiles[12].style.backgroundColor = 'rgb(224, 159, 17)';
             let idx = Number(sel.value);
             synths[idx-1].triggerAttackRelease('a4','7n');
             break;
@@ -299,7 +296,7 @@ window.onkeydown = (evt) => {
         case 99: 
         case 67: {
             whiteTiles[13].style.top='2%';
-            whiteTiles[13].style.backgroundColor = 'red';
+            whiteTiles[13].style.backgroundColor = 'rgb(224, 159, 17)';
             let idx = Number(sel.value);
             synths[idx-1].triggerAttackRelease('b4','7n');
             break;
@@ -307,7 +304,7 @@ window.onkeydown = (evt) => {
         case 118: 
         case 86: {
             whiteTiles[14].style.top='2%';
-            whiteTiles[14].style.backgroundColor = 'red';
+            whiteTiles[14].style.backgroundColor = 'rgb(224, 159, 17)';
             let idx = Number(sel.value);
             synths[idx-1].triggerAttackRelease('c5','7n');
             break;
@@ -315,7 +312,7 @@ window.onkeydown = (evt) => {
         case 98: 
         case 66: {
             whiteTiles[15].style.top='2%';
-            whiteTiles[15].style.backgroundColor = 'red';
+            whiteTiles[15].style.backgroundColor = 'rgb(224, 159, 17)';
             let idx = Number(sel.value);
             synths[idx-1].triggerAttackRelease('d5','7n');
             break;
@@ -323,7 +320,7 @@ window.onkeydown = (evt) => {
         case 110: 
         case 78: {
             whiteTiles[16].style.top='2%';
-            whiteTiles[16].style.backgroundColor = 'red';
+            whiteTiles[16].style.backgroundColor = 'rgb(224, 159, 17)';
             let idx = Number(sel.value);
             synths[idx-1].triggerAttackRelease('e5','7n');
             break;
@@ -331,28 +328,28 @@ window.onkeydown = (evt) => {
         case 109:
         case 77: {
             whiteTiles[17].style.top='2%';
-            whiteTiles[17].style.backgroundColor = 'red';
+            whiteTiles[17].style.backgroundColor = 'rgb(224, 159, 17)';
             let idx = Number(sel.value);
             synths[idx-1].triggerAttackRelease('f5','7n');
             break;
         }
         case 188: {
             whiteTiles[18].style.top='2%';
-            whiteTiles[18].style.backgroundColor = 'red';
+            whiteTiles[18].style.backgroundColor = 'rgb(224, 159, 17)';
             let idx = Number(sel.value);
             synths[idx-1].triggerAttackRelease('g5','7n');
             break;
         }
         case 190: {
             whiteTiles[19].style.top='2%';
-            whiteTiles[19].style.backgroundColor = 'red';
+            whiteTiles[19].style.backgroundColor = 'rgb(224, 159, 17)';
             let idx = Number(sel.value);
             synths[idx-1].triggerAttackRelease('a5','7n');
             break;
         }
         case 191: {
             whiteTiles[20].style.top='2%';
-            whiteTiles[20].style.backgroundColor = 'red';
+            whiteTiles[20].style.backgroundColor = 'rgb(224, 159, 17)';
             let idx = Number(sel.value);
             synths[idx-1].triggerAttackRelease('b5','7n');
             break;
@@ -360,105 +357,105 @@ window.onkeydown = (evt) => {
         // black tile keycodes
         case 81: {
             blackTiles[0].style.top = '2%';
-            blackTiles[0].style.backgroundColor = 'red';
+            blackTiles[0].style.backgroundColor = 'rgb(224, 159, 17)';
             let idx = Number(sel.value);
             synths[idx-1].triggerAttackRelease('C#3','7n');
             break;
         }
         case 87: {
             blackTiles[1].style.top = '2%';
-            blackTiles[1].style.backgroundColor = 'red';
+            blackTiles[1].style.backgroundColor = 'rgb(224, 159, 17)';
             let idx = Number(sel.value);
             synths[idx-1].triggerAttackRelease('d#3','7n');
             break;
         }
         case 69: {
             blackTiles[2].style.top = '2%';
-            blackTiles[2].style.backgroundColor = 'red';
+            blackTiles[2].style.backgroundColor = 'rgb(224, 159, 17)';
             let idx = Number(sel.value);
             synths[idx-1].triggerAttackRelease('f#3','7n');
             break;
         }
         case 82: {
             blackTiles[3].style.top = '2%';
-            blackTiles[3].style.backgroundColor = 'red';
+            blackTiles[3].style.backgroundColor = 'rgb(224, 159, 17)';
             let idx = Number(sel.value);
             synths[idx-1].triggerAttackRelease('g#3','7n');
             break;
         }
         case 84: {
             blackTiles[4].style.top = '2%';
-            blackTiles[4].style.backgroundColor = 'red';
+            blackTiles[4].style.backgroundColor = 'rgb(224, 159, 17)';
             let idx = Number(sel.value);
             synths[idx-1].triggerAttackRelease('a#3','7n');
             break;
         }
         case 89: {
             blackTiles[5].style.top = '2%';
-            blackTiles[5].style.backgroundColor = 'red';
+            blackTiles[5].style.backgroundColor = 'rgb(224, 159, 17)';
             let idx = Number(sel.value);
             synths[idx-1].triggerAttackRelease('C#4','7n');
             break;
         }
         case 85: {
             blackTiles[6].style.top = '2%';
-            blackTiles[6].style.backgroundColor = 'red';
+            blackTiles[6].style.backgroundColor = 'rgb(224, 159, 17)';
             let idx = Number(sel.value);
             synths[idx-1].triggerAttackRelease('d#4','7n');
             break;
         }
         case 73: {
             blackTiles[7].style.top = '2%';
-            blackTiles[7].style.backgroundColor = 'red';
+            blackTiles[7].style.backgroundColor = 'rgb(224, 159, 17)';
             let idx = Number(sel.value);
             synths[idx-1].triggerAttackRelease('f#4','7n');
             break;
         }
         case 79: {
             blackTiles[8].style.top = '2%';
-            blackTiles[8].style.backgroundColor = 'red';
+            blackTiles[8].style.backgroundColor = 'rgb(224, 159, 17)';
             let idx = Number(sel.value);
             synths[idx-1].triggerAttackRelease('g#4','7n');
             break;
         }
         case 80: {
             blackTiles[9].style.top = '2%';
-            blackTiles[9].style.backgroundColor = 'red';
+            blackTiles[9].style.backgroundColor = 'rgb(224, 159, 17)';
             let idx = Number(sel.value);
             synths[idx-1].triggerAttackRelease('a#4','7n');
             break;
         }
         case 219: {
             blackTiles[10].style.top = '2%';
-            blackTiles[10].style.backgroundColor = 'red';
+            blackTiles[10].style.backgroundColor = 'rgb(224, 159, 17)';
             let idx = Number(sel.value);
             synths[idx-1].triggerAttackRelease('c#5','7n');
             break;
         }
         case 221: {
             blackTiles[11].style.top = '2%';
-            blackTiles[11].style.backgroundColor = 'red';
+            blackTiles[11].style.backgroundColor = 'rgb(224, 159, 17)';
             let idx = Number(sel.value);
             synths[idx-1].triggerAttackRelease('d#5','7n');
             break;
         }
         case 48: {
             blackTiles[12].style.top = '2%';
-            blackTiles[12].style.backgroundColor = 'red';
+            blackTiles[12].style.backgroundColor = 'rgb(224, 159, 17)';
             let idx = Number(sel.value);
             synths[idx-1].triggerAttackRelease('f#5','7n');
             break;
         }
         case 189: {
             blackTiles[13].style.top = '2%';
-            blackTiles[13].style.backgroundColor = 'red';
+            blackTiles[13].style.backgroundColor = 'rgb(224, 159, 17)';
             let idx = Number(sel.value);
             synths[idx-1].triggerAttackRelease('g#5','7n');
             break;
         }
         case 187: {
             blackTiles[14].style.top = '2%';
-            blackTiles[14].style.backgroundColor = 'red';
+            blackTiles[14].style.backgroundColor = 'rgb(224, 159, 17)';
             let idx = Number(sel.value);
             synths[idx-1].triggerAttackRelease('a#5','7n');
             break;

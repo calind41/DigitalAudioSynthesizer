@@ -1,0 +1,12 @@
+black - #0b0c10
+light black - #1f2833
+gray - #c5c6c7
+blue - #66fcf1
+turquoise - #45a29e
+------------------------
+
+yellow intense - #d79922
+white_mixed_with_yellow? - #efe2ba
+red - #f13c20
+blue - #4056a1
+lightPurple - #c5cbe3
